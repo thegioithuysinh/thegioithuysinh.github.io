@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Admin — Quản lý tin tức | Thủy Sinh Xanh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --g1:#1a7f5a;--g2:#22a073;--g3:#2ecc95;--gl:#e8f7f2;
+  --t1:#1a2e25;--t2:#4a6358;--t3:#8aab9b;
+  --bg:#f7fbf9;--bg2:#fff;--bg3:#edf6f2;
+  --bd:#d4ede4;--bd2:#b8ddd0;
+  --am:#e67e22;--rd:#e74c3c;--rd-light:#fdf0ee;
+  --sidebar:220px;
+  --shadow:0 2px 16px rgba(26,127,90,.09);
+  --shadow-lg:0 8px 40px rgba(26,127,90,.14);
+}
+html{height:100%}
+body{font-family:'Be Vietnam Pro',sans-serif;background:var(--bg);color:var(--t1);line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
+
+/* ── TOPBAR ── */
+.adm-top{height:58px;background:#fff;border-bottom:1px solid var(--bd);display:flex;align-items:center;padding:0 24px;gap:14px;position:sticky;top:0;z-index:300;box-shadow:var(--shadow)}
+.adm-logo{display:flex;align-items:center;gap:9px;text-decoration:none;flex-shrink:0;width:var(--sidebar);margin-left:-24px;padding-left:24px}
+.adm-logo-box{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--g1),var(--g3));display:flex;align-items:center;justify-content:center;font-size:18px}
+.adm-logo-txt{font-size:15px;font-weight:800;color:var(--g1)}
+.adm-logo-sub{font-size:10px;color:var(--t3);font-weight:400}
+.adm-top-mid{flex:1;max-width:420px}
+.adm-search{width:100%;padding:8px 14px 8px 38px;border-radius:10px;border:1.5px solid var(--bd);background:var(--bg3);font-size:13.5px;color:var(--t1);font-family:inherit;outline:none;transition:all .2s}
+.adm-search:focus{border-color:var(--g2);background:#fff;box-shadow:0 0 0 3px rgba(34,160,115,.1)}
+.search-wrap-top{position:relative;flex:1;max-width:420px}
+.search-wrap-top .s-ico{position:absolute;left:12px;top:50%;transform:translateY(-50%);font-size:15px;pointer-events:none}
+.adm-top-right{margin-left:auto;display:flex;align-items:center;gap:10px}
+.adm-avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--g1),var(--g3));display:flex;align-items:center;justify-content:center;font-size:16px;color:#fff;font-weight:800;cursor:pointer;border:2px solid var(--bd2)}
+.adm-notif{position:relative;width:34px;height:34px;border-radius:9px;background:var(--bg3);border:1.5px solid var(--bd);display:flex;align-items:center;justify-content:center;font-size:16px;cursor:pointer;transition:background .2s}
+.adm-notif:hover{background:var(--gl)}
+.notif-dot{position:absolute;top:5px;right:5px;width:8px;height:8px;border-radius:50%;background:var(--rd);border:2px solid #fff}
+.adm-btn-new{display:flex;align-items:center;gap:7px;padding:8px 16px;border-radius:9px;background:var(--g1);color:#fff;font-size:13.5px;font-weight:700;border:none;cursor:pointer;font-family:inherit;transition:background .2s}
+.adm-btn-new:hover{background:var(--g2)}
+
+/* ── LAYOUT ── */
+.adm-body{display:flex;flex:1}
+
+/* ── SIDEBAR ── */
+.sidebar{width:var(--sidebar);background:#fff;border-right:1px solid var(--bd);padding:20px 0;display:flex;flex-direction:column;gap:4px;position:sticky;top:58px;height:calc(100vh - 58px);overflow-y:auto;flex-shrink:0}
+.sidebar::-webkit-scrollbar{width:0}
+.s-label{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--t3);padding:16px 20px 6px}
+.s-link{display:flex;align-items:center;gap:10px;padding:10px 20px;font-size:14px;font-weight:600;color:var(--t2);text-decoration:none;border-radius:0;transition:all .2s;cursor:pointer;border:none;background:none;width:100%;font-family:inherit}
+.s-link:hover{background:var(--gl);color:var(--g1)}
+.s-link.on{background:var(--gl);color:var(--g1);border-right:3px solid var(--g1)}
+.s-link .ico{font-size:17px;width:22px;text-align:center;flex-shrink:0}
+.s-badge{margin-left:auto;background:var(--g1);color:#fff;font-size:10px;font-weight:800;padding:2px 7px;border-radius:20px}
+.s-badge.am{background:var(--am)}
+.s-divider{height:1px;background:var(--bd);margin:8px 20px}
+
+/* ── MAIN ── */
+.main{flex:1;padding:28px 32px;overflow-x:hidden}
+
+/* ── PAGE HEADER ── */
+.page-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;gap:16px;flex-wrap:wrap}
+.page-title-group{}
+.page-breadcrumb{font-size:12px;color:var(--t3);margin-bottom:4px}
+.page-breadcrumb span{color:var(--g2);font-weight:600}
+.page-title{font-size:22px;font-weight:800;color:var(--t1);letter-spacing:-.02em}
+.page-actions{display:flex;gap:10px}
+
+/* ── STAT CARDS ── */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:28px}
+.stat-card{background:#fff;border:1.5px solid var(--bd);border-radius:14px;padding:18px 20px;display:flex;align-items:center;gap:14px;transition:box-shadow .2s}
+.stat-card:hover{box-shadow:var(--shadow)}
+.stat-icon{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.si-green{background:var(--gl)}
+.si-orange{background:#fef3e8}
+.si-blue{background:#e8f0fe}
+.si-red{background:var(--rd-light)}
+.stat-info strong{display:block;font-size:22px;font-weight:800;color:var(--t1);line-height:1.1}
+.stat-info span{font-size:12.5px;color:var(--t2)}
+.stat-delta{margin-left:auto;font-size:11.5px;font-weight:700;padding:3px 8px;border-radius:6px}
+.delta-up{background:#e8f7f2;color:var(--g1)}
+.delta-dn{background:var(--rd-light);color:var(--rd)}
+
+/* ── TOOLBAR ── */
+.toolbar{display:flex;align-items:center;gap:10px;margin-bottom:18px;flex-wrap:wrap}
+.toolbar-left{display:flex;align-items:center;gap:10px;flex:1}
+.filter-select{padding:9px 14px;border-radius:10px;border:1.5px solid var(--bd);background:#fff;font-size:13.5px;color:var(--t1);font-family:inherit;outline:none;cursor:pointer;transition:border-color .2s}
+.filter-select:focus{border-color:var(--g2)}
+.toolbar-search{padding:9px 14px 9px 38px;border-radius:10px;border:1.5px solid var(--bd);background:#fff;font-size:13.5px;color:var(--t1);font-family:inherit;outline:none;transition:all .2s;min-width:220px}
+.toolbar-search:focus{border-color:var(--g2);box-shadow:0 0 0 3px rgba(34,160,115,.1)}
+.toolbar-s-wrap{position:relative}
+.toolbar-s-wrap .ts-ico{position:absolute;left:12px;top:50%;transform:translateY(-50%);font-size:15px;pointer-events:none}
+.btn-filter{padding:9px 16px;border-radius:10px;border:1.5px solid var(--bd);background:#fff;font-size:13.5px;font-weight:600;color:var(--t2);cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:6px;transition:all .2s}
+.btn-filter:hover,.btn-filter.on{border-color:var(--g2);color:var(--g1);background:var(--gl)}
+.btn-primary{padding:9px 18px;border-radius:10px;background:var(--g1);color:#fff;font-size:13.5px;font-weight:700;border:none;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:7px;transition:background .2s}
+.btn-primary:hover{background:var(--g2)}
+.btn-secondary{padding:9px 18px;border-radius:10px;background:#fff;color:var(--t2);font-size:13.5px;font-weight:600;border:1.5px solid var(--bd);cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:7px;transition:all .2s}
+.btn-secondary:hover{border-color:var(--g2);color:var(--g1);background:var(--gl)}
+.btn-danger{padding:9px 18px;border-radius:10px;background:var(--rd-light);color:var(--rd);font-size:13.5px;font-weight:600;border:1.5px solid #f5c6c2;cursor:pointer;font-family:inherit;transition:all .2s}
+.btn-danger:hover{background:var(--rd);color:#fff}
+
+/* ── TABLE ── */
+.table-wrap{background:#fff;border:1.5px solid var(--bd);border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
+.table-head{padding:16px 20px;border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.table-head-title{font-size:14px;font-weight:700;color:var(--t1)}
+.table-head-count{font-size:13px;color:var(--t3)}
+table{width:100%;border-collapse:collapse}
+thead th{padding:12px 16px;text-align:left;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--t3);background:var(--bg3);border-bottom:1px solid var(--bd);white-space:nowrap}
+thead th:first-child{padding-left:20px}
+thead th:last-child{padding-right:20px}
+tbody tr{border-bottom:1px solid var(--bd);transition:background .15s}
+tbody tr:last-child{border-bottom:none}
+tbody tr:hover{background:var(--bg3)}
+tbody td{padding:14px 16px;font-size:14px;vertical-align:middle}
+tbody td:first-child{padding-left:20px}
+tbody td:last-child{padding-right:20px}
+.cb{width:16px;height:16px;accent-color:var(--g1);cursor:pointer}
+
+/* row thumb */
+.post-thumb{width:54px;height:40px;border-radius:8px;background:linear-gradient(135deg,var(--bg3),var(--gl));display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;border:1px solid var(--bd)}
+.post-meta{display:flex;flex-direction:column;gap:2px}
+.post-name{font-size:14px;font-weight:600;color:var(--t1);line-height:1.35;max-width:320px}
+.post-name a{color:inherit;text-decoration:none}
+.post-name a:hover{color:var(--g1);text-decoration:underline}
+.post-excerpt{font-size:12px;color:var(--t3);line-height:1.5;max-width:320px;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
+.post-row-flex{display:flex;align-items:center;gap:10px}
+
+/* tags / badges */
+.tag{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:20px;font-size:11.5px;font-weight:700}
+.tag-pub{background:#e8f7f2;color:#1a7f5a}
+.tag-draft{background:#fef3e8;color:#c0660a}
+.tag-hidden{background:#f3f3f5;color:#777}
+.tag-cat{background:var(--bg3);color:var(--t2);border:1px solid var(--bd)}
+
+/* action btns */
+.row-actions{display:flex;align-items:center;gap:6px}
+.act-btn{width:32px;height:32px;border-radius:8px;border:1.5px solid var(--bd);background:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;cursor:pointer;transition:all .15s}
+.act-btn:hover{border-color:var(--g2);background:var(--gl)}
+.act-btn.del:hover{border-color:#f5c6c2;background:var(--rd-light)}
+
+/* pagination */
+.pagination{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-top:1px solid var(--bd)}
+.page-info{font-size:13px;color:var(--t3)}
+.page-btns{display:flex;gap:4px}
+.page-btn{width:34px;height:34px;border-radius:8px;border:1.5px solid var(--bd);background:#fff;font-size:13.5px;font-weight:600;color:var(--t2);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .15s}
+.page-btn:hover{border-color:var(--g2);color:var(--g1)}
+.page-btn.on{background:var(--g1);border-color:var(--g1);color:#fff}
+.page-btn:disabled{opacity:.35;cursor:not-allowed}
+
+/* ── MODAL OVERLAY ── */
+.overlay{position:fixed;inset:0;background:rgba(10,34,24,.52);z-index:500;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .22s}
+.overlay.open{opacity:1;pointer-events:all}
+.modal{background:#fff;border-radius:20px;width:100%;max-width:780px;max-height:92vh;overflow:hidden;display:flex;flex-direction:column;transform:translateY(20px);transition:transform .25s;box-shadow:0 32px 80px rgba(0,0,0,.22)}
+.overlay.open .modal{transform:translateY(0)}
+.modal-head{padding:20px 26px;border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between}
+.modal-title{font-size:17px;font-weight:800;color:var(--t1)}
+.modal-close{width:32px;height:32px;border-radius:8px;border:1.5px solid var(--bd);background:#fff;font-size:18px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .15s}
+.modal-close:hover{background:var(--rd-light);border-color:#f5c6c2}
+.modal-body{padding:26px;overflow-y:auto;flex:1}
+.modal-foot{padding:16px 26px;border-top:1px solid var(--bd);display:flex;align-items:center;justify-content:flex-end;gap:10px;background:var(--bg3)}
+
+/* ── FORM ── */
+.form-row{margin-bottom:20px}
+.form-row label{display:block;font-size:13px;font-weight:700;color:var(--t1);margin-bottom:7px}
+.form-row label .req{color:var(--rd);margin-left:3px}
+.form-input,.form-select,.form-textarea{width:100%;padding:10px 14px;border-radius:10px;border:1.5px solid var(--bd);background:#fff;font-size:14px;color:var(--t1);font-family:inherit;outline:none;transition:all .2s}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--g2);box-shadow:0 0 0 3px rgba(34,160,115,.1)}
+.form-textarea{resize:vertical;min-height:100px;line-height:1.6}
+.form-hint{font-size:12px;color:var(--t3);margin-top:5px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-row.full{grid-column:1/-1}
+.img-drop{border:2px dashed var(--bd2);border-radius:12px;padding:32px;text-align:center;cursor:pointer;transition:all .2s;background:var(--bg3)}
+.img-drop:hover{border-color:var(--g2);background:var(--gl)}
+.img-drop .d-ico{font-size:32px;margin-bottom:8px}
+.img-drop p{font-size:13.5px;color:var(--t2);margin-bottom:4px;font-weight:600}
+.img-drop span{font-size:12px;color:var(--t3)}
+.editor-toolbar{display:flex;flex-wrap:wrap;gap:4px;padding:10px 12px;border:1.5px solid var(--bd);border-bottom:none;border-radius:10px 10px 0 0;background:var(--bg3)}
+.e-btn{padding:5px 10px;border-radius:6px;border:1px solid transparent;background:transparent;font-size:13px;font-weight:700;color:var(--t2);cursor:pointer;font-family:inherit;transition:all .15s}
+.e-btn:hover{background:var(--bd);color:var(--t1)}
+.e-divider{width:1px;height:22px;background:var(--bd2);margin:0 2px;align-self:center}
+.form-editor{width:100%;min-height:140px;padding:12px 14px;border:1.5px solid var(--bd);border-radius:0 0 10px 10px;background:#fff;font-size:14px;color:var(--t1);font-family:inherit;outline:none;line-height:1.7;resize:vertical;transition:border-color .2s}
+.form-editor:focus{border-color:var(--g2);box-shadow:0 0 0 3px rgba(34,160,115,.1)}
+.toggle-row{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border:1.5px solid var(--bd);border-radius:10px;background:#fff}
+.toggle-info strong{font-size:13.5px;font-weight:700;color:var(--t1)}
+.toggle-info span{display:block;font-size:12px;color:var(--t3)}
+.toggle{position:relative;width:40px;height:22px;flex-shrink:0}
+.toggle input{opacity:0;width:0;height:0}
+.slider{position:absolute;inset:0;border-radius:20px;background:#d0ddd8;cursor:pointer;transition:.3s}
+.slider::before{content:'';position:absolute;left:3px;top:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:.3s;box-shadow:0 1px 4px rgba(0,0,0,.2)}
+.toggle input:checked+.slider{background:var(--g2)}
+.toggle input:checked+.slider::before{transform:translateX(18px)}
+
+/* ── CONFIRM MODAL ── */
+.confirm-icon{width:56px;height:56px;border-radius:50%;background:var(--rd-light);display:flex;align-items:center;justify-content:center;font-size:26px;margin:0 auto 16px}
+.confirm-body{text-align:center;padding:8px 0}
+.confirm-title{font-size:18px;font-weight:800;color:var(--t1);margin-bottom:8px}
+.confirm-msg{font-size:14px;color:var(--t2);line-height:1.6;max-width:340px;margin:0 auto}
+
+/* ── TOAST ── */
+.toast-wrap{position:fixed;bottom:28px;right:28px;z-index:600;display:flex;flex-direction:column;gap:8px;pointer-events:none}
+.toast{background:#1a2e25;color:#fff;border-radius:12px;padding:13px 18px;font-size:14px;font-weight:600;display:flex;align-items:center;gap:10px;box-shadow:0 8px 32px rgba(0,0,0,.25);transform:translateX(120%);transition:transform .3s cubic-bezier(.34,1.56,.64,1);pointer-events:all;min-width:240px}
+.toast.show{transform:translateX(0)}
+.toast.success{border-left:4px solid var(--g3)}
+.toast.error{border-left:4px solid var(--rd)}
+.toast.warn{border-left:4px solid var(--am)}
+
+/* ── EMPTY STATE ── */
+.empty-state{text-align:center;padding:60px 20px;color:var(--t3)}
+.empty-state .e-ico{font-size:48px;margin-bottom:14px}
+.empty-state h3{font-size:16px;font-weight:700;color:var(--t2);margin-bottom:6px}
+.empty-state p{font-size:13.5px}
+
+/* ── BULK BAR ── */
+.bulk-bar{background:var(--g1);color:#fff;border-radius:12px;padding:10px 18px;display:flex;align-items:center;gap:14px;margin-bottom:14px;font-size:14px;font-weight:600;transition:all .25s;max-height:0;overflow:hidden;opacity:0}
+.bulk-bar.show{max-height:60px;opacity:1;padding:10px 18px}
+.bulk-bar-actions{display:flex;gap:8px;margin-left:auto}
+.bulk-btn{padding:6px 14px;border-radius:8px;border:1.5px solid rgba(255,255,255,.3);background:rgba(255,255,255,.1);color:#fff;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .15s}
+.bulk-btn:hover{background:rgba(255,255,255,.22)}
+.bulk-btn.bulk-del{background:rgba(231,76,60,.35);border-color:rgba(231,76,60,.4)}
+.bulk-btn.bulk-del:hover{background:rgba(231,76,60,.6)}
+
+/* ── SIDEBAR FOOTER ── */
+.sidebar-footer{margin-top:auto;padding:16px 20px;border-top:1px solid var(--bd)}
+.sf-user{display:flex;align-items:center;gap:10px}
+.sf-avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--g1),var(--g3));display:flex;align-items:center;justify-content:center;font-size:15px;color:#fff;font-weight:800;flex-shrink:0}
+.sf-info strong{display:block;font-size:13px;font-weight:700;color:var(--t1)}
+.sf-info span{font-size:11.5px;color:var(--t3)}
+
+/* ── RESP ── */
+@media(max-width:1100px){.stats-row{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){
+  .sidebar{display:none}
+  .adm-logo{width:auto}
+  .main{padding:20px 16px}
+  .stats-row{grid-template-columns:1fr 1fr}
+  .form-grid{grid-template-columns:1fr}
+}
+@media(max-width:520px){
+  .stats-row{grid-template-columns:1fr}
+  .toolbar-left{flex-direction:column;align-items:stretch}
+  .toolbar-search{min-width:unset;width:100%}
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<header class="adm-top">
+  <a href="#" class="adm-logo">
+    <div class="adm-logo-box">🌿</div>
+    <div>
+      <div class="adm-logo-txt">Thủy Sinh Xanh</div>
+      <div class="adm-logo-sub">Bảng điều khiển</div>
+    </div>
+  </a>
+  <div class="search-wrap-top">
+    <span class="s-ico">🔍</span>
+    <input class="adm-search" type="text" placeholder="Tìm bài viết, danh mục..." id="globalSearch"/>
+  </div>
+  <div class="adm-top-right">
+    <div class="adm-notif"><span>🔔</span><div class="notif-dot"></div></div>
+    <button class="adm-btn-new" onclick="openModal()">＋ Viết bài mới</button>
+    <div class="adm-avatar">A</div>
+  </div>
+</header>
+
+<div class="adm-body">
+<!-- SIDEBAR -->
+<nav class="sidebar">
+  <div class="s-label">Nội dung</div>
+  <button class="s-link on" onclick="setPage('posts',this)"><span class="ico">📝</span>Quản lý tin tức<span class="s-badge" id="sb-total">0</span></button>
+  <button class="s-link" onclick="setPage('cats',this)"><span class="ico">🗂️</span>Danh mục</button>
+  <button class="s-link" onclick="setPage('media',this)"><span class="ico">🖼️</span>Thư viện ảnh</button>
+
+  <div class="s-label">Sản phẩm</div>
+  <button class="s-link" onclick="setPage('orders',this)"><span class="ico">📦</span>Đơn hàng<span class="s-badge am" id="sb-orders">0</span></button>
+
+  <div class="s-divider"></div>
+  <div class="s-label">Hệ thống</div>
+  <button class="s-link" onclick="setPage('settings',this)"><span class="ico">⚙️</span>Cài đặt website</button>
+  <a href="ThuySinhXanh_Modern17.html" class="s-link" target="_blank"><span class="ico">🌐</span>Xem website</a>
+
+  <div class="sidebar-footer">
+    <div class="sf-user">
+      <div class="sf-avatar">A</div>
+      <div class="sf-info"><strong>Admin</strong><span>Quản trị viên</span></div>
+    </div>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<main class="main" id="main-content">
+
+  <!-- ===== PAGE: POSTS ===== -->
+  <div id="page-posts">
+    <div class="page-hd">
+      <div class="page-title-group">
+        <div class="page-breadcrumb">Bảng điều khiển › <span>Quản lý tin tức</span></div>
+        <h1 class="page-title">Quản lý tin tức & bài viết</h1>
+      </div>
+      <div class="page-actions">
+        <button class="btn-secondary" id="btnExport">⬇ Xuất CSV</button>
+        <button class="btn-secondary" id="btnReset" onclick="resetData()" style="color:var(--rd);border-color:#f5c6c2">🔄 Reset dữ liệu</button>
+        <button class="btn-primary" onclick="openModal()">＋ Viết bài mới</button>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-row" id="stats-row"></div>
+
+    <!-- Toolbar -->
+    <div class="toolbar">
+      <div class="toolbar-left">
+        <div class="toolbar-s-wrap">
+          <span class="ts-ico">🔍</span>
+          <input class="toolbar-search" type="text" placeholder="Tìm tiêu đề, nội dung..." id="searchBox"/>
+        </div>
+        <select class="filter-select" id="filterCat">
+          <option value="">Tất cả danh mục</option>
+        </select>
+        <select class="filter-select" id="filterStatus">
+          <option value="">Tất cả trạng thái</option>
+          <option value="published">✅ Đã đăng</option>
+          <option value="draft">🟡 Nháp</option>
+          <option value="hidden">🔘 Ẩn</option>
+        </select>
+      </div>
+      <button class="btn-filter" id="btnSort" onclick="toggleSort()">⇅ Mới nhất</button>
+    </div>
+
+    <!-- Bulk bar -->
+    <div class="bulk-bar" id="bulkBar">
+      <span id="bulkCount">0 bài được chọn</span>
+      <div class="bulk-bar-actions">
+        <button class="bulk-btn" onclick="bulkPublish()">✅ Đăng tất cả</button>
+        <button class="bulk-btn" onclick="bulkDraft()">📋 Đặt thành Nháp</button>
+        <button class="bulk-btn bulk-del" onclick="bulkDelete()">🗑 Xóa</button>
+      </div>
+    </div>
+
+    <!-- Table -->
+    <div class="table-wrap">
+      <div class="table-head">
+        <div>
+          <span class="table-head-title">Danh sách bài viết</span>
+          <span class="table-head-count" id="tableCount"></span>
+        </div>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th><input type="checkbox" class="cb" id="checkAll" onchange="toggleAll(this)"/></th>
+            <th>Bài viết</th>
+            <th>Danh mục</th>
+            <th>Trạng thái</th>
+            <th>Ngày đăng</th>
+            <th>Lượt xem</th>
+            <th>Thao tác</th>
+          </tr>
+        </thead>
+        <tbody id="postTableBody"></tbody>
+      </table>
+      <div class="pagination" id="paginationWrap"></div>
+    </div>
+  </div><!-- /page-posts -->
+
+  <!-- ===== PAGE: CATS ===== -->
+  <div id="page-cats" style="display:none">
+    <div class="page-hd">
+      <div class="page-title-group">
+        <div class="page-breadcrumb">Bảng điều khiển › <span>Danh mục</span></div>
+        <h1 class="page-title">Quản lý danh mục</h1>
+      </div>
+      <button class="btn-primary" onclick="openCatModal()">＋ Thêm danh mục</button>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Tên danh mục</th><th>Biểu tượng</th><th>Số bài</th><th>Thao tác</th></tr></thead>
+        <tbody id="catTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ===== PAGE: MEDIA ===== -->
+  <div id="page-media" style="display:none">
+    <div class="page-hd">
+      <div class="page-title-group">
+        <div class="page-breadcrumb">Bảng điều khiển › <span>Thư viện ảnh</span></div>
+        <h1 class="page-title">Thư viện ảnh & media</h1>
+      </div>
+    </div>
+    <div class="table-wrap" style="padding:60px 20px">
+      <div class="empty-state">
+        <div class="e-ico">🖼️</div>
+        <h3>Chưa có ảnh nào</h3>
+        <p>Tính năng thư viện ảnh đang được phát triển.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== PAGE: ORDERS ===== -->
+  <div id="page-orders" style="display:none">
+    <div class="page-hd">
+      <div class="page-title-group">
+        <div class="page-breadcrumb">Bảng điều khiển › <span>Đơn hàng</span></div>
+        <h1 class="page-title">Quản lý đơn hàng</h1>
+      </div>
+      <div class="page-actions">
+        <button class="btn-secondary" onclick="exportOrdersCSV()">⬇ Xuất CSV</button>
+        <button class="btn-danger" onclick="clearAllOrders()">🗑 Xoá tất cả</button>
+      </div>
+    </div>
+    <div id="orders-stats-row" class="stats-row" style="grid-template-columns:repeat(4,1fr)"></div>
+    <div class="table-wrap">
+      <div class="table-head">
+        <div class="table-head-title">Danh sách đơn hàng</div>
+        <select class="filter-select" id="orderStatusFilter" onchange="renderOrdersPage()">
+          <option value="">Tất cả trạng thái</option>
+          <option value="new">🆕 Mới</option>
+          <option value="confirmed">✅ Đã xác nhận</option>
+          <option value="shipping">🚚 Đang giao</option>
+          <option value="done">🎉 Hoàn thành</option>
+          <option value="cancelled">❌ Đã huỷ</option>
+        </select>
+      </div>
+      <table>
+        <thead><tr>
+          <th>Mã đơn</th>
+          <th>Khách hàng</th>
+          <th>Sản phẩm</th>
+          <th>Tổng tiền</th>
+          <th>Thanh toán</th>
+          <th>Trạng thái</th>
+          <th>Ngày đặt</th>
+          <th>Thao tác</th>
+        </tr></thead>
+        <tbody id="ordersTableBody"></tbody>
+      </table>
+      <div id="orders-empty" style="display:none">
+        <div class="empty-state"><div class="e-ico">📦</div><h3>Chưa có đơn hàng</h3><p>Đơn hàng từ trang người dùng sẽ xuất hiện ở đây.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== PAGE: SETTINGS ===== -->
+  <div id="page-settings" style="display:none">
+    <div class="page-hd">
+      <div class="page-title-group">
+        <div class="page-breadcrumb">Bảng điều khiển › <span>Cài đặt website</span></div>
+        <h1 class="page-title">Cài đặt website</h1>
+      </div>
+      <button class="btn-primary" onclick="saveSettings()">💾 Lưu cài đặt</button>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+      <!-- Thông tin shop -->
+      <div class="table-wrap" style="padding:24px">
+        <div style="font-size:15px;font-weight:800;color:var(--t1);margin-bottom:18px;display:flex;align-items:center;gap:8px">🏪 Thông tin cửa hàng</div>
+        <div class="form-row"><label>Tên trang (hiển thị trên tab trình duyệt)</label><input class="form-input" id="s-sitename" placeholder="Thủy Sinh Xanh – Mang Thiên Nhiên Vào Ngôi Nhà Bạn"/></div>
+        <div class="form-row"><label>Số điện thoại</label><input class="form-input" id="s-phone" placeholder="0902.804.547"/></div>
+        <div class="form-row"><label>Địa chỉ</label><input class="form-input" id="s-address" placeholder="433/13 Lê Đức Thọ, P.17, Gò Vấp"/></div>
+        <div class="form-row"><label>Giờ mở cửa</label><input class="form-input" id="s-hours" placeholder="8:00 – 20:00 hàng ngày"/></div>
+        <div class="form-row"><label>Email</label><input class="form-input" id="s-email" placeholder="thuysinhxanh.vn@gmail.com"/></div>
+        <div class="form-row"><label>Ngưỡng miễn ship (₫)</label><input class="form-input" type="number" id="s-ship" placeholder="800000"/><div class="form-hint">Đơn từ số tiền này trở lên sẽ miễn phí vận chuyển</div></div>
+      </div>
+      <!-- Nội dung trang chủ -->
+      <div class="table-wrap" style="padding:24px">
+        <div style="font-size:15px;font-weight:800;color:var(--t1);margin-bottom:18px;display:flex;align-items:center;gap:8px">🏠 Nội dung trang chủ</div>
+        <div class="form-row"><label>Ticker (thanh chạy ngang)</label><input class="form-input" id="s-ticker" placeholder="🎉 FLASH SALE — Giảm 20%..."/><div class="form-hint">Nội dung thanh thông báo trên cùng</div></div>
+        <div class="form-row"><label>Tiêu đề Hero (hỗ trợ HTML)</label><textarea class="form-textarea" id="s-hero-title" rows="2" placeholder="Mang &lt;mark&gt;thiên nhiên&lt;/mark&gt;&lt;br&gt;vào ngôi nhà bạn"></textarea></div>
+        <div class="form-row"><label>Mô tả Hero</label><textarea class="form-textarea" id="s-hero-sub" rows="3" placeholder="Chuyên cung cấp hồ kính, cá cảnh..."></textarea></div>
+        <div class="form-row"><label>Giới thiệu shop (hiển thị ở chân trang)</label><textarea class="form-textarea" id="s-about" rows="3" placeholder="Chuyên mua bán sỉ lẻ phụ kiện hồ thủy sinh chính hãng, cá cảnh, cây thủy sinh và hồ kính. Giao hàng toàn quốc, giá tốt nhất thị trường."></textarea><div class="form-hint">Đoạn mô tả ngắn về cửa hàng hiện ở cột trái chân trang</div></div>
+      </div>
+      <!-- SEO / Meta -->
+      <div class="table-wrap" style="padding:24px;grid-column:1/-1">
+        <div style="font-size:15px;font-weight:800;color:var(--t1);margin-bottom:18px;display:flex;align-items:center;gap:8px">📝 Chân trang (Footer)</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <div class="form-row"><label>Tên thương hiệu (dòng logo chân trang)</label><input class="form-input" id="s-brandname" placeholder="Thủy Sinh Xanh"/><div class="form-hint">Tên hiển thị cạnh icon 🌿 ở footer</div></div>
+          <div class="form-row"><label>Năm thành lập (cho dòng copyright)</label><input class="form-input" id="s-year-founded" placeholder="2015"/></div>
+        </div>
+        <div class="form-row" style="margin-top:4px"><label>Dòng copyright cuối trang (để trống = tự động)</label><input class="form-input" id="s-footer-copy" placeholder="© 2015 – 2025 ThuySinhXanh.Vn · Hotline: 0902.804.547 (Zalo)"/><div class="form-hint">Dòng chữ hiển thị ở hàng dưới cùng của trang</div></div>
+      </div>
+      <!-- Topbar links -->
+      <div class="table-wrap" style="padding:24px;grid-column:1/-1">
+        <div style="font-size:15px;font-weight:800;color:var(--t1);margin-bottom:6px;display:flex;align-items:center;gap:8px">🔗 3 liên kết thanh trên cùng</div>
+        <div style="font-size:13px;color:var(--t3);margin-bottom:18px">Thanh nằm trên cùng trang hiển thị địa chỉ, giờ mở cửa và 3 liên kết này</div>
+        <div style="display:grid;grid-template-columns:1fr 2fr;gap:12px;align-items:center">
+          <div style="font-size:12px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.05em">Tên hiển thị</div>
+          <div style="font-size:12px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.05em">Đường dẫn (URL)</div>
+          <input class="form-input" id="s-tblink1-label" placeholder="Giới thiệu"/>
+          <input class="form-input" id="s-tblink1-url" placeholder="#"/>
+          <input class="form-input" id="s-tblink2-label" placeholder="Kiến thức"/>
+          <input class="form-input" id="s-tblink2-url" placeholder="#"/>
+          <input class="form-input" id="s-tblink3-label" placeholder="Liên hệ"/>
+          <input class="form-input" id="s-tblink3-url" placeholder="#"/>
+        </div>
+      </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <div class="form-row"><label>Zalo URL</label><input class="form-input" id="s-zalo" placeholder="https://zalo.me/0902804547"/></div>
+          <div class="form-row"><label>Facebook Messenger URL</label><input class="form-input" id="s-fb" placeholder="https://www.messenger.com/t/..."/></div>
+        </div>
+        <div class="form-row" style="margin-top:8px">
+          <div class="toggle-row">
+            <div class="toggle-info"><strong>Bật chế độ bảo trì</strong><span>Tắt trang người dùng, hiện thông báo bảo trì</span></div>
+            <label class="toggle"><input type="checkbox" id="s-maintenance"/><span class="slider"></span></label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+</div><!-- /adm-body -->
+
+<!-- ===== MODAL: THÊM / SỬA BÀI VIẾT ===== -->
+<div class="overlay" id="postModal">
+  <div class="modal">
+    <div class="modal-head">
+      <div class="modal-title" id="modalTitle">✏️ Viết bài mới</div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-row full">
+          <label>Tiêu đề bài viết <span class="req">*</span></label>
+          <input class="form-input" id="fTitle" placeholder="Nhập tiêu đề hấp dẫn cho bài viết..."/>
+        </div>
+        <div class="form-row">
+          <label>Danh mục <span class="req">*</span></label>
+          <select class="form-select" id="fCat"></select>
+        </div>
+        <div class="form-row">
+          <label>Trạng thái</label>
+          <select class="form-select" id="fStatus">
+            <option value="published">✅ Đăng ngay</option>
+            <option value="draft">🟡 Lưu nháp</option>
+            <option value="hidden">🔘 Ẩn</option>
+          </select>
+        </div>
+        <div class="form-row full">
+          <label>Mô tả ngắn</label>
+          <textarea class="form-textarea" id="fExcerpt" placeholder="Tóm tắt nội dung (hiển thị ngoài trang danh sách)..." rows="3"></textarea>
+        </div>
+        <div class="form-row full">
+          <label>Nội dung bài viết <span class="req">*</span></label>
+          <div class="editor-toolbar">
+            <button class="e-btn" onclick="fmt('bold')"><b>B</b></button>
+            <button class="e-btn" onclick="fmt('italic')"><i>I</i></button>
+            <button class="e-btn" onclick="fmt('underline')"><u>U</u></button>
+            <div class="e-divider"></div>
+            <button class="e-btn" onclick="fmt('insertUnorderedList')">• Danh sách</button>
+            <button class="e-btn" onclick="fmt('insertOrderedList')">1. Danh sách</button>
+            <div class="e-divider"></div>
+            <button class="e-btn" onclick="insertHeading()">H2</button>
+            <button class="e-btn" onclick="fmt('createLink',prompt('URL:'))">🔗</button>
+          </div>
+          <div class="form-editor" id="fContent" contenteditable="true" style="min-height:180px" placeholder="Viết nội dung bài viết tại đây..."></div>
+          <div class="form-hint">Hỗ trợ định dạng văn bản cơ bản. Có thể dán ảnh trực tiếp vào khung soạn thảo.</div>
+        </div>
+        <div class="form-row full">
+          <label>Ảnh đại diện</label>
+          <div class="img-drop" onclick="triggerImgPick()" id="imgDrop">
+            <div class="d-ico">📷</div>
+            <p>Nhấn để chọn ảnh</p>
+            <span>JPG, PNG, WEBP — Tối đa 5 MB</span>
+          </div>
+          <input type="file" id="imgFile" style="display:none" accept="image/*" onchange="previewImg(this)"/>
+        </div>
+        <div class="form-row">
+          <label>Thẻ / Tags</label>
+          <input class="form-input" id="fTags" placeholder="cá cảnh, thủy sinh, tép, ..."/>
+          <div class="form-hint">Phân cách bằng dấu phẩy</div>
+        </div>
+        <div class="form-row">
+          <label>Ngày đăng</label>
+          <input type="date" class="form-input" id="fDate"/>
+        </div>
+        <div class="form-row full">
+          <div class="toggle-row">
+            <div class="toggle-info">
+              <strong>Bài viết nổi bật</strong>
+              <span>Hiển thị ở vị trí đầu trang chủ</span>
+            </div>
+            <label class="toggle"><input type="checkbox" id="fFeatured"/><span class="slider"></span></label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn-secondary" onclick="closeModal()">Hủy</button>
+      <button class="btn-primary" onclick="savePost()">💾 Lưu bài viết</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MODAL: XÁC NHẬN XÓA ===== -->
+<div class="overlay" id="confirmModal">
+  <div class="modal" style="max-width:420px">
+    <div class="modal-head">
+      <div class="modal-title">Xác nhận xóa</div>
+      <button class="modal-close" onclick="closeConfirm()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="confirm-body">
+        <div class="confirm-icon">🗑️</div>
+        <div class="confirm-title">Xóa bài viết này?</div>
+        <p class="confirm-msg" id="confirmMsg">Thao tác này không thể hoàn tác. Bài viết sẽ bị xóa vĩnh viễn.</p>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn-secondary" onclick="closeConfirm()">Không, giữ lại</button>
+      <button class="btn-danger" id="confirmOkBtn">🗑 Xóa bài viết</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MODAL: DANH MỤC ===== -->
+<div class="overlay" id="catModal">
+  <div class="modal" style="max-width:440px">
+    <div class="modal-head">
+      <div class="modal-title">🗂️ Thêm danh mục</div>
+      <button class="modal-close" onclick="document.getElementById('catModal').classList.remove('open')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-row"><label>Tên danh mục <span class="req">*</span></label><input class="form-input" id="cName" placeholder="VD: Kiến thức thủy sinh"/></div>
+      <div class="form-row"><label>Biểu tượng (emoji)</label><input class="form-input" id="cIcon" placeholder="🌿" maxlength="4"/></div>
+      <div class="form-row"><label>Mô tả</label><textarea class="form-textarea" id="cDesc" rows="2" placeholder="Mô tả ngắn về danh mục..."></textarea></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn-secondary" onclick="document.getElementById('catModal').classList.remove('open')">Hủy</button>
+      <button class="btn-primary" onclick="saveCat()">✅ Lưu danh mục</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST CONTAINER -->
+<div class="toast-wrap" id="toastWrap"></div>
+
+<script>
+// ─── STORAGE KEYS (dùng chung với trang người dùng) ───────────────────────
+const KEY_POSTS = 'tsx_posts';
+const KEY_CATS  = 'tsx_categories';
+
+// ─── DỮ LIỆU MẶC ĐỊNH (chỉ dùng lần đầu, khi localStorage còn trống) ─────
+const EMOJIS = ['🌳','🐠','🐡','🏺','🌿','🦐','🔆','💡','🪴','🐌','🧪','🐟','🌱','🍀','🪨'];
+
+const DEFAULT_CATS = [
+  {id:1, name:'Mẫu hồ đẹp',        icon:'🌳', desc:'Các mẫu hồ thủy sinh đẹp'},
+  {id:2, name:'Kiến thức nuôi cá',  icon:'🐠', desc:'Kiến thức chăm sóc cá cảnh'},
+  {id:3, name:'Cho người mới',      icon:'🌱', desc:'Hướng dẫn bắt đầu'},
+  {id:4, name:'Tư vấn thiết bị',    icon:'💡', desc:'Review và tư vấn thiết bị'},
+  {id:5, name:'Phong thủy',         icon:'🏺', desc:'Hồ cá phong thủy'},
+  {id:6, name:'Cây thủy sinh',      icon:'🌿', desc:'Các loại cây trong hồ'},
+];
+
+const DEFAULT_POSTS = [
+  {id:1, title:'Những mẫu hồ cá bonsai đẹp — đa dạng kích thước cho mọi không gian', excerpt:'Khám phá những thiết kế hồ bonsai độc đáo, phù hợp từ không gian nhỏ hẹp đến căn phòng rộng rãi.', content:'', cat:1, status:'published', date:'2025-09-08', views:1240, featured:true,  emoji:'🌳'},
+  {id:2, title:'Cá cánh buồm có cần OXY không? Giải đáp toàn diện cho người mới',      excerpt:'Nhiều người nuôi cá cánh buồm thường thắc mắc về nhu cầu oxy của loài cá này. Bài viết giải đáp chi tiết.', content:'', cat:2, status:'published', date:'2024-09-13', views:980,  featured:false, emoji:'🐠'},
+  {id:3, title:'9 loại cá tốt nhất cho người mới bắt đầu chơi thủy sinh',              excerpt:'Chọn đúng loại cá ngay từ đầu sẽ giúp bạn tránh được nhiều rắc rối. Đây là 9 loài dễ nuôi nhất.',           content:'', cat:3, status:'published', date:'2021-12-22', views:3580, featured:true,  emoji:'🐡'},
+  {id:4, title:'TOP 3 mẫu hồ kính nuôi cá đẹp, bền và rẻ đáng mua nhất',              excerpt:'So sánh chi tiết 3 mẫu hồ kính phổ biến nhất trên thị trường hiện nay về giá, chất lượng và độ bền.',        content:'', cat:4, status:'published', date:'2021-11-17', views:2100, featured:false, emoji:'🏺'},
+  {id:5, title:'Hướng dẫn setup hồ thủy sinh cho người mới bắt đầu từ A đến Z',        excerpt:'Bài viết chi tiết giúp bạn thiết lập hồ thủy sinh đầu tiên hoàn chỉnh chỉ trong một buổi chiều.',           content:'', cat:3, status:'draft',     date:'2025-10-01', views:0,    featured:false, emoji:'🌱'},
+  {id:6, title:'Rêu Java — Loại rêu dễ trồng nhất cho hồ thủy sinh',                   excerpt:'Rêu Java là lựa chọn lý tưởng cho người mới vì không cần CO2, không cần đèn mạnh, cực kỳ dễ sống.',          content:'', cat:6, status:'published', date:'2025-08-05', views:760,  featured:false, emoji:'🍀'},
+  {id:7, title:'Thiết bị CO2 cho hồ thủy sinh — Phân loại và cách chọn',               excerpt:'Hướng dẫn phân biệt các loại hệ thống CO2: bình áp, túi lên men, viên sủi — ưu nhược điểm từng loại.',       content:'', cat:4, status:'hidden',    date:'2025-07-20', views:440,  featured:false, emoji:'🧪'},
+  {id:8, title:'5 loại tép cảnh đẹp và dễ nuôi nhất hiện nay',                          excerpt:'Tép cảnh không chỉ đẹp mà còn giúp làm sạch rêu hại trong hồ. Tìm hiểu 5 loại phổ biến nhất.',               content:'', cat:2, status:'draft',     date:'2025-11-10', views:0,    featured:false, emoji:'🦐'},
+];
+
+// ─── ĐỌC / GHI LOCALSTORAGE ───────────────────────────────────────────────
+function loadData() {
+  try {
+    const savedCats  = localStorage.getItem(KEY_CATS);
+    const savedPosts = localStorage.getItem(KEY_POSTS);
+    categories = savedCats  ? JSON.parse(savedCats)  : DEFAULT_CATS;
+    posts      = savedPosts ? JSON.parse(savedPosts) : DEFAULT_POSTS;
+    // Nếu lần đầu chưa có dữ liệu → ghi mặc định vào storage
+    if (!savedCats)  localStorage.setItem(KEY_CATS,  JSON.stringify(categories));
+    if (!savedPosts) localStorage.setItem(KEY_POSTS, JSON.stringify(posts));
+  } catch(e) {
+    categories = DEFAULT_CATS;
+    posts      = DEFAULT_POSTS;
+  }
+}
+
+function saveData() {
+  try {
+    localStorage.setItem(KEY_POSTS, JSON.stringify(posts));
+    localStorage.setItem(KEY_CATS,  JSON.stringify(categories));
+    // Phát sự kiện để tab khác (trang người dùng) nhận biết có thay đổi
+    localStorage.setItem('tsx_updated', Date.now().toString());
+  } catch(e) {
+    toast('⚠️ Không thể lưu dữ liệu (localStorage đầy hoặc bị chặn)','error');
+  }
+}
+
+// ─── BIẾN TRẠNG THÁI ─────────────────────────────────────────────────────
+let categories = [];
+let posts      = [];
+let editingId   = null;
+let deletingId  = null;
+let currentPage = 1;
+const PER_PAGE  = 6;
+let sortDesc    = true;
+let selected    = new Set();
+let catEditId   = null;
+
+// ─── INIT ──────────────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  loadData();   // ← đọc từ localStorage trước khi render
+  renderStats();
+  populateCatFilter();
+  renderTable();
+  renderCatTable();
+  document.getElementById('sb-total').textContent = posts.length;
+
+  // live search
+  document.getElementById('searchBox').addEventListener('input', () => { currentPage=1; renderTable(); });
+  document.getElementById('filterCat').addEventListener('change', () => { currentPage=1; renderTable(); });
+  document.getElementById('filterStatus').addEventListener('change', () => { currentPage=1; renderTable(); });
+  document.getElementById('globalSearch').addEventListener('input', e => {
+    document.getElementById('searchBox').value = e.target.value;
+    currentPage=1; renderTable();
+  });
+
+  // default date
+  document.getElementById('fDate').value = new Date().toISOString().split('T')[0];
+
+  document.getElementById('btnExport').addEventListener('click', exportCSV);
+
+  // Nút reset về dữ liệu mặc định (dành cho dev/test)
+  document.getElementById('btnReset') && document.getElementById('btnReset').addEventListener('click', resetData);
+});
+
+// ─── STATS ────────────────────────────────────────────────────────────────
+function renderStats() {
+  const pub   = posts.filter(p=>p.status==='published').length;
+  const draft = posts.filter(p=>p.status==='draft').length;
+  const views = posts.reduce((s,p)=>s+p.views,0);
+  const feat  = posts.filter(p=>p.featured).length;
+  document.getElementById('stats-row').innerHTML = `
+    <div class="stat-card"><div class="stat-icon si-green">📝</div><div class="stat-info"><strong>${posts.length}</strong><span>Tổng bài viết</span></div></div>
+    <div class="stat-card"><div class="stat-icon si-blue">✅</div><div class="stat-info"><strong>${pub}</strong><span>Đã đăng</span></div><span class="stat-delta delta-up">+${pub}</span></div>
+    <div class="stat-card"><div class="stat-icon si-orange">🟡</div><div class="stat-info"><strong>${draft}</strong><span>Đang nháp</span></div></div>
+    <div class="stat-card"><div class="stat-icon si-green">👁</div><div class="stat-info"><strong>${views.toLocaleString('vi')}</strong><span>Tổng lượt xem</span></div></div>
+  `;
+}
+
+// ─── FILTER + RENDER TABLE ────────────────────────────────────────────────
+function filteredPosts() {
+  const q   = document.getElementById('searchBox').value.toLowerCase();
+  const cat = document.getElementById('filterCat').value;
+  const st  = document.getElementById('filterStatus').value;
+  return posts
+    .filter(p =>
+      (!q  || p.title.toLowerCase().includes(q) || p.excerpt.toLowerCase().includes(q)) &&
+      (!cat || String(p.cat) === cat) &&
+      (!st  || p.status === st)
+    )
+    .sort((a,b) => sortDesc
+      ? new Date(b.date) - new Date(a.date)
+      : new Date(a.date) - new Date(b.date)
+    );
+}
+
+function renderTable() {
+  const data  = filteredPosts();
+  const total = data.length;
+  const pages = Math.max(1, Math.ceil(total / PER_PAGE));
+  if (currentPage > pages) currentPage = pages;
+  const slice = data.slice((currentPage-1)*PER_PAGE, currentPage*PER_PAGE);
+
+  document.getElementById('tableCount').textContent = ` — ${total} bài`;
+
+  const tbody = document.getElementById('postTableBody');
+  if (!slice.length) {
+    tbody.innerHTML = `<tr><td colspan="7"><div class="empty-state"><div class="e-ico">🔍</div><h3>Không tìm thấy bài viết nào</h3><p>Thử thay đổi bộ lọc hoặc từ khóa tìm kiếm.</p></div></td></tr>`;
+  } else {
+    tbody.innerHTML = slice.map(p => {
+      const catObj = categories.find(c=>c.id===p.cat) || {};
+      const statusTag = {
+        published: `<span class="tag tag-pub">✅ Đã đăng</span>`,
+        draft:     `<span class="tag tag-draft">🟡 Nháp</span>`,
+        hidden:    `<span class="tag tag-hidden">🔘 Ẩn</span>`,
+      }[p.status] || '';
+      const isChecked = selected.has(p.id) ? 'checked' : '';
+      return `
+        <tr>
+          <td><input type="checkbox" class="cb row-cb" data-id="${p.id}" ${isChecked} onchange="toggleRow(this)"/></td>
+          <td>
+            <div class="post-row-flex">
+              <div class="post-thumb">${p.emoji}</div>
+              <div class="post-meta">
+                <div class="post-name"><a href="#" onclick="editPost(${p.id});return false">${p.title}</a>${p.featured?' <span class="tag tag-pub" style="font-size:10px">⭐ Nổi bật</span>':''}</div>
+                <div class="post-excerpt">${p.excerpt}</div>
+              </div>
+            </div>
+          </td>
+          <td><span class="tag tag-cat">${catObj.icon||'🗂️'} ${catObj.name||'—'}</span></td>
+          <td>${statusTag}</td>
+          <td style="color:var(--t2);font-size:13px;white-space:nowrap">${formatDate(p.date)}</td>
+          <td style="font-size:13px;color:var(--t2)">${p.views.toLocaleString('vi')} 👁</td>
+          <td>
+            <div class="row-actions">
+              <button class="act-btn" title="Chỉnh sửa" onclick="editPost(${p.id})">✏️</button>
+              <button class="act-btn" title="${p.status==='published'?'Ẩn bài':'Đăng bài'}" onclick="toggleStatus(${p.id})">${p.status==='published'?'🔘':'✅'}</button>
+              <button class="act-btn del" title="Xóa" onclick="confirmDelete(${p.id})">🗑</button>
+            </div>
+          </td>
+        </tr>`;
+    }).join('');
+  }
+
+  // pagination
+  const pw = document.getElementById('paginationWrap');
+  if (pages <= 1) { pw.innerHTML=''; return; }
+  let btns = '';
+  for(let i=1;i<=pages;i++) btns+=`<button class="page-btn${i===currentPage?' on':''}" onclick="goPage(${i})">${i}</button>`;
+  pw.innerHTML = `
+    <span class="page-info">Trang ${currentPage} / ${pages} (${total} bài)</span>
+    <div class="page-btns">
+      <button class="page-btn" onclick="goPage(${currentPage-1})" ${currentPage===1?'disabled':''}>‹</button>
+      ${btns}
+      <button class="page-btn" onclick="goPage(${currentPage+1})" ${currentPage===pages?'disabled':''}>›</button>
+    </div>`;
+}
+
+function goPage(n) { currentPage=n; renderTable(); }
+function formatDate(d) {
+  if(!d) return '—';
+  const dt = new Date(d);
+  return `${dt.getDate().toString().padStart(2,'0')}/${(dt.getMonth()+1).toString().padStart(2,'0')}/${dt.getFullYear()}`;
+}
+
+// ─── SORT ────────────────────────────────────────────────────────────────
+function toggleSort() {
+  sortDesc = !sortDesc;
+  document.getElementById('btnSort').textContent = sortDesc ? '⇅ Mới nhất' : '⇅ Cũ nhất';
+  currentPage=1; renderTable();
+}
+
+// ─── MODAL OPEN / CLOSE ────────────────────────────────────────────────
+function openModal(postId=null) {
+  editingId = postId;
+  const modal = document.getElementById('postModal');
+  document.getElementById('modalTitle').textContent = postId ? '✏️ Chỉnh sửa bài viết' : '✏️ Viết bài mới';
+  populateModalCats();
+  if(postId) {
+    const p = posts.find(x=>x.id===postId);
+    if(!p) return;
+    document.getElementById('fTitle').value   = p.title;
+    document.getElementById('fExcerpt').value = p.excerpt;
+    document.getElementById('fContent').innerHTML = p.content || '';
+    document.getElementById('fCat').value     = p.cat;
+    document.getElementById('fStatus').value  = p.status;
+    document.getElementById('fDate').value    = p.date;
+    document.getElementById('fTags').value    = (p.tags||[]).join(', ');
+    document.getElementById('fFeatured').checked = p.featured;
+    document.getElementById('imgDrop').innerHTML = `<div class="d-ico">${p.emoji}</div><p>Ảnh hiện tại: ${p.emoji}</p><span>Nhấn để thay đổi</span>`;
+  } else {
+    document.getElementById('fTitle').value   = '';
+    document.getElementById('fExcerpt').value = '';
+    document.getElementById('fContent').innerHTML = '';
+    document.getElementById('fStatus').value  = 'published';
+    document.getElementById('fDate').value    = new Date().toISOString().split('T')[0];
+    document.getElementById('fTags').value    = '';
+    document.getElementById('fFeatured').checked = false;
+    document.getElementById('imgDrop').innerHTML = `<div class="d-ico">📷</div><p>Nhấn để chọn ảnh</p><span>JPG, PNG, WEBP — Tối đa 5 MB</span>`;
+  }
+  modal.classList.add('open');
+}
+function closeModal() { document.getElementById('postModal').classList.remove('open'); editingId=null; }
+
+function editPost(id) { openModal(id); }
+
+// ─── SAVE POST ────────────────────────────────────────────────────────────
+function savePost() {
+  const title   = document.getElementById('fTitle').value.trim();
+  const excerpt = document.getElementById('fExcerpt').value.trim();
+  const content = document.getElementById('fContent').innerHTML.trim();
+  const cat     = parseInt(document.getElementById('fCat').value);
+  const status  = document.getElementById('fStatus').value;
+  const date    = document.getElementById('fDate').value;
+  const tags    = document.getElementById('fTags').value.split(',').map(t=>t.trim()).filter(Boolean);
+  const feat    = document.getElementById('fFeatured').checked;
+
+  if(!title)   { toast('Vui lòng nhập tiêu đề!','error'); return; }
+  if(!cat)     { toast('Vui lòng chọn danh mục!','error'); return; }
+  if(!content) { toast('Vui lòng nhập nội dung!','error'); return; }
+
+  if(editingId) {
+    const idx = posts.findIndex(p=>p.id===editingId);
+    posts[idx] = {...posts[idx], title, excerpt, content, cat, status, date, tags, featured:feat};
+    toast('✅ Đã cập nhật bài viết thành công!','success');
+  } else {
+    const newId = Math.max(0,...posts.map(p=>p.id)) + 1;
+    posts.unshift({id:newId, title, excerpt, content, cat, status, date, tags, featured:feat,
+      views:0, emoji: EMOJIS[Math.floor(Math.random()*EMOJIS.length)]});
+    toast('✅ Đã đăng bài viết mới!','success');
+  }
+  saveData();   // ← ghi localStorage
+  closeModal();
+  renderStats();
+  populateCatFilter();
+  renderTable();
+  document.getElementById('sb-total').textContent = posts.length;
+}
+
+// ─── DELETE ────────────────────────────────────────────────────────────────
+function confirmDelete(id) {
+  deletingId = id;
+  const p = posts.find(x=>x.id===id);
+  document.getElementById('confirmMsg').textContent = `Bài "${p.title.substring(0,50)}..." sẽ bị xóa vĩnh viễn.`;
+  document.getElementById('confirmOkBtn').onclick = doDelete;
+  document.getElementById('confirmModal').classList.add('open');
+}
+function doDelete() {
+  posts = posts.filter(p=>p.id!==deletingId);
+  saveData();   // ← ghi localStorage
+  closeConfirm();
+  renderStats();
+  renderTable();
+  document.getElementById('sb-total').textContent = posts.length;
+  toast('🗑 Đã xóa bài viết.','warn');
+}
+function closeConfirm() { document.getElementById('confirmModal').classList.remove('open'); deletingId=null; }
+
+// ─── STATUS TOGGLE ────────────────────────────────────────────────────────
+function toggleStatus(id) {
+  const p = posts.find(x=>x.id===id);
+  p.status = p.status==='published' ? 'hidden' : 'published';
+  saveData();   // ← ghi localStorage
+  renderTable();
+  toast(p.status==='published' ? '✅ Bài viết đã được đăng.' : '🔘 Bài viết đã được ẩn.','success');
+}
+
+// ─── CHECKBOXES / BULK ────────────────────────────────────────────────────
+function toggleAll(cb) {
+  const data = filteredPosts().slice((currentPage-1)*PER_PAGE, currentPage*PER_PAGE);
+  data.forEach(p => cb.checked ? selected.add(p.id) : selected.delete(p.id));
+  renderTable(); updateBulkBar();
+}
+function toggleRow(cb) {
+  const id = parseInt(cb.dataset.id);
+  cb.checked ? selected.add(id) : selected.delete(id);
+  updateBulkBar();
+}
+function updateBulkBar() {
+  const bar = document.getElementById('bulkBar');
+  if(selected.size>0){ bar.classList.add('show'); document.getElementById('bulkCount').textContent=`${selected.size} bài được chọn`; }
+  else bar.classList.remove('show');
+}
+function bulkPublish() { selected.forEach(id=>{ const p=posts.find(x=>x.id===id); if(p)p.status='published'; }); saveData(); clearSel('✅ Đã đăng '+selected.size+' bài.'); }
+function bulkDraft()   { selected.forEach(id=>{ const p=posts.find(x=>x.id===id); if(p)p.status='draft'; }); saveData(); clearSel('📋 Đã đặt nháp.'); }
+function bulkDelete()  {
+  if(!confirm(`Xóa ${selected.size} bài viết đã chọn?`)) return;
+  posts = posts.filter(p=>!selected.has(p.id));
+  saveData();   // ← ghi localStorage
+  clearSel('🗑 Đã xóa '+selected.size+' bài.');
+  renderStats();
+  document.getElementById('sb-total').textContent = posts.length;
+}
+function clearSel(msg) { selected.clear(); updateBulkBar(); renderTable(); toast(msg,'success'); }
+
+// ─── CATEGORIES ────────────────────────────────────────────────────────────
+function populateCatFilter() {
+  const sel = document.getElementById('filterCat');
+  const cur = sel.value;
+  sel.innerHTML = '<option value="">Tất cả danh mục</option>' +
+    categories.map(c=>`<option value="${c.id}">${c.icon} ${c.name}</option>`).join('');
+  sel.value = cur;
+}
+function populateModalCats() {
+  document.getElementById('fCat').innerHTML =
+    '<option value="">— Chọn danh mục —</option>' +
+    categories.map(c=>`<option value="${c.id}">${c.icon} ${c.name}</option>`).join('');
+}
+function renderCatTable() {
+  document.getElementById('catTableBody').innerHTML = categories.map(c => {
+    const count = posts.filter(p=>p.cat===c.id).length;
+    return `<tr>
+      <td><strong>${c.name}</strong><br><span style="font-size:12px;color:var(--t3)">${c.desc}</span></td>
+      <td style="font-size:24px">${c.icon}</td>
+      <td><span class="tag tag-cat">${count} bài</span></td>
+      <td><div class="row-actions">
+        <button class="act-btn" onclick="editCat(${c.id})">✏️</button>
+        <button class="act-btn del" onclick="deleteCat(${c.id})">🗑</button>
+      </div></td>
+    </tr>`;
+  }).join('');
+}
+function openCatModal(id=null) {
+  catEditId = id;
+  if(id) {
+    const c = categories.find(x=>x.id===id);
+    document.getElementById('cName').value = c.name;
+    document.getElementById('cIcon').value = c.icon;
+    document.getElementById('cDesc').value = c.desc;
+    document.querySelector('#catModal .modal-title').textContent = '✏️ Sửa danh mục';
+  } else {
+    document.getElementById('cName').value = '';
+    document.getElementById('cIcon').value = '';
+    document.getElementById('cDesc').value = '';
+    document.querySelector('#catModal .modal-title').textContent = '🗂️ Thêm danh mục';
+  }
+  document.getElementById('catModal').classList.add('open');
+}
+function editCat(id) { openCatModal(id); }
+function deleteCat(id) {
+  if(posts.some(p=>p.cat===id)) { toast('Không thể xóa danh mục đang có bài viết!','error'); return; }
+  categories = categories.filter(c=>c.id!==id);
+  saveData();   // ← ghi localStorage
+  renderCatTable(); populateCatFilter(); toast('🗑 Đã xóa danh mục.','warn');
+}
+function saveCat() {
+  const name = document.getElementById('cName').value.trim();
+  const icon = document.getElementById('cIcon').value.trim() || '🗂️';
+  const desc = document.getElementById('cDesc').value.trim();
+  if(!name) { toast('Vui lòng nhập tên danh mục!','error'); return; }
+  if(catEditId) {
+    const c = categories.find(x=>x.id===catEditId);
+    Object.assign(c, {name,icon,desc});
+    toast('✅ Đã cập nhật danh mục!','success');
+  } else {
+    const newId = Math.max(0,...categories.map(c=>c.id))+1;
+    categories.push({id:newId,name,icon,desc});
+    toast('✅ Đã thêm danh mục mới!','success');
+  }
+  saveData();   // ← ghi localStorage
+  document.getElementById('catModal').classList.remove('open');
+  renderCatTable(); populateCatFilter();
+}
+
+// ─── PAGE SWITCH ────────────────────────────────────────────────────────────
+function setPage(page, btn) {
+  document.querySelectorAll('.s-link').forEach(l=>l.classList.remove('on'));
+  if (btn) btn.classList.add('on');
+  ['posts','cats','media','orders','settings'].forEach(p => {
+    const el = document.getElementById('page-'+p);
+    if (el) el.style.display = p===page ? '' : 'none';
+  });
+  if (page === 'orders') renderOrdersPage();
+  if (page === 'settings') loadSettingsForm();
+}
+
+// ─── TOAST ────────────────────────────────────────────────────────────────
+function toast(msg, type='success') {
+  const wrap = document.getElementById('toastWrap');
+  const el = document.createElement('div');
+  el.className = `toast ${type}`;
+  el.textContent = msg;
+  wrap.appendChild(el);
+  requestAnimationFrame(()=>{ requestAnimationFrame(()=>el.classList.add('show')); });
+  setTimeout(()=>{ el.classList.remove('show'); setTimeout(()=>el.remove(),400); }, 3000);
+}
+
+// ─── EDITOR ────────────────────────────────────────────────────────────────
+function fmt(cmd, val=null) {
+  document.getElementById('fContent').focus();
+  document.execCommand(cmd, false, val);
+}
+function insertHeading() {
+  document.getElementById('fContent').focus();
+  document.execCommand('formatBlock', false, 'h2');
+}
+
+// ─── IMG ────────────────────────────────────────────────────────────────────
+function triggerImgPick() { document.getElementById('imgFile').click(); }
+function previewImg(input) {
+  if(!input.files.length) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    const drop = document.getElementById('imgDrop');
+    drop.innerHTML = `<img src="${e.target.result}" style="max-height:120px;border-radius:8px;max-width:100%"/><p style="margin-top:8px;font-size:12px;color:var(--t3)">Nhấn để thay đổi</p>`;
+  };
+  reader.readAsDataURL(input.files[0]);
+}
+
+// ─── EXPORT CSV ────────────────────────────────────────────────────────────
+function exportCSV() {
+  const header = ['ID','Tiêu đề','Danh mục','Trạng thái','Ngày đăng','Lượt xem'];
+  const rows = posts.map(p => {
+    const cat = categories.find(c=>c.id===p.cat)||{name:'—'};
+    return [p.id, `"${p.title.replace(/"/g,'""')}"`, cat.name, p.status, p.date, p.views];
+  });
+  const csv = [header,...rows].map(r=>r.join(',')).join('\n');
+  const a = document.createElement('a');
+  a.href = 'data:text/csv;charset=utf-8,\uFEFF'+encodeURIComponent(csv);
+  a.download = 'thuysinhxanh_baiviet.csv';
+  a.click();
+  toast('⬇ Đã xuất file CSV!','success');
+}
+
+// ─── RESET VỀ MẶC ĐỊNH ────────────────────────────────────────────────────
+function resetData() {
+  if(!confirm('Reset toàn bộ dữ liệu về mặc định? Mọi thay đổi sẽ bị mất!')) return;
+  localStorage.removeItem(KEY_POSTS);
+  localStorage.removeItem(KEY_CATS);
+  localStorage.removeItem('tsx_updated');
+  loadData();
+  renderStats(); populateCatFilter(); renderTable(); renderCatTable();
+  document.getElementById('sb-total').textContent = posts.length;
+  toast('🔄 Đã reset về dữ liệu mặc định.','warn');
+}
+
+// ─── ORDERS ──────────────────────────────────────────────────────────────────
+const KEY_ORDERS = 'tsx_orders';
+
+function getOrders() {
+  try { return JSON.parse(localStorage.getItem(KEY_ORDERS) || '[]'); } catch(e) { return []; }
+}
+function saveOrders(orders) {
+  localStorage.setItem(KEY_ORDERS, JSON.stringify(orders));
+  localStorage.setItem('tsx_updated', Date.now().toString());
+}
+
+function renderOrdersPage() {
+  const orders = getOrders();
+  const filter = document.getElementById('orderStatusFilter')?.value || '';
+  const filtered = filter ? orders.filter(o => o.orderStatus === filter) : orders;
+
+  // Stats
+  const statsEl = document.getElementById('orders-stats-row');
+  if (statsEl) {
+    const total   = orders.length;
+    const newO    = orders.filter(o => o.orderStatus === 'new' || !o.orderStatus).length;
+    const revenue = orders.filter(o => o.orderStatus === 'done').reduce((s,o) => s + (o.grand||0), 0);
+    const cancel  = orders.filter(o => o.orderStatus === 'cancelled').length;
+    statsEl.innerHTML = `
+      <div class="stat-card"><div class="stat-icon si-blue">📦</div><div class="stat-info"><strong>${total}</strong><span>Tổng đơn hàng</span></div></div>
+      <div class="stat-card"><div class="stat-icon si-orange">🆕</div><div class="stat-info"><strong>${newO}</strong><span>Đơn mới</span></div>${newO?'<span class="stat-delta delta-up">Mới</span>':''}</div>
+      <div class="stat-card"><div class="stat-icon si-green">💰</div><div class="stat-info"><strong>${revenue.toLocaleString('vi-VN')}₫</strong><span>Doanh thu hoàn thành</span></div></div>
+      <div class="stat-card"><div class="stat-icon si-red">❌</div><div class="stat-info"><strong>${cancel}</strong><span>Đơn huỷ</span></div></div>`;
+  }
+  // Update badge
+  const newCount = orders.filter(o => o.orderStatus === 'new' || !o.orderStatus).length;
+  const badge = document.getElementById('sb-orders');
+  if (badge) { badge.textContent = newCount; badge.style.display = newCount ? '' : 'none'; }
+
+  const tbody = document.getElementById('ordersTableBody');
+  const empty = document.getElementById('orders-empty');
+  if (!filtered.length) {
+    if (tbody) tbody.innerHTML = '';
+    if (empty) empty.style.display = '';
+    return;
+  }
+  if (empty) empty.style.display = 'none';
+
+  const payLabels = { cod:'💵 COD', bank:'🏦 Chuyển khoản', momo:'💜 MoMo' };
+  const statusMap = {
+    new:       '<span class="tag" style="background:#e8f0fe;color:#1a56db">🆕 Mới</span>',
+    confirmed: '<span class="tag tag-pub">✅ Đã xác nhận</span>',
+    shipping:  '<span class="tag" style="background:#fef3e8;color:#c0660a">🚚 Đang giao</span>',
+    done:      '<span class="tag" style="background:#e8f7f2;color:#1a7f5a">🎉 Hoàn thành</span>',
+    cancelled: '<span class="tag" style="background:#fdf0ee;color:#e74c3c">❌ Đã huỷ</span>',
+  };
+
+  if (tbody) tbody.innerHTML = filtered.map(o => {
+    const d = o.createdAt ? new Date(o.createdAt).toLocaleDateString('vi-VN') : '—';
+    const items = (o.items||[]).map(i=>`${i.emoji||''} ${i.name} x${i.qty}`).join('<br>');
+    const st = o.orderStatus || 'new';
+    return `<tr>
+      <td><strong style="color:var(--g1)">#${o.orderId||'—'}</strong></td>
+      <td><div style="font-weight:700">${o.name}</div><div style="font-size:12px;color:var(--t3)">📞 ${o.phone}</div><div style="font-size:12px;color:var(--t3)">📍 ${[o.addr,o.district,o.city].filter(Boolean).join(', ')}</div></td>
+      <td style="font-size:12.5px;line-height:1.7;max-width:220px">${items}</td>
+      <td><strong style="color:var(--g1)">${(o.grand||0).toLocaleString('vi-VN')}₫</strong><div style="font-size:12px;color:var(--t3)">${payLabels[o.payment]||o.payment||'—'}</div></td>
+      <td style="font-size:13px">${payLabels[o.payment]||'—'}</td>
+      <td>${statusMap[st]||st}</td>
+      <td style="font-size:13px;color:var(--t3);white-space:nowrap">${d}</td>
+      <td><div class="row-actions">
+        <select onchange="changeOrderStatus('${o.orderId}',this.value)" style="padding:5px 8px;border-radius:7px;border:1.5px solid var(--bd);font-size:12px;font-family:inherit;cursor:pointer;outline:none;background:#fff">
+          <option value="new"      ${st==='new'?'selected':''}>🆕 Mới</option>
+          <option value="confirmed"${st==='confirmed'?'selected':''}>✅ Xác nhận</option>
+          <option value="shipping" ${st==='shipping'?'selected':''}>🚚 Đang giao</option>
+          <option value="done"     ${st==='done'?'selected':''}>🎉 Xong</option>
+          <option value="cancelled"${st==='cancelled'?'selected':''}>❌ Huỷ</option>
+        </select>
+        <button class="act-btn del" onclick="deleteOrder('${o.orderId}')" title="Xoá đơn">🗑</button>
+      </div></td>
+    </tr>`;
+  }).join('');
+}
+
+function changeOrderStatus(orderId, newStatus) {
+  const orders = getOrders();
+  const o = orders.find(x => x.orderId === orderId);
+  if (o) { o.orderStatus = newStatus; saveOrders(orders); renderOrdersPage(); toast('✅ Đã cập nhật trạng thái đơn hàng.','success'); }
+}
+function deleteOrder(orderId) {
+  if (!confirm('Xoá đơn hàng #' + orderId + '?')) return;
+  const orders = getOrders().filter(o => o.orderId !== orderId);
+  saveOrders(orders);
+  renderOrdersPage();
+  toast('🗑 Đã xoá đơn hàng.','warn');
+}
+function clearAllOrders() {
+  if (!confirm('Xoá toàn bộ đơn hàng? Không thể hoàn tác!')) return;
+  localStorage.removeItem(KEY_ORDERS);
+  renderOrdersPage();
+  toast('🗑 Đã xoá tất cả đơn hàng.','warn');
+}
+function exportOrdersCSV() {
+  const orders = getOrders();
+  if (!orders.length) { toast('Không có đơn hàng để xuất.','error'); return; }
+  const header = ['Mã đơn','Tên KH','SĐT','Địa chỉ','Sản phẩm','Tổng tiền','Thanh toán','Trạng thái','Ngày đặt'];
+  const rows = orders.map(o => [
+    o.orderId, `"${o.name}"`, o.phone, `"${[o.addr,o.district,o.city].filter(Boolean).join(', ')}"`,
+    `"${(o.items||[]).map(i=>`${i.name}x${i.qty}`).join('; ')}"`,
+    o.grand, o.payment, o.orderStatus,
+    o.createdAt ? new Date(o.createdAt).toLocaleDateString('vi-VN') : ''
+  ]);
+  const csv = [header,...rows].map(r=>r.join(',')).join('\n');
+  const a = document.createElement('a');
+  a.href = 'data:text/csv;charset=utf-8,\uFEFF' + encodeURIComponent(csv);
+  a.download = 'donhang_thuysinhxanh.csv';
+  a.click();
+  toast('⬇ Đã xuất CSV đơn hàng!','success');
+}
+
+// ─── SETTINGS ────────────────────────────────────────────────────────────────
+const KEY_SETTINGS = 'tsx_settings';
+
+function loadSettingsForm() {
+  let s = {};
+  try { s = JSON.parse(localStorage.getItem(KEY_SETTINGS) || '{}'); } catch(e) {}
+  const set = (id, val) => { const el = document.getElementById(id); if (el && val !== undefined) el.value = val; };
+  set('s-sitename',    s.siteName    || 'Thủy Sinh Xanh – Mang Thiên Nhiên Vào Ngôi Nhà Bạn');
+  set('s-phone',       s.phone       || '0902.804.547');
+  set('s-address',     s.address     || '433/13 Lê Đức Thọ, P.17, Gò Vấp, TP.HCM');
+  set('s-hours',       s.hours       || '8:00 – 20:00 hàng ngày');
+  set('s-email',       s.email       || 'thuysinhxanh.vn@gmail.com');
+  set('s-ship',        s.shipThreshold || 800000);
+  set('s-ticker',      s.ticker      || '');
+  set('s-hero-title',  s.heroTitle   || '');
+  set('s-hero-sub',    s.heroSub     || '');
+  set('s-about',       s.about       || 'Chuyên mua bán sỉ lẻ phụ kiện hồ thủy sinh chính hãng, cá cảnh, cây thủy sinh và hồ kính. Giao hàng toàn quốc, giá tốt nhất thị trường.');
+  set('s-brandname',   s.brandName   || 'Thủy Sinh Xanh');
+  set('s-year-founded',s.yearFounded || '2015');
+  set('s-footer-copy', s.footerCopy  || '');
+  set('s-zalo',        s.zalo        || 'https://zalo.me/0902804547');
+  set('s-fb',          s.fb          || 'https://www.messenger.com/t/105364874581811');
+  set('s-tblink1-label', s.tbLink1Label || 'Giới thiệu');
+  set('s-tblink1-url',   s.tbLink1Url   || '#');
+  set('s-tblink2-label', s.tbLink2Label || 'Kiến thức');
+  set('s-tblink2-url',   s.tbLink2Url   || '#');
+  set('s-tblink3-label', s.tbLink3Label || 'Liên hệ');
+  set('s-tblink3-url',   s.tbLink3Url   || '#');
+  const maint = document.getElementById('s-maintenance');
+  if (maint) maint.checked = !!s.maintenance;
+}
+
+function saveSettings() {
+  const get = id => { const el = document.getElementById(id); return el ? el.value.trim() : ''; };
+  const settings = {
+    siteName:       get('s-sitename'),
+    phone:          get('s-phone'),
+    address:        get('s-address'),
+    hours:          get('s-hours'),
+    email:          get('s-email'),
+    shipThreshold:  parseInt(get('s-ship')) || 800000,
+    ticker:         get('s-ticker'),
+    heroTitle:      get('s-hero-title'),
+    heroSub:        get('s-hero-sub'),
+    about:          get('s-about'),
+    brandName:      get('s-brandname'),
+    yearFounded:    get('s-year-founded'),
+    footerCopy:     get('s-footer-copy'),
+    zalo:           get('s-zalo'),
+    fb:             get('s-fb'),
+    tbLink1Label:   get('s-tblink1-label'),
+    tbLink1Url:     get('s-tblink1-url'),
+    tbLink2Label:   get('s-tblink2-label'),
+    tbLink2Url:     get('s-tblink2-url'),
+    tbLink3Label:   get('s-tblink3-label'),
+    tbLink3Url:     get('s-tblink3-url'),
+    maintenance:    document.getElementById('s-maintenance')?.checked || false,
+  };
+  localStorage.setItem(KEY_SETTINGS, JSON.stringify(settings));
+  localStorage.setItem('tsx_updated', Date.now().toString());
+  toast('✅ Đã lưu cài đặt! Trang người dùng sẽ cập nhật ngay.','success');
+}
+
+// ─── INIT: count orders badge on load ────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  const newCount = getOrders().filter(o => o.orderStatus === 'new' || !o.orderStatus).length;
+  const badge = document.getElementById('sb-orders');
+  if (badge) { badge.textContent = newCount; badge.style.display = newCount ? '' : 'none'; }
+});
+
+// ─── Listen for new orders from user page ─────────────────────────────────────
+window.addEventListener('storage', e => {
+  if (e.key === 'tsx_updated') {
+    const newCount = getOrders().filter(o => o.orderStatus === 'new' || !o.orderStatus).length;
+    const badge = document.getElementById('sb-orders');
+    if (badge) badge.textContent = newCount;
+    // If orders page is open, re-render
+    const ordersPage = document.getElementById('page-orders');
+    if (ordersPage && ordersPage.style.display !== 'none') renderOrdersPage();
+  }
+});
+
+// ─── CLOSE MODAL ON OVERLAY CLICK ────────────────────────────────────────
+document.getElementById('postModal').addEventListener('click', e => { if(e.target===e.currentTarget) closeModal(); });
+document.getElementById('confirmModal').addEventListener('click', e => { if(e.target===e.currentTarget) closeConfirm(); });
+document.getElementById('catModal').addEventListener('click', e => { if(e.target===e.currentTarget) document.getElementById('catModal').classList.remove('open'); });
+
+// ─── ESC ──────────────────────────────────────────────────────────────────
+document.addEventListener('keydown', e => {
+  if(e.key==='Escape') { closeModal(); closeConfirm(); document.getElementById('catModal').classList.remove('open'); }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,1916 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Thủy Sinh Xanh – Mang Thiên Nhiên Vào Ngôi Nhà Bạn</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --g1:#1a7f5a;--g2:#22a073;--g3:#2ecc95;--gl:#e8f7f2;
+  --t1:#1a2e25;--t2:#4a6358;--t3:#8aab9b;
+  --bg:#f7fbf9;--bg2:#fff;--bg3:#edf6f2;
+  --bd:#d4ede4;--bd2:#b8ddd0;
+  --am:#e67e22;--rd:#e74c3c;
+  --shadow:0 2px 16px rgba(26,127,90,.09);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Be Vietnam Pro',sans-serif;background:var(--bg);color:var(--t1);line-height:1.6;overflow-x:hidden}
+
+/* TICKER */
+.ticker{background:var(--g1);color:#fff;font-size:13px;padding:7px 0;overflow:hidden;white-space:nowrap}
+.ticker-wrap{display:inline-block;animation:tick 38s linear infinite;padding-left:100%}
+@keyframes tick{to{transform:translateX(-100%)}}
+
+/* TOPBAR */
+.topbar{background:#0f2d1f;color:rgba(255,255,255,.8);font-size:13px;padding:9px 24px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.topbar-left{display:flex;align-items:center;gap:20px}
+.topbar-left span{display:flex;align-items:center;gap:6px}
+.topbar-right a{color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;margin-left:16px;transition:color .2s}
+.topbar-right a:hover{color:#fff}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:200;background:#fff;border-bottom:1px solid var(--bd);box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.nav-i{max-width:1240px;margin:0 auto;padding:0 24px;height:70px;display:flex;align-items:center;gap:20px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;cursor:pointer}
+.logo-box{width:42px;height:42px;border-radius:11px;background:linear-gradient(135deg,var(--g1),var(--g3));display:flex;align-items:center;justify-content:center;font-size:22px}
+.logo-txt{font-size:18px;font-weight:800;color:var(--g1);line-height:1}
+.logo-sub{font-size:11px;font-weight:400;color:var(--t3);margin-top:2px;display:block;letter-spacing:.03em}
+.search-wrap{flex:1;max-width:500px;position:relative}
+.search-wrap input{width:100%;padding:11px 16px 11px 46px;border-radius:12px;border:1.5px solid var(--bd2);background:var(--bg3);font-size:14px;color:var(--t1);font-family:inherit;outline:none;transition:all .2s}
+.search-wrap input:focus{border-color:var(--g2);background:#fff;box-shadow:0 0 0 3px rgba(34,160,115,.1)}
+.search-wrap input::placeholder{color:var(--t3)}
+.search-icon{position:absolute;left:15px;top:50%;transform:translateY(-50%);font-size:17px}
+.nav-right{margin-left:auto;display:flex;align-items:center;gap:12px}
+.nav-phone{display:flex;align-items:center;gap:9px;text-decoration:none}
+.phone-circle{width:38px;height:38px;border-radius:50%;background:var(--gl);display:flex;align-items:center;justify-content:center;font-size:17px;animation:pulse-p 2.5s ease-in-out infinite}
+@keyframes pulse-p{0%,100%{box-shadow:0 0 0 0 rgba(34,160,115,.3)}50%{box-shadow:0 0 0 8px rgba(34,160,115,0)}}
+.phone-txt strong{display:block;font-size:15px;font-weight:800;color:var(--g1);line-height:1}
+.phone-txt span{font-size:11px;color:var(--t3)}
+.cart-btn{position:relative;width:42px;height:42px;border-radius:11px;background:var(--g1);display:flex;align-items:center;justify-content:center;font-size:19px;color:#fff;text-decoration:none;cursor:pointer;border:none;transition:background .2s}
+.cart-btn:hover{background:var(--g2)}
+.cart-n{position:absolute;top:-5px;right:-5px;background:var(--rd);color:#fff;font-size:10px;font-weight:800;width:19px;height:19px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid #fff}
+
+/* CAT BAR */
+.cat-bar{background:#fff;border-bottom:1px solid var(--bd);position:sticky;top:70px;z-index:190}
+.cat-bar-i{max-width:1240px;margin:0 auto;padding:0 24px;display:flex;overflow-x:auto;scrollbar-width:none;gap:0}
+.cat-bar-i::-webkit-scrollbar{display:none}
+.cat-link{flex-shrink:0;padding:13px 16px;font-size:13.5px;font-weight:600;color:var(--t2);text-decoration:none;border-bottom:2.5px solid transparent;transition:all .2s;display:flex;align-items:center;gap:6px;white-space:nowrap;cursor:pointer;background:none;border-top:none;border-left:none;border-right:none;font-family:inherit}
+.cat-link:hover,.cat-link.on{color:var(--g1);border-bottom-color:var(--g1)}
+
+/* PAGE SYSTEM */
+.page{display:none}
+.page.active{display:block}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#0a3d27 0%,#1a7f5a 50%,#0a5668 100%);min-height:500px;display:flex;align-items:center;overflow:hidden;position:relative}
+.hero::after{content:'';position:absolute;right:-100px;bottom:-100px;width:500px;height:500px;border-radius:50%;background:rgba(255,255,255,.04);pointer-events:none}
+.hero-i{max-width:1240px;margin:0 auto;padding:72px 24px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:1;width:100%}
+.hero-pill{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:100px;padding:5px 14px;font-size:12px;font-weight:700;color:#fff;letter-spacing:.05em;text-transform:uppercase;margin-bottom:20px}
+.hero h1{font-size:clamp(30px,4vw,52px);font-weight:800;color:#fff;line-height:1.15;letter-spacing:-.02em;margin-bottom:18px}
+.hero h1 mark{background:none;color:#6ee9bf;font-style:normal}
+.hero-p{font-size:16px;color:rgba(255,255,255,.78);line-height:1.75;max-width:460px;margin-bottom:32px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn-w{background:#fff;color:var(--g1);font-weight:700;font-size:15px;padding:13px 26px;border-radius:12px;text-decoration:none;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:all .2s;font-family:inherit;box-shadow:0 4px 20px rgba(0,0,0,.15)}
+.btn-w:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,.2)}
+.btn-ghost{background:rgba(255,255,255,.1);color:#fff;font-weight:600;font-size:15px;padding:13px 26px;border-radius:12px;text-decoration:none;border:1.5px solid rgba(255,255,255,.25);cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:all .2s;backdrop-filter:blur(6px)}
+.btn-ghost:hover{background:rgba(255,255,255,.18)}
+.hero-nums{display:flex;gap:36px;margin-top:40px}
+.h-num strong{display:block;font-size:26px;font-weight:800;color:#fff}
+.h-num span{font-size:12px;color:rgba(255,255,255,.6)}
+.hero-right{position:relative}
+.hero-card{background:rgba(255,255,255,.95);border-radius:20px;padding:22px;box-shadow:0 24px 64px rgba(0,0,0,.28)}
+.hero-card-hd{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--t3);margin-bottom:14px}
+.mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mini-p{background:var(--bg3);border-radius:10px;padding:14px 10px;text-align:center}
+.mini-p .e{font-size:34px;margin-bottom:6px}
+.mini-p .n{font-size:11.5px;font-weight:600;color:var(--t1);line-height:1.35}
+.mini-p .p{font-size:12px;font-weight:800;color:var(--g1);margin-top:5px}
+.float-badge{position:absolute;bottom:-14px;right:-14px;background:var(--am);color:#fff;border-radius:14px;padding:10px 16px;font-size:13px;font-weight:700;box-shadow:0 8px 24px rgba(230,126,34,.3);display:flex;align-items:center;gap:6px}
+
+/* TRUST */
+.trust{background:#fff;border-bottom:1px solid var(--bd)}
+.trust-i{max-width:1240px;margin:0 auto;padding:22px 24px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.t-item{display:flex;align-items:center;gap:13px}
+.t-icon{width:46px;height:46px;border-radius:12px;background:var(--gl);display:flex;align-items:center;justify-content:center;font-size:21px;flex-shrink:0}
+.t-txt strong{display:block;font-size:14px;font-weight:700;color:var(--t1);line-height:1.3}
+.t-txt span{font-size:12px;color:var(--t2)}
+
+/* SECTION */
+.sec{padding:56px 24px;max-width:1240px;margin:0 auto}
+.sec-hd{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:32px;gap:16px;flex-wrap:wrap}
+.sec-tag{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--g2);margin-bottom:5px}
+.sec-title{font-size:clamp(20px,2.8vw,30px);font-weight:800;color:var(--t1);letter-spacing:-.02em;line-height:1.2}
+.btn-more{text-decoration:none;font-size:13.5px;font-weight:600;color:var(--g1);border:1.5px solid var(--bd2);padding:9px 20px;border-radius:10px;white-space:nowrap;transition:all .2s;flex-shrink:0;cursor:pointer;background:none;font-family:inherit}
+.btn-more:hover{background:var(--gl);border-color:var(--g1)}
+
+/* CAT ICON CARDS */
+.c-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:12px}
+.c-card{background:#fff;border:1.5px solid var(--bd);border-radius:16px;padding:22px 12px;text-align:center;text-decoration:none;color:var(--t1);transition:all .25s;cursor:pointer;display:block}
+.c-card:hover{border-color:var(--g2);transform:translateY(-4px);box-shadow:0 8px 32px rgba(26,127,90,.14);background:var(--gl)}
+.c-ico{font-size:34px;margin-bottom:9px}
+.c-name{font-size:13px;font-weight:700;margin-bottom:3px}
+.c-cnt{font-size:11.5px;color:var(--t3)}
+
+/* PRODUCT CARDS */
+.p-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
+.p-card{background:#fff;border:1.5px solid var(--bd);border-radius:16px;overflow:hidden;transition:all .25s;display:flex;flex-direction:column;position:relative}
+.p-card:hover{border-color:var(--g2);transform:translateY(-4px);box-shadow:0 12px 40px rgba(26,127,90,.14)}
+.p-img{aspect-ratio:1;background:linear-gradient(135deg,var(--bg3),var(--gl));display:flex;align-items:center;justify-content:center;font-size:60px;position:relative}
+.bdg{position:absolute;top:9px;left:9px;font-size:10px;font-weight:800;padding:3px 9px;border-radius:6px;letter-spacing:.04em}
+.bdg-sale{background:var(--rd);color:#fff}
+.bdg-hot{background:var(--am);color:#fff}
+.bdg-new{background:var(--g2);color:#fff}
+.bdg-like{background:#9b59b6;color:#fff}
+.bdg-out{position:absolute;inset:0;background:rgba(255,255,255,.7);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:var(--t2);backdrop-filter:blur(2px)}
+.p-body{padding:13px;flex:1;display:flex;flex-direction:column}
+.p-name{font-size:13.5px;font-weight:600;color:var(--t1);line-height:1.45;margin-bottom:8px;flex:1}
+.p-prices{display:flex;align-items:baseline;gap:8px;margin-bottom:10px}
+.p-price{font-size:16px;font-weight:800;color:var(--g1)}
+.p-old{font-size:12px;color:var(--t3);text-decoration:line-through}
+.btn-cart{width:100%;padding:9px;border-radius:10px;background:var(--gl);color:var(--g1);font-weight:700;font-size:13px;border:1.5px solid var(--bd2);cursor:pointer;transition:all .2s;font-family:inherit}
+.btn-cart:hover:not([disabled]){background:var(--g1);color:#fff;border-color:var(--g1)}
+
+/* PAGE HERO (sub-pages) */
+.page-hero{padding:44px 24px 40px;max-width:1240px;margin:0 auto}
+.page-hero-pill{display:inline-flex;align-items:center;gap:6px;background:var(--gl);border:1px solid var(--bd2);border-radius:100px;padding:4px 14px;font-size:12px;font-weight:700;color:var(--g1);letter-spacing:.05em;text-transform:uppercase;margin-bottom:14px}
+.page-hero h1{font-size:clamp(26px,4vw,42px);font-weight:800;color:var(--t1);line-height:1.2;letter-spacing:-.02em;margin-bottom:10px}
+.page-hero p{font-size:15px;color:var(--t2);max-width:560px;line-height:1.7}
+.page-hero-wrap{background:#fff;border-bottom:1px solid var(--bd)}
+
+/* FILTER BAR */
+.filter-bar{background:#fff;padding:14px 24px;border-bottom:1px solid var(--bd);display:flex;align-items:center;gap:10px;flex-wrap:wrap;max-width:1240px;margin:0 auto}
+.filter-bar-wrap{background:#fff;border-bottom:1px solid var(--bd)}
+.flt{padding:7px 16px;border-radius:100px;font-size:13px;font-weight:600;border:1.5px solid var(--bd2);background:transparent;color:var(--t2);cursor:pointer;transition:all .2s;font-family:inherit;white-space:nowrap}
+.flt.on,.flt:hover{background:var(--g1);color:#fff;border-color:var(--g1)}
+.flt-label{font-size:13px;font-weight:700;color:var(--t3);margin-right:4px}
+
+/* COMBO CARDS */
+.combo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+.combo-card{background:#fff;border:1.5px solid var(--bd);border-radius:18px;overflow:hidden;transition:all .25s;display:flex;flex-direction:column}
+.combo-card:hover{border-color:var(--g2);transform:translateY(-4px);box-shadow:0 12px 40px rgba(26,127,90,.14)}
+.combo-img{padding:28px 24px 18px;background:linear-gradient(135deg,var(--bg3),var(--gl));display:flex;align-items:center;justify-content:center;gap:12px;font-size:48px;position:relative}
+.combo-save{position:absolute;top:12px;right:12px;background:var(--rd);color:#fff;font-size:11px;font-weight:800;padding:4px 10px;border-radius:8px}
+.combo-body{padding:18px;flex:1;display:flex;flex-direction:column}
+.combo-name{font-size:16px;font-weight:700;color:var(--t1);margin-bottom:8px;line-height:1.35}
+.combo-includes{margin-bottom:14px}
+.combo-includes li{font-size:12.5px;color:var(--t2);line-height:1.9;list-style:none;display:flex;align-items:center;gap:6px}
+.combo-includes li::before{content:'✓';color:var(--g2);font-weight:700;font-size:11px}
+.combo-prices{display:flex;align-items:baseline;gap:10px;margin-bottom:14px}
+.combo-price{font-size:20px;font-weight:800;color:var(--g1)}
+.combo-old{font-size:13px;color:var(--t3);text-decoration:line-through}
+
+/* LIKE NEW / THANH LÝ */
+.likenew-banner{background:linear-gradient(135deg,#2c1654,#9b59b6);padding:44px 24px;text-align:center;position:relative;overflow:hidden}
+.likenew-banner::before{content:'';position:absolute;top:-60px;right:-60px;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.06)}
+.likenew-banner h2{font-size:clamp(22px,3.5vw,38px);font-weight:800;color:#fff;margin-bottom:10px;position:relative}
+.likenew-banner p{font-size:15px;color:rgba(255,255,255,.78);max-width:520px;margin:0 auto;line-height:1.7;position:relative}
+.likenew-trust{background:#fff;border-bottom:1px solid var(--bd)}
+.likenew-trust-i{max-width:1240px;margin:0 auto;padding:20px 24px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.lt-item{display:flex;align-items:center;gap:10px}
+.lt-ico{width:40px;height:40px;border-radius:10px;background:#f3e8ff;display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0}
+.lt-txt strong{display:block;font-size:13px;font-weight:700;color:var(--t1)}
+.lt-txt span{font-size:12px;color:var(--t2)}
+.ln-card{background:#fff;border:1.5px solid var(--bd);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:all .25s}
+.ln-card:hover{border-color:#9b59b6;transform:translateY(-4px);box-shadow:0 12px 36px rgba(155,89,182,.14)}
+.ln-img{aspect-ratio:1;background:linear-gradient(135deg,#f3e8ff,#ede0f5);display:flex;align-items:center;justify-content:center;font-size:56px;position:relative}
+.ln-condition{position:absolute;top:9px;left:9px;font-size:10px;font-weight:800;padding:3px 9px;border-radius:6px;background:#9b59b6;color:#fff}
+.ln-body{padding:14px;flex:1;display:flex;flex-direction:column}
+.ln-name{font-size:13.5px;font-weight:600;color:var(--t1);line-height:1.45;margin-bottom:6px;flex:1}
+.ln-desc{font-size:12px;color:var(--t2);margin-bottom:10px;line-height:1.5}
+.ln-prices{display:flex;align-items:baseline;gap:8px;margin-bottom:10px}
+.ln-price{font-size:16px;font-weight:800;color:#9b59b6}
+.ln-old{font-size:12px;color:var(--t3);text-decoration:line-through}
+.btn-ln{width:100%;padding:9px;border-radius:10px;background:#f3e8ff;color:#9b59b6;font-weight:700;font-size:13px;border:1.5px solid #dbbdf5;cursor:pointer;transition:all .2s;font-family:inherit}
+.btn-ln:hover{background:#9b59b6;color:#fff;border-color:#9b59b6}
+
+/* PROMO STRIP */
+.promo-strip{background:linear-gradient(135deg,#063d28,#1a7f5a)}
+.promo-strip-i{max-width:1240px;margin:0 auto;padding:52px 24px;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.promo-tag{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#6ee9bf;margin-bottom:12px}
+.promo-strip-i h2{font-size:clamp(22px,3vw,36px);font-weight:800;color:#fff;line-height:1.2;margin-bottom:12px}
+.promo-strip-i p{font-size:15px;color:rgba(255,255,255,.75);line-height:1.7;margin-bottom:26px}
+.promo-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pr-card{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:18px;backdrop-filter:blur(8px)}
+.pr-card .e{font-size:26px;margin-bottom:9px}
+.pr-card h3{font-size:15px;font-weight:700;color:#fff;margin-bottom:4px}
+.pr-card p{font-size:13px;color:rgba(255,255,255,.6);line-height:1.5}
+
+/* CTA */
+.cta-strip{background:#fff;border-top:1px solid var(--bd);border-bottom:1px solid var(--bd)}
+.cta-i{max-width:1240px;margin:0 auto;padding:28px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.cta-i h3{font-size:20px;font-weight:800}
+.cta-i p{font-size:14px;color:var(--t2);margin-top:2px}
+.cta-btns{display:flex;gap:10px;flex-wrap:wrap}
+.b-cta{display:inline-flex;align-items:center;gap:7px;padding:11px 22px;border-radius:10px;font-size:14px;font-weight:600;text-decoration:none;cursor:pointer;border:none;font-family:inherit;transition:all .2s}
+.b-green{background:var(--g1);color:#fff}.b-green:hover{background:var(--g2)}
+.b-zalo{background:#0068ff;color:#fff}.b-zalo:hover{background:#0055d4}
+.b-out{background:transparent;color:var(--g1);border:1.5px solid var(--bd2)}.b-out:hover{background:var(--gl)}
+
+/* FOOTER */
+footer{background:#0a2218;color:rgba(255,255,255,.75);padding:56px 24px 28px}
+.f-i{max-width:1240px;margin:0 auto}
+.f-grid{display:grid;grid-template-columns:2.2fr 1fr 1fr 1fr;gap:44px;margin-bottom:44px}
+.f-logo{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.f-logo-box{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--g1),var(--g3));display:flex;align-items:center;justify-content:center;font-size:20px}
+.f-logo-txt{font-size:18px;font-weight:800;color:#fff}
+.f-about{font-size:13.5px;line-height:1.75;color:rgba(255,255,255,.55);margin-bottom:18px}
+.f-ci{display:flex;align-items:center;gap:9px;font-size:13.5px;color:rgba(255,255,255,.65);margin-bottom:9px}
+.f-ci strong{color:#fff}
+.f-socials{display:flex;gap:9px;margin-top:14px}
+.f-soc{width:36px;height:36px;border-radius:9px;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:16px;transition:background .2s;color:#fff;border:none;cursor:pointer}
+.f-soc:hover{background:rgba(255,255,255,.16)}
+.f-col h4{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:rgba(255,255,255,.45);margin-bottom:16px}
+.f-col a{display:block;font-size:13.5px;color:rgba(255,255,255,.6);text-decoration:none;margin-bottom:10px;transition:color .2s;cursor:pointer}
+.f-col a:hover{color:#6ee9bf}
+.f-bottom{border-top:1px solid rgba(255,255,255,.09);padding-top:22px;display:flex;justify-content:space-between;font-size:12.5px;color:rgba(255,255,255,.35);flex-wrap:wrap;gap:10px}
+
+/* FLOATING */
+.floats{position:fixed;right:18px;bottom:72px;display:flex;flex-direction:column;gap:10px;z-index:150}
+.fab{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:21px;text-decoration:none;box-shadow:0 4px 18px rgba(0,0,0,.2);transition:transform .2s;border:none;cursor:pointer}
+.fab:hover{transform:scale(1.1) translateY(-2px)}
+.fab-z{background:#0068ff}.fab-f{background:#1877f2}
+.fab-c{background:var(--g1);animation:ring-anim 3s ease-in-out infinite}
+@keyframes ring-anim{0%,70%,100%{transform:rotate(0)}20%{transform:rotate(-14deg)}40%{transform:rotate(14deg)}60%{transform:rotate(-7deg)}}
+
+/* INFO BOX */
+.info-box{background:var(--gl);border:1.5px solid var(--bd2);border-radius:14px;padding:20px 24px;margin-bottom:28px;display:flex;gap:14px;align-items:flex-start}
+.info-box .ico{font-size:22px;flex-shrink:0;margin-top:2px}
+.info-box p{font-size:14px;color:var(--t2);line-height:1.65}
+.info-box strong{color:var(--t1)}
+
+/* EMPTY */
+.empty{text-align:center;padding:60px 24px}
+.empty .e-ico{font-size:52px;margin-bottom:14px}
+.empty p{font-size:15px;color:var(--t2)}
+
+/* BREADCRUMB */
+.bread{max-width:1240px;margin:0 auto;padding:14px 24px 0;display:flex;align-items:center;gap:6px;font-size:13px;color:var(--t3)}
+.bread span{cursor:pointer;transition:color .2s}.bread span:hover{color:var(--g1)}
+.bread .sep{color:var(--bd2)}
+.bread .cur{color:var(--t1);font-weight:600}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero-i,.promo-strip-i{grid-template-columns:1fr}
+  .hero-right{display:none}
+  .trust-i,.f-grid,.likenew-trust-i{grid-template-columns:1fr 1fr}
+  .promo-cards{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+  .search-wrap{display:none}
+  .trust-i,.likenew-trust-i{grid-template-columns:1fr}
+  .c-grid{grid-template-columns:repeat(3,1fr)}
+  .f-grid,.promo-cards{grid-template-columns:1fr}
+  .cta-i{flex-direction:column;align-items:flex-start}
+  .topbar-right{display:none}
+  .page-hero{padding:28px 16px 24px}
+}
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker"><div class="ticker-wrap">🎉 FLASH SALE — Giảm 20% toàn bộ cá cảnh hôm nay &nbsp;|&nbsp; 🚚 Miễn phí ship đơn từ 800.000₫ &nbsp;|&nbsp; 🌿 Cây mới: Tiêu thảo lá nhăn, Rêu Flame, Rau má Nhật &nbsp;|&nbsp; 🐠 Cá Red Cherry Tetra chỉ 45.000₫ &nbsp;|&nbsp; 💡 Đèn UFO Kaokui 90 Pro — Chỉnh qua app &nbsp;|&nbsp; ✅ Chính hãng 100% &nbsp;|&nbsp; 📞 Zalo: 0902.804.547 &nbsp;|&nbsp;</div></div>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-left">
+    <span id="tb-address">📍 433/13 Lê Đức Thọ, P.17, Gò Vấp, HCM</span>
+    <span id="tb-hours">🕗 Mở cửa 8:00 – 20:00</span>
+  </div>
+  <div class="topbar-right">
+    <a id="tb-link1" href="#">Giới thiệu</a>
+    <a id="tb-link2" href="#">Kiến thức</a>
+    <a id="tb-link3" href="#">Liên hệ</a>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-i">
+    <div class="logo" onclick="goPage('home')">
+      <div class="logo-box">🌿</div>
+      <div class="logo-txt">Thủy Sinh Xanh<span class="logo-sub">Thế giới thủy sinh chính hãng</span></div>
+    </div>
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input type="text" placeholder="Tìm cá, cây thủy sinh, phụ kiện hồ cá..."/>
+    </div>
+    <div class="nav-right">
+      <a href="tel:0902804547" class="nav-phone">
+        <div class="phone-circle">📞</div>
+        <div class="phone-txt"><strong>0902.804.547</strong><span>Tư vấn miễn phí</span></div>
+      </a>
+      <button class="cart-btn">🛒<span class="cart-n" id="cn">0</span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- CAT BAR -->
+<div class="cat-bar">
+  <div class="cat-bar-i">
+    <button class="cat-link on" data-page="home" onclick="goPage('home')">🏠 Trang chủ</button>
+    <button class="cat-link" data-page="fish" onclick="goPage('fish')">🐟 Cá &amp; Tép cảnh</button>
+    <button class="cat-link" data-page="plant" onclick="goPage('plant')">🪴 Cây thủy sinh</button>
+    <button class="cat-link" data-page="tank" onclick="goPage('tank')">🏺 Hồ kính</button>
+    <button class="cat-link" data-page="accessory" onclick="goPage('accessory')">⚡ Phụ kiện</button>
+    <button class="cat-link" data-page="deco" onclick="goPage('deco')">🪨 Đá &amp; Lũa trang trí</button>
+    <button class="cat-link" data-page="combo" onclick="goPage('combo')">📦 Combo tiết kiệm</button>
+    <button class="cat-link" data-page="likenew" onclick="goPage('likenew')">🏷️ Thanh lý Like New</button>
+    <button class="cat-link" data-page="news" onclick="goPage('news')">📝 Tin tức</button>
+  </div>
+</div>
+
+<!-- ═══════════════ PAGE: HOME ═══════════════ -->
+<div id="page-home" class="page active">
+
+<section class="hero">
+  <div class="hero-i">
+    <div>
+      <div class="hero-pill">🌿 Thế giới thủy sinh chính hãng</div>
+      <h1>Mang <mark>thiên nhiên</mark><br>vào ngôi nhà bạn</h1>
+      <p class="hero-p">Chuyên cung cấp hồ kính, cá cảnh, cây thủy sinh và phụ kiện chính hãng — giá tốt hơn thị trường 10–30%. Giao hàng toàn quốc nhanh chóng.</p>
+      <div class="hero-btns">
+        <button class="btn-w" onclick="goPage('fish')">🛍️ Mua ngay hôm nay</button>
+        <button class="btn-ghost" onclick="document.getElementById('home-cats').scrollIntoView({behavior:'smooth'})">Xem danh mục →</button>
+      </div>
+      <div class="hero-nums">
+        <div class="h-num"><strong>1.000+</strong><span>Sản phẩm</span></div>
+        <div class="h-num"><strong>10 năm</strong><span>Kinh nghiệm</span></div>
+        <div class="h-num"><strong>★ 4.9</strong><span>Đánh giá</span></div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-card">
+        <div class="hero-card-hd">🔥 Nổi bật tuần này</div>
+        <div class="mini-grid">
+          <div class="mini-p"><div class="e">🐠</div><div class="n">Cá Red Cherry Tetra</div><div class="p">45.000₫</div></div>
+          <div class="mini-p"><div class="e">🌿</div><div class="n">Rêu Flame thủy sinh</div><div class="p">60.000₫</div></div>
+          <div class="mini-p"><div class="e">💡</div><div class="n">Đèn UFO Kaokui Pro</div><div class="p">1.200.000₫</div></div>
+          <div class="mini-p"><div class="e">🏺</div><div class="n">Hồ thủy sinh mini</div><div class="p">1.400.000₫</div></div>
+        </div>
+      </div>
+      <div class="float-badge">🚚 Miễn phí ship 800K+</div>
+    </div>
+  </div>
+</section>
+
+<div class="trust">
+  <div class="trust-i">
+    <div class="t-item"><div class="t-icon">🚚</div><div class="t-txt"><strong>Giao toàn quốc</strong><span>Miễn phí đơn từ 800.000₫</span></div></div>
+    <div class="t-item"><div class="t-icon">💰</div><div class="t-txt"><strong>Giá tốt hơn thị trường</strong><span>Tiết kiệm 10–30%</span></div></div>
+    <div class="t-item"><div class="t-icon">✅</div><div class="t-txt"><strong>Chính hãng 100%</strong><span>Nhập khẩu trực tiếp</span></div></div>
+    <div class="t-item"><div class="t-icon">🎧</div><div class="t-txt"><strong>Tư vấn tận tình</strong><span>Zalo 8:00 – 20:00</span></div></div>
+  </div>
+</div>
+
+<div id="home-cats" style="background:var(--bg)">
+  <div class="sec">
+    <div class="sec-hd">
+      <div><div class="sec-tag">Danh mục sản phẩm</div><h2 class="sec-title">Tất cả những gì bạn cần<br>cho hồ thủy sinh</h2></div>
+    </div>
+    <div class="c-grid">
+      <a class="c-card" onclick="goPage('fish')"><div class="c-ico">🐠</div><div class="c-name">Cá cảnh</div><div class="c-cnt">120+ loại</div></a>
+      <a class="c-card" onclick="goPage('fish')"><div class="c-ico">🦐</div><div class="c-name">Tép cảnh</div><div class="c-cnt">30+ loại</div></a>
+      <a class="c-card" onclick="goPage('plant')"><div class="c-ico">🪴</div><div class="c-name">Cây thủy sinh</div><div class="c-cnt">80+ loại</div></a>
+      <a class="c-card" onclick="goPage('tank')"><div class="c-ico">🏺</div><div class="c-name">Hồ kính</div><div class="c-cnt">40+ mẫu</div></a>
+      <a class="c-card" onclick="goPage('accessory')"><div class="c-ico">💡</div><div class="c-name">Đèn thủy sinh</div><div class="c-cnt">50+ loại</div></a>
+      <a class="c-card" onclick="goPage('accessory')"><div class="c-ico">🔄</div><div class="c-name">Máy lọc nước</div><div class="c-cnt">60+ loại</div></a>
+      <a class="c-card" onclick="goPage('deco')"><div class="c-ico">🪨</div><div class="c-name">Đá &amp; Lũa</div><div class="c-cnt">70+ loại</div></a>
+      <a class="c-card" onclick="goPage('combo')"><div class="c-ico">📦</div><div class="c-name">Combo tiết kiệm</div><div class="c-cnt">Ưu đãi lớn</div></a>
+      <a class="c-card" onclick="goPage('likenew')"><div class="c-ico">🏷️</div><div class="c-name">Thanh lý Like New</div><div class="c-cnt">Giảm đến 50%</div></a>
+    </div>
+  </div>
+</div>
+
+<div style="background:#fff;border-top:1px solid var(--bd)">
+  <div class="sec">
+    <div class="sec-hd">
+      <div><div class="sec-tag">Sản phẩm nổi bật</div><h2 class="sec-title">Hàng mới về &amp; bán chạy nhất</h2></div>
+      <button class="btn-more" onclick="goPage('fish')">Xem tất cả →</button>
+    </div>
+    <div class="p-grid">
+      <div class="p-card"><div class="p-img">🐟<div class="bdg bdg-hot">HOT</div></div><div class="p-body"><div class="p-name">Cá cầu vồng xanh Indo (5–6cm)</div><div class="p-prices"><span class="p-price">140.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+      <div class="p-card"><div class="p-img">🐠<div class="bdg bdg-sale">-20%</div></div><div class="p-body"><div class="p-name">Cá Red Cherry Tetra (đỏ nổi bật)</div><div class="p-prices"><span class="p-price">45.000₫</span><span class="p-old">55.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+      <div class="p-card"><div class="p-img">🌿<div class="bdg bdg-new">MỚI</div></div><div class="p-body"><div class="p-name">Cây tiêu thảo lá nhăn (30–40cm)</div><div class="p-prices"><span class="p-price">30.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+      <div class="p-card"><div class="p-img">💡<div class="bdg bdg-hot">HOT</div></div><div class="p-body"><div class="p-name">Đèn UFO Kaokui 90 Pro (app control)</div><div class="p-prices"><span class="p-price">1.200.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="promo-strip">
+  <div class="promo-strip-i">
+    <div>
+      <div class="promo-tag">⚡ Ưu đãi đặc biệt</div>
+      <h2>Săn hàng<br>Like New giá tốt</h2>
+      <p>Hồ kính và phụ kiện thanh lý còn mới 80–95%. Tiết kiệm một nửa chi phí setup hồ!</p>
+      <button class="btn-w" onclick="goPage('likenew')">Xem hàng thanh lý →</button>
+    </div>
+    <div class="promo-cards">
+      <div class="pr-card"><div class="e">🏷️</div><h3>Giảm đến 50%</h3><p>Hàng chất lượng cao, kiểm tra kỹ trước khi bán</p></div>
+      <div class="pr-card"><div class="e">🔍</div><h3>Mô tả thực tế</h3><p>Không che giấu khuyết điểm, ảnh thật 100%</p></div>
+      <div class="pr-card"><div class="e">📦</div><h3>Đóng gói cẩn thận</h3><p>Giao hàng an toàn, nguyên vẹn đến tay bạn</p></div>
+      <div class="pr-card"><div class="e">💬</div><h3>Tư vấn qua Zalo</h3><p>Xem ảnh thực tế trước khi đặt mua</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- TIN TỨC ĐỘNG (từ Admin) -->
+<div style="background:var(--bg);border-top:1px solid var(--bd)">
+  <div class="sec">
+    <div class="sec-hd">
+      <div><div class="sec-tag">Kiến thức & Tin tức</div><h2 class="sec-title">Bài viết mới nhất</h2></div>
+      <button class="btn-more" onclick="goPage('news')">Xem tất cả →</button>
+    </div>
+    <div id="home-news-grid" class="news-grid">
+      <!-- Được render bởi JS từ localStorage -->
+    </div>
+  </div>
+</div>
+
+<div class="cta-strip">
+  <div class="cta-i">
+    <div><h3>📞 Cần tư vấn? Liên hệ ngay!</h3><p>Đội ngũ chuyên gia sẵn sàng hỗ trợ 8:00–20:00 mỗi ngày</p></div>
+    <div class="cta-btns">
+      <a id="cta-phone-link" href="tel:0902804547" class="b-cta b-green">📞 0902.804.547</a>
+      <a href="https://zalo.me/0902804547" class="b-cta b-zalo">💬 Chat Zalo</a>
+      <a href="https://www.messenger.com/t/105364874581811" class="b-cta b-out">🟦 Facebook</a>
+    </div>
+  </div>
+</div>
+</div><!-- end home -->
+
+
+<!-- ═══════════════ PAGE: CÁ & TÉP ═══════════════ -->
+<div id="page-fish" class="page">
+<div class="page-hero-wrap">
+  <div class="bread"><span onclick="goPage('home')">Trang chủ</span><span class="sep">›</span><span class="cur">Cá &amp; Tép cảnh</span></div>
+  <div class="page-hero">
+    <div class="page-hero-pill">🐠 120+ loài</div>
+    <h1>Cá &amp; Tép cảnh</h1>
+    <p>Cá nhập khẩu chính hãng, tép nước ngọt đủ màu sắc — khỏe mạnh, lên màu đẹp, được kiểm dịch trước khi giao.</p>
+  </div>
+</div>
+<div class="filter-bar-wrap">
+  <div class="filter-bar">
+    <span class="flt-label">Loại:</span>
+    <button class="flt on" onclick="filterCards(this,'fish','all')">Tất cả</button>
+    <button class="flt" onclick="filterCards(this,'fish','ca-canh')">🐠 Cá cảnh</button>
+    <button class="flt" onclick="filterCards(this,'fish','tep')">🦐 Tép cảnh</button>
+    <button class="flt" onclick="filterCards(this,'fish','oc')">🐌 Ốc cảnh</button>
+    <button class="flt" onclick="filterCards(this,'fish','sale')">🔥 Đang sale</button>
+  </div>
+</div>
+<div style="background:var(--bg)">
+  <div class="sec" style="padding-top:32px">
+    <div class="info-box"><span class="ico">💡</span><p><strong>Lưu ý khi mua cá online:</strong> Chúng tôi đóng gói túi oxy chuyên dụng, giao trong 2–8 tiếng nội thành và 12–24 tiếng liên tỉnh. Cá đến tay khỏe mạnh hoặc hoàn tiền 100%.</p></div>
+    <div class="p-grid" id="grid-fish">
+      <div class="p-card" data-fish="ca-canh"><div class="p-img">🐟<div class="bdg bdg-hot">HOT</div></div><div class="p-body"><div class="p-name">Cá cầu vồng xanh Indo (5–6cm)</div><div class="p-prices"><span class="p-price">140.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+      <div class="p-card" data-fish="ca-canh"><div class="p-img">🐠<div class="bdg bdg-sale">-20%</div></div><div class="p-body"><div class="p-name">Cá Red Cherry Tetra (đỏ nổi bật)</div><div class="p-prices"><span class="p-price">45.000₫</span><span class="p-old">55.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+      <div class="p-card" data-fish="ca-canh"><div class="p-img">🐡<div class="bdg bdg-sale">-20%</div></div><div class="p-body"><div class="p-name">Cá chuột Venezuela — lên màu đẹp</div><div class="p-prices"><span class="p-price">20.000₫</span><span class="p-old">25.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+      <div class="p-card" data-fish="ca-canh"><div class="p-img">🐟</div><div class="p-body"><div class="p-name">Cá trực thăng đỏ — tầng đáy siêu ngầu</div><div class="p-prices"><span class="p-price">80.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+      <div class="p-card" data-fish="ca-canh"><div class="p-img">🐠<div class="bdg bdg-new">MỚI</div></div><div class="p-body"><div class="p-name">Cá neon xanh Tetra (con 2–3cm)</div><div class="p-prices"><span class="p-price">10.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+      <div class="p-card" data-fish="ca-canh"><div class="p-img">🐡</div><div class="p-body"><div class="p-name">Cá lịch điện — độc lạ, dễ nuôi</div><div class="p-prices"><span class="p-price">60.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+      <div class="p-card" data-fish="tep"><div class="p-img">🦐<div class="bdg bdg-hot">HOT</div></div><div class="p-body"><div class="p-name">Tép cherry đỏ (Red Cherry Shrimp)</div><div class="p-prices"><span class="p-price">8.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+      <div class="p-card" data-fish="tep"><div class="p-img">🦐<div class="bdg bdg-new">MỚI</div></div><div class="p-body"><div class="p-name">Tép ong đen trắng (Crystal Black)</div><div class="p-prices"><span class="p-price">25.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+      <div class="p-card" data-fish="tep"><div class="p-img">🦐</div><div class="p-body"><div class="p-name">Tép blue velvet xanh lam</div><div class="p-prices"><span class="p-price">12.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+      <div class="p-card" data-fish="tep"><div class="p-img">🦐<div class="bdg bdg-sale">-15%</div></div><div class="p-body"><div class="p-name">Tép king kong đen — siêu đẹp</div><div class="p-prices"><span class="p-price">42.000₫</span><span class="p-old">50.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+      <div class="p-card" data-fish="oc"><div class="p-img">🐌</div><div class="p-body"><div class="p-name">Ốc nerite sọc vàng (dọn rêu tảo)</div><div class="p-prices"><span class="p-price">15.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+      <div class="p-card" data-fish="oc"><div class="p-img">🐌<div class="bdg bdg-new">MỚI</div></div><div class="p-body"><div class="p-name">Ốc táo đỏ Mystery Snail</div><div class="p-prices"><span class="p-price">20.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+    </div>
+  </div>
+</div>
+<div class="cta-strip"><div class="cta-i"><div><h3>🐠 Hỏi về loài cá phù hợp với hồ của bạn?</h3><p>Tư vấn miễn phí — chúng tôi giúp bạn chọn đúng ngay từ đầu</p></div><div class="cta-btns"><a href="https://zalo.me/0902804547" class="b-cta b-zalo">💬 Chat Zalo ngay</a><a href="tel:0902804547" class="b-cta b-green">📞 Gọi ngay</a></div></div></div>
+</div><!-- end fish -->
+
+
+<!-- ═══════════════ PAGE: CÂY THỦY SINH ═══════════════ -->
+<div id="page-plant" class="page">
+<div class="page-hero-wrap">
+  <div class="bread"><span onclick="goPage('home')">Trang chủ</span><span class="sep">›</span><span class="cur">Cây thủy sinh</span></div>
+  <div class="page-hero">
+    <div class="page-hero-pill">🪴 80+ loài</div>
+    <h1>Cây thủy sinh</h1>
+    <p>Từ cây tiền cảnh dày rặm đến cây hậu cảnh cao vút — được trồng sạch, không ốc, không rêu hại, sẵn sàng thả vào hồ.</p>
+  </div>
+</div>
+<div class="filter-bar-wrap">
+  <div class="filter-bar">
+    <span class="flt-label">Nhóm:</span>
+    <button class="flt on" onclick="filterCards(this,'plant','all')">Tất cả</button>
+    <button class="flt" onclick="filterCards(this,'plant','tien')">Tiền cảnh</button>
+    <button class="flt" onclick="filterCards(this,'plant','trung')">Trung cảnh</button>
+    <button class="flt" onclick="filterCards(this,'plant','hau')">Hậu cảnh</button>
+    <button class="flt" onclick="filterCards(this,'plant','reu')">Rêu &amp; Dương xỉ</button>
+    <button class="flt" onclick="filterCards(this,'plant','noi')">Cây nổi</button>
+  </div>
+</div>
+<div style="background:var(--bg)">
+  <div class="sec" style="padding-top:32px">
+    <div class="info-box"><span class="ico">🌿</span><p><strong>Cam kết sạch bệnh:</strong> Tất cả cây thủy sinh được xử lý diệt khuẩn, không mang ốc, rêu hại hay ký sinh trùng vào hồ của bạn. Cây đến tay còn tươi nguyên.</p></div>
+    <div class="p-grid" id="grid-plant">
+      <div class="p-card" data-plant="tien"><div class="p-img">🌱<div class="bdg bdg-hot">HOT</div></div><div class="p-body"><div class="p-name">Cỏ ngắn Cuba — thảm dày đẹp</div><div class="p-prices"><span class="p-price">35.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+      <div class="p-card" data-plant="tien"><div class="p-img">🌿</div><div class="p-body"><div class="p-name">Cỏ ngắn Mini (Hemianthus callitrichoides)</div><div class="p-prices"><span class="p-price">30.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+      <div class="p-card" data-plant="trung"><div class="p-img">🌿<div class="bdg bdg-new">MỚI</div></div><div class="p-body"><div class="p-name">Cây tiêu thảo lá nhăn (30–40cm)</div><div class="p-prices"><span class="p-price">30.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+      <div class="p-card" data-plant="trung"><div class="p-img">🌱</div><div class="p-body"><div class="p-name">Rau má Nhật thủy sinh</div><div class="p-prices"><span class="p-price">45.000₫ – 430.000₫</span></div><button class="btn-cart">Chọn loại</button></div></div>
+      <div class="p-card" data-plant="trung"><div class="p-img">🍃<div class="bdg bdg-sale">-10%</div></div><div class="p-body"><div class="p-name">Cây rong đuôi chó xanh mướt</div><div class="p-prices"><span class="p-price">18.000₫</span><span class="p-old">20.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+      <div class="p-card" data-plant="hau"><div class="p-img">🌿</div><div class="p-body"><div class="p-name">Cây thủy trúc (Vallisneria) bó 5 cây</div><div class="p-prices"><span class="p-price">25.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+      <div class="p-card" data-plant="hau"><div class="p-img">🌾<div class="bdg bdg-hot">HOT</div></div><div class="p-body"><div class="p-name">Cây súng mini — ra hoa đẹp</div><div class="p-prices"><span class="p-price">55.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+      <div class="p-card" data-plant="reu"><div class="p-img">🍀<div class="bdg bdg-new">MỚI</div></div><div class="p-body"><div class="p-name">Rêu Flame — dễ chăm, bám lũa đẹp</div><div class="p-prices"><span class="p-price">60.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+      <div class="p-card" data-plant="reu"><div class="p-img">🍀</div><div class="p-body"><div class="p-name">Rêu Java (Java Moss) — cơ bản nhất</div><div class="p-prices"><span class="p-price">20.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+      <div class="p-card" data-plant="reu"><div class="p-img">🌿<div class="bdg bdg-hot">HOT</div></div><div class="p-body"><div class="p-name">Dương xỉ Narrow (Microsorum narrow)</div><div class="p-prices"><span class="p-price">45.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+      <div class="p-card" data-plant="noi"><div class="p-img">🌸</div><div class="p-body"><div class="p-name">Bèo tấm — lọc nước, bóng mát</div><div class="p-prices"><span class="p-price">10.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+      <div class="p-card" data-plant="noi"><div class="p-img">🌺</div><div class="p-body"><div class="p-name">Cây lục bình mini — thả nổi đẹp</div><div class="p-prices"><span class="p-price">15.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+    </div>
+  </div>
+</div>
+<div class="cta-strip"><div class="cta-i"><div><h3>🪴 Cần tư vấn layout cây cho hồ?</h3><p>Mô tả kích thước hồ — chúng tôi gợi ý cây phù hợp miễn phí</p></div><div class="cta-btns"><a href="https://zalo.me/0902804547" class="b-cta b-zalo">💬 Zalo tư vấn</a><a href="tel:0902804547" class="b-cta b-green">📞 Gọi ngay</a></div></div></div>
+</div><!-- end plant -->
+
+
+<!-- ═══════════════ PAGE: HỒ KÍNH ═══════════════ -->
+<div id="page-tank" class="page">
+<div class="page-hero-wrap">
+  <div class="bread"><span onclick="goPage('home')">Trang chủ</span><span class="sep">›</span><span class="cur">Hồ kính</span></div>
+  <div class="page-hero">
+    <div class="page-hero-pill">🏺 40+ mẫu</div>
+    <h1>Hồ kính thủy sinh</h1>
+    <p>Hồ đúc nguyên khối, kính cường lực dày 6–12mm — từ hồ mini để bàn đến hồ lớn đặt sàn. Bảo hành chống thấm 12 tháng.</p>
+  </div>
+</div>
+<div class="filter-bar-wrap">
+  <div class="filter-bar">
+    <span class="flt-label">Kích thước:</span>
+    <button class="flt on" onclick="filterCards(this,'tank','all')">Tất cả</button>
+    <button class="flt" onclick="filterCards(this,'tank','mini')">Mini (≤40cm)</button>
+    <button class="flt" onclick="filterCards(this,'tank','medium')">Vừa (40–80cm)</button>
+    <button class="flt" onclick="filterCards(this,'tank','large')">Lớn (80cm+)</button>
+    <button class="flt" onclick="filterCards(this,'tank','shaped')">Hình đặc biệt</button>
+  </div>
+</div>
+<div style="background:var(--bg)">
+  <div class="sec" style="padding-top:32px">
+    <div class="info-box"><span class="ico">🏺</span><p><strong>Bảo hành 12 tháng chống thấm:</strong> Mọi hồ kính đều được kiểm tra áp suất trước khi giao. Hồ rò rỉ trong 12 tháng — đổi mới hoàn toàn miễn phí.</p></div>
+    <div class="p-grid" id="grid-tank">
+      <div class="p-card" data-tank="mini"><div class="p-img">🏺<div class="bdg bdg-hot">HOT</div></div><div class="p-body"><div class="p-name">Hồ mini cube 20cm — để bàn làm việc</div><div class="p-prices"><span class="p-price">280.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+      <div class="p-card" data-tank="mini"><div class="p-img">🏛️</div><div class="p-body"><div class="p-name">Hồ nano 30cm kính 5mm siêu rõ</div><div class="p-prices"><span class="p-price">420.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+      <div class="p-card" data-tank="medium"><div class="p-img">🪟<div class="bdg bdg-sale">-9%</div></div><div class="p-body"><div class="p-name">Hồ đúc 60cm — kính 6mm, bảo hành 12T</div><div class="p-prices"><span class="p-price">680.000₫</span><span class="p-old">750.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+      <div class="p-card" data-tank="medium"><div class="p-img">🏺<div class="bdg bdg-new">MỚI</div></div><div class="p-body"><div class="p-name">Hồ thủy sinh hang núi Tiger TX-010</div><div class="p-prices"><span class="p-price">2.800.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+      <div class="p-card" data-tank="large"><div class="p-img">🏛️</div><div class="p-body"><div class="p-name">Hồ đúc 80cm — kính 8mm, bảo hành 12T</div><div class="p-prices"><span class="p-price">1.180.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+      <div class="p-card" data-tank="large"><div class="p-img">🪟<div class="bdg bdg-hot">HOT</div></div><div class="p-body"><div class="p-name">Hồ 100cm kính cường lực 10mm</div><div class="p-prices"><span class="p-price">1.850.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+      <div class="p-card" data-tank="large"><div class="p-img">🏺</div><div class="p-body"><div class="p-name">Hồ 120cm — đế tủ inox, kính 12mm</div><div class="p-prices"><span class="p-price">3.500.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+      <div class="p-card" data-tank="shaped"><div class="p-img">🏛️<div class="bdg bdg-new">MỚI</div></div><div class="p-body"><div class="p-name">Hồ kết hợp tượng Phật TX-006</div><div class="p-prices"><span class="p-price">3.200.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+      <div class="p-card" data-tank="shaped"><div class="p-img">🏺<div class="bdg bdg-hot">HOT</div></div><div class="p-body"><div class="p-name">Hồ tròn boong 30cm — độc đáo</div><div class="p-prices"><span class="p-price">550.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+    </div>
+  </div>
+</div>
+<div class="cta-strip"><div class="cta-i"><div><h3>🏺 Muốn setup hồ trọn gói?</h3><p>Cho chúng tôi biết không gian và ngân sách — sẽ tư vấn combo hồ + cây + cá phù hợp nhất</p></div><div class="cta-btns"><a href="https://zalo.me/0902804547" class="b-cta b-zalo">💬 Zalo tư vấn</a><a href="tel:0902804547" class="b-cta b-green">📞 Gọi ngay</a></div></div></div>
+</div><!-- end tank -->
+
+
+<!-- ═══════════════ PAGE: PHỤ KIỆN ═══════════════ -->
+<div id="page-accessory" class="page">
+<div class="page-hero-wrap">
+  <div class="bread"><span onclick="goPage('home')">Trang chủ</span><span class="sep">›</span><span class="cur">Phụ kiện</span></div>
+  <div class="page-hero">
+    <div class="page-hero-pill">⚡ 200+ sản phẩm</div>
+    <h1>Phụ kiện thủy sinh</h1>
+    <p>Đèn, máy lọc, bơm CO₂, nhiệt kế, máy sục khí — đầy đủ thương hiệu uy tín, chính hãng, bảo hành rõ ràng.</p>
+  </div>
+</div>
+<div class="filter-bar-wrap">
+  <div class="filter-bar">
+    <span class="flt-label">Loại:</span>
+    <button class="flt on" onclick="filterCards(this,'accessory','all')">Tất cả</button>
+    <button class="flt" onclick="filterCards(this,'accessory','den')">💡 Đèn</button>
+    <button class="flt" onclick="filterCards(this,'accessory','loc')">🔄 Máy lọc</button>
+    <button class="flt" onclick="filterCards(this,'accessory','co2')">🌬️ Hệ CO₂</button>
+    <button class="flt" onclick="filterCards(this,'accessory','bom')">💧 Bơm &amp; nhiệt</button>
+    <button class="flt" onclick="filterCards(this,'accessory','thucan')">🍽️ Thức ăn</button>
+  </div>
+</div>
+<div style="background:var(--bg)">
+  <div class="sec" style="padding-top:32px">
+    <div class="p-grid" id="grid-accessory">
+      <div class="p-card" data-accessory="den"><div class="p-img">💡<div class="bdg bdg-hot">HOT</div></div><div class="p-body"><div class="p-name">Đèn UFO Kaokui 90 Pro (điều khiển app)</div><div class="p-prices"><span class="p-price">1.200.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+      <div class="p-card" data-accessory="den"><div class="p-img">🔆</div><div class="p-body"><div class="p-name">Đèn LED máng NeoHelios WRGB</div><div class="p-prices"><span class="p-price">310.000₫ – 730.000₫</span></div><button class="btn-cart">Chọn loại</button></div></div>
+      <div class="p-card" data-accessory="den"><div class="p-img">💡<div class="bdg bdg-sale">-15%</div></div><div class="p-body"><div class="p-name">Đèn kẹp LED Aquatop 20W</div><div class="p-prices"><span class="p-price">255.000₫</span><span class="p-old">300.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+      <div class="p-card" data-accessory="loc"><div class="p-img">🔄<div class="bdg bdg-hot">HOT</div></div><div class="p-body"><div class="p-name">Lọc ngoài Sunsun HW-603B (500L/h)</div><div class="p-prices"><span class="p-price">580.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+      <div class="p-card" data-accessory="loc"><div class="p-img">🔄</div><div class="p-body"><div class="p-name">Lọc treo Aquael Slim 100 — siêu êm</div><div class="p-prices"><span class="p-price">320.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+      <div class="p-card" data-accessory="loc"><div class="p-img">🔄<div class="bdg bdg-new">MỚI</div></div><div class="p-body"><div class="p-name">Lọc thùng Eheim Classic 250</div><div class="p-prices"><span class="p-price">1.450.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+      <div class="p-card" data-accessory="co2"><div class="p-img">🌬️<div class="bdg bdg-hot">HOT</div></div><div class="p-body"><div class="p-name">Bộ CO₂ mini 1.5L — van điều áp Fzone</div><div class="p-prices"><span class="p-price">680.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+      <div class="p-card" data-accessory="co2"><div class="p-img">🌬️</div><div class="p-body"><div class="p-name">Khuếch tán CO₂ thủy tinh Aquario</div><div class="p-prices"><span class="p-price">120.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+      <div class="p-card" data-accessory="bom"><div class="p-img">🌡️</div><div class="p-body"><div class="p-name">Nhiệt kế điện tử Zacro LCD</div><div class="p-prices"><span class="p-price">65.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+      <div class="p-card" data-accessory="bom"><div class="p-img">💧<div class="bdg bdg-new">MỚI</div></div><div class="p-body"><div class="p-name">Bơm wavemaker Jebao SLW-10</div><div class="p-prices"><span class="p-price">420.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+      <div class="p-card" data-accessory="thucan"><div class="p-img">🍽️</div><div class="p-body"><div class="p-name">Thức ăn Hikari Micro Pellets 22g</div><div class="p-prices"><span class="p-price">85.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+      <div class="p-card" data-accessory="thucan"><div class="p-img">🥣<div class="bdg bdg-sale">-10%</div></div><div class="p-body"><div class="p-name">Thức ăn tép Dennerle Shrimp King</div><div class="p-prices"><span class="p-price">135.000₫</span><span class="p-old">150.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+    </div>
+  </div>
+</div>
+<div class="cta-strip"><div class="cta-i"><div><h3>⚡ Cần tư vấn chọn thiết bị?</h3><p>Cho biết kích thước hồ và ngân sách — chúng tôi đề xuất bộ thiết bị tối ưu nhất</p></div><div class="cta-btns"><a href="https://zalo.me/0902804547" class="b-cta b-zalo">💬 Zalo tư vấn</a><a href="tel:0902804547" class="b-cta b-green">📞 Gọi ngay</a></div></div></div>
+</div><!-- end accessory -->
+
+
+<!-- ═══════════════ PAGE: ĐÁ & LŨA ═══════════════ -->
+<div id="page-deco" class="page">
+<div class="page-hero-wrap">
+  <div class="bread"><span onclick="goPage('home')">Trang chủ</span><span class="sep">›</span><span class="cur">Đá &amp; Lũa trang trí</span></div>
+  <div class="page-hero">
+    <div class="page-hero-pill">🪨 70+ sản phẩm</div>
+    <h1>Đá &amp; Lũa trang trí</h1>
+    <p>Lũa tự nhiên ngâm sẵn, đá phong thủy đủ loại — mang phong cảnh tự nhiên vào lòng hồ của bạn, an toàn cho cá và cây.</p>
+  </div>
+</div>
+<div class="filter-bar-wrap">
+  <div class="filter-bar">
+    <span class="flt-label">Loại:</span>
+    <button class="flt on" onclick="filterCards(this,'deco','all')">Tất cả</button>
+    <button class="flt" onclick="filterCards(this,'deco','lua')">🌿 Lũa</button>
+    <button class="flt" onclick="filterCards(this,'deco','da')">🪨 Đá</button>
+    <button class="flt" onclick="filterCards(this,'deco','cat')">⏳ Cát &amp; Phân nền</button>
+    <button class="flt" onclick="filterCards(this,'deco','trang')">🎨 Trang trí khác</button>
+  </div>
+</div>
+<div style="background:var(--bg)">
+  <div class="sec" style="padding-top:32px">
+    <div class="info-box"><span class="ico">🪨</span><p><strong>Lũa đã ngâm xử lý:</strong> Tất cả lũa được ngâm nước 2–4 tuần, loại bỏ chất tanin thừa. An toàn cho tép nhạy cảm, không gây vàng nước quá mức.</p></div>
+    <div class="p-grid" id="grid-deco">
+      <div class="p-card" data-deco="lua"><div class="p-img">🌿<div class="bdg bdg-hot">HOT</div></div><div class="p-body"><div class="p-name">Lũa spider wood nhỏ (20–30cm)</div><div class="p-prices"><span class="p-price">85.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+      <div class="p-card" data-deco="lua"><div class="p-img">🪵</div><div class="p-body"><div class="p-name">Lũa spider wood lớn (40–60cm)</div><div class="p-prices"><span class="p-price">180.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+      <div class="p-card" data-deco="lua"><div class="p-img">🌿<div class="bdg bdg-new">MỚI</div></div><div class="p-body"><div class="p-name">Lũa chìm bogwood dẹp — bám rêu đẹp</div><div class="p-prices"><span class="p-price">120.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+      <div class="p-card" data-deco="lua"><div class="p-img">🪵</div><div class="p-body"><div class="p-name">Lũa mangrove rễ tự nhiên</div><div class="p-prices"><span class="p-price">95.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+      <div class="p-card" data-deco="da"><div class="p-img">🪨<div class="bdg bdg-hot">HOT</div></div><div class="p-body"><div class="p-name">Đá rồng (Dragon Stone) 1kg</div><div class="p-prices"><span class="p-price">95.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+      <div class="p-card" data-deco="da"><div class="p-img">🪨</div><div class="p-body"><div class="p-name">Đá núi lửa Seiryu 1kg</div><div class="p-prices"><span class="p-price">110.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+      <div class="p-card" data-deco="da"><div class="p-img">⬛</div><div class="p-body"><div class="p-name">Đá ohko (Cloud Stone) 1kg</div><div class="p-prices"><span class="p-price">130.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+      <div class="p-card" data-deco="cat"><div class="p-img">⏳<div class="bdg bdg-hot">HOT</div></div><div class="p-body"><div class="p-name">Phân nền ADA Aqua Soil Amazonia 3L</div><div class="p-prices"><span class="p-price">320.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+      <div class="p-card" data-deco="cat"><div class="p-img">🏖️</div><div class="p-body"><div class="p-name">Cát trắng silica mịn 1kg</div><div class="p-prices"><span class="p-price">35.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+      <div class="p-card" data-deco="cat"><div class="p-img">⬛</div><div class="p-body"><div class="p-name">Cát đen Akadama tốt cho tép 1kg</div><div class="p-prices"><span class="p-price">55.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+      <div class="p-card" data-deco="trang"><div class="p-img">🏯</div><div class="p-body"><div class="p-name">Hang tép gốm — trú ẩn cho tép con</div><div class="p-prices"><span class="p-price">45.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+      <div class="p-card" data-deco="trang"><div class="p-img">🎋<div class="bdg bdg-new">MỚI</div></div><div class="p-body"><div class="p-name">Ống tre mini — trang trí &amp; trú ẩn</div><div class="p-prices"><span class="p-price">25.000₫</span></div><button class="btn-cart">+ Thêm vào giỏ</button></div></div>
+    </div>
+  </div>
+</div>
+<div class="cta-strip"><div class="cta-i"><div><h3>🪨 Cần tư vấn chọn layout đá lũa?</h3><p>Gửi kích thước hồ qua Zalo — chúng tôi gợi ý bố cục phù hợp phong cách của bạn</p></div><div class="cta-btns"><a href="https://zalo.me/0902804547" class="b-cta b-zalo">💬 Zalo tư vấn</a><a href="tel:0902804547" class="b-cta b-green">📞 Gọi ngay</a></div></div></div>
+</div><!-- end deco -->
+
+
+<!-- ═══════════════ PAGE: COMBO ═══════════════ -->
+<div id="page-combo" class="page">
+<div class="page-hero-wrap" style="background:linear-gradient(135deg,#fff6e6,#fff)">
+  <div class="bread"><span onclick="goPage('home')">Trang chủ</span><span class="sep">›</span><span class="cur">Combo tiết kiệm</span></div>
+  <div class="page-hero">
+    <div class="page-hero-pill" style="background:#fff3cd;border-color:#ffc107;color:#b45309">📦 Tiết kiệm đến 30%</div>
+    <h1>Combo tiết kiệm</h1>
+    <p>Mua theo combo — tiết kiệm hơn mua lẻ từ 20–30%. Được chọn lọc kỹ để phù hợp với từng mức độ chơi và ngân sách.</p>
+  </div>
+</div>
+<div style="background:var(--bg)">
+  <div class="sec" style="padding-top:32px">
+    <div class="sec-hd" style="margin-bottom:24px">
+      <div><div class="sec-tag">Phổ biến nhất</div><h2 class="sec-title">Combo cho người mới bắt đầu</h2></div>
+    </div>
+    <div class="combo-grid">
+      <div class="combo-card">
+        <div class="combo-img">🏺💡🔄<div class="combo-save">Tiết kiệm 22%</div></div>
+        <div class="combo-body">
+          <div class="combo-name">Combo Khởi Đầu Mini (30cm)</div>
+          <ul class="combo-includes">
+            <li>Hồ kính 30cm kính 5mm siêu rõ</li>
+            <li>Đèn LED kẹp 10W ánh sáng trắng</li>
+            <li>Lọc treo Aquael Slim 100</li>
+            <li>Phân nền Amazonia 1L</li>
+          </ul>
+          <div class="combo-prices"><span class="combo-price">780.000₫</span><span class="combo-old">1.000.000₫</span></div>
+          <button class="btn-cart">+ Thêm vào giỏ</button>
+        </div>
+      </div>
+      <div class="combo-card">
+        <div class="combo-img">🏺💡🔄🌿<div class="combo-save">Tiết kiệm 25%</div></div>
+        <div class="combo-body">
+          <div class="combo-name">Combo Thủy Sinh Xanh (60cm)</div>
+          <ul class="combo-includes">
+            <li>Hồ đúc 60cm kính 6mm</li>
+            <li>Đèn NeoHelios WRGB 60cm</li>
+            <li>Lọc ngoài Sunsun HW-603B</li>
+            <li>Bộ CO₂ mini 1.5L + khuếch tán</li>
+            <li>Phân nền Amazonia 3L</li>
+          </ul>
+          <div class="combo-prices"><span class="combo-price">2.150.000₫</span><span class="combo-old">2.870.000₫</span></div>
+          <button class="btn-cart">+ Thêm vào giỏ</button>
+        </div>
+      </div>
+      <div class="combo-card">
+        <div class="combo-img">🐠🦐🌿<div class="combo-save">Tiết kiệm 20%</div></div>
+        <div class="combo-body">
+          <div class="combo-name">Combo Cá + Tép + Cây (cho hồ 60cm)</div>
+          <ul class="combo-includes">
+            <li>10 cá neon xanh Tetra</li>
+            <li>10 tép cherry đỏ</li>
+            <li>5 loại cây thủy sinh sẵn có</li>
+            <li>2 ốc nerite dọn rêu</li>
+          </ul>
+          <div class="combo-prices"><span class="combo-price">320.000₫</span><span class="combo-old">400.000₫</span></div>
+          <button class="btn-cart">+ Thêm vào giỏ</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-hd" style="margin-top:52px;margin-bottom:24px">
+      <div><div class="sec-tag">Nâng cao</div><h2 class="sec-title">Combo cho người chơi có kinh nghiệm</h2></div>
+    </div>
+    <div class="combo-grid">
+      <div class="combo-card">
+        <div class="combo-img">🏺💡🔄🌬️<div class="combo-save">Tiết kiệm 28%</div></div>
+        <div class="combo-body">
+          <div class="combo-name">Combo Setup Hồ Iwagumi (80cm)</div>
+          <ul class="combo-includes">
+            <li>Hồ 80cm kính cường lực 8mm</li>
+            <li>Đèn UFO Kaokui 90 Pro app control</li>
+            <li>Lọc thùng Eheim Classic 250</li>
+            <li>Bộ CO₂ 1.5L + van Fzone + khuếch tán</li>
+            <li>5kg đá Seiryu + phân nền Amazonia 6L</li>
+          </ul>
+          <div class="combo-prices"><span class="combo-price">4.800.000₫</span><span class="combo-old">6.650.000₫</span></div>
+          <button class="btn-cart">+ Thêm vào giỏ</button>
+        </div>
+      </div>
+      <div class="combo-card">
+        <div class="combo-img">🦐🌿🪨<div class="combo-save">Tiết kiệm 24%</div></div>
+        <div class="combo-body">
+          <div class="combo-name">Combo Hồ Tép Chuyên Nghiệp</div>
+          <ul class="combo-includes">
+            <li>Hồ 45cm kính 6mm siêu rõ</li>
+            <li>Đèn chuyên tép Chihiros A Plus 45</li>
+            <li>Lọc ngoài Sunsun nhỏ + bình lọc thủy tinh</li>
+            <li>Cát đen Akadama 3kg</li>
+            <li>10 tép ong crystal black S grade</li>
+          </ul>
+          <div class="combo-prices"><span class="combo-price">1.950.000₫</span><span class="combo-old">2.570.000₫</span></div>
+          <button class="btn-cart">+ Thêm vào giỏ</button>
+        </div>
+      </div>
+      <div class="combo-card">
+        <div class="combo-img">🏺🌿🐠💡<div class="combo-save">Tiết kiệm 30%</div></div>
+        <div class="combo-body">
+          <div class="combo-name">Combo Hồ Bonsai Trọn Bộ</div>
+          <ul class="combo-includes">
+            <li>Hồ 60cm kính 8mm</li>
+            <li>Đèn NeoHelios WRGB 60cm</li>
+            <li>Lũa spider wood + đá rồng</li>
+            <li>Phân nền + 8 loại cây đủ tầng</li>
+            <li>Cá + tép hoàn chỉnh</li>
+          </ul>
+          <div class="combo-prices"><span class="combo-price">3.150.000₫</span><span class="combo-old">4.500.000₫</span></div>
+          <button class="btn-cart">+ Thêm vào giỏ</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="cta-strip"><div class="cta-i"><div><h3>📦 Muốn combo theo nhu cầu riêng?</h3><p>Báo ngân sách và không gian — chúng tôi tư vấn combo tối ưu nhất cho bạn</p></div><div class="cta-btns"><a href="https://zalo.me/0902804547" class="b-cta b-zalo">💬 Zalo tư vấn</a><a href="tel:0902804547" class="b-cta b-green">📞 Gọi ngay</a></div></div></div>
+</div><!-- end combo -->
+
+
+<!-- ═══════════════ PAGE: THANH LÝ LIKE NEW ═══════════════ -->
+<div id="page-likenew" class="page">
+<div class="likenew-banner">
+  <div style="position:relative;z-index:1">
+    <div style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#dbbdf5;margin-bottom:10px">🏷️ Hàng thanh lý chính chủ</div>
+    <h2>Thanh lý Like New<br><span style="color:#dbbdf5">Giảm 30 – 50%</span></h2>
+    <p>Hồ kính, đèn, lọc, lũa đá đã qua sử dụng còn mới 80–95%. Mô tả tình trạng thực tế, ảnh thật, không che giấu.</p>
+  </div>
+</div>
+<div class="likenew-trust">
+  <div class="likenew-trust-i">
+    <div class="lt-item"><div class="lt-ico">📷</div><div class="lt-txt"><strong>Ảnh thực tế 100%</strong><span>Không chỉnh sửa, zoom cận vết trầy</span></div></div>
+    <div class="lt-item"><div class="lt-ico">🔍</div><div class="lt-txt"><strong>Mô tả tình trạng thật</strong><span>Ghi rõ % mới, khuyết điểm nếu có</span></div></div>
+    <div class="lt-item"><div class="lt-ico">💬</div><div class="lt-txt"><strong>Xem ảnh qua Zalo</strong><span>Hỏi thêm trước khi đặt mua</span></div></div>
+    <div class="lt-item"><div class="lt-ico">↩️</div><div class="lt-txt"><strong>Đổi trả 3 ngày</strong><span>Nếu sản phẩm không như mô tả</span></div></div>
+  </div>
+</div>
+<div class="filter-bar-wrap">
+  <div class="filter-bar">
+    <span class="flt-label">Danh mục:</span>
+    <button class="flt on" onclick="filterCards(this,'likenew','all')">Tất cả</button>
+    <button class="flt" onclick="filterCards(this,'likenew','ho')">🏺 Hồ kính</button>
+    <button class="flt" onclick="filterCards(this,'likenew','den')">💡 Đèn</button>
+    <button class="flt" onclick="filterCards(this,'likenew','loc')">🔄 Máy lọc</button>
+    <button class="flt" onclick="filterCards(this,'likenew','phu')">⚙️ Phụ kiện khác</button>
+  </div>
+</div>
+<div style="background:var(--bg)">
+  <div class="sec" style="padding-top:32px">
+    <div class="info-box" style="background:#f3e8ff;border-color:#dbbdf5"><span class="ico">💬</span><p><strong>Cách mua hàng thanh lý:</strong> Liên hệ Zalo <strong>0902.804.547</strong> để xem thêm ảnh thực tế trước khi đặt. Hàng thanh lý là hàng duy nhất — nhanh tay kẻo hết!</p></div>
+    <div class="p-grid" id="grid-likenew">
+      <div class="p-card" data-likenew="ho"><div class="p-img">🏺<div class="ln-condition">Mới 95%</div></div><div class="p-body"><div class="p-name">Hồ 60cm kính 8mm — không trầy, chưa nuôi cá</div><div class="ln-desc">Mua dư, không dùng đến. Còn hộp.</div><div class="ln-prices"><span class="ln-price">480.000₫</span><span class="ln-old">850.000₫</span></div><button class="btn-ln">💬 Hỏi Zalo</button></div></div>
+      <div class="p-card" data-likenew="ho"><div class="p-img">🏛️<div class="ln-condition">Mới 85%</div></div><div class="p-body"><div class="p-name">Hồ 80cm kèm đế tủ gỗ — vài trầy nhỏ đế tủ</div><div class="ln-desc">Nuôi 6 tháng, vệ sinh sạch, kính không trầy.</div><div class="ln-prices"><span class="ln-price">1.100.000₫</span><span class="ln-old">2.200.000₫</span></div><button class="btn-ln">💬 Hỏi Zalo</button></div></div>
+      <div class="p-card" data-likenew="den"><div class="p-img">💡<div class="ln-condition">Mới 90%</div></div><div class="p-body"><div class="p-name">Đèn UFO Kaokui 90 — dùng 3 tháng, còn BH</div><div class="ln-desc">Nâng cấp lên bản Pro nên bán lại.</div><div class="ln-prices"><span class="ln-price">680.000₫</span><span class="ln-old">1.100.000₫</span></div><button class="btn-ln">💬 Hỏi Zalo</button></div></div>
+      <div class="p-card" data-likenew="den"><div class="p-img">🔆<div class="ln-condition">Mới 80%</div></div><div class="p-body"><div class="p-name">Đèn NeoHelios 60cm — vài xước nhỏ khung nhôm</div><div class="ln-desc">Sáng đẹp, cây lên tốt. Dùng 1 năm.</div><div class="ln-prices"><span class="ln-price">220.000₫</span><span class="ln-old">450.000₫</span></div><button class="btn-ln">💬 Hỏi Zalo</button></div></div>
+      <div class="p-card" data-likenew="loc"><div class="p-img">🔄<div class="ln-condition">Mới 90%</div></div><div class="p-body"><div class="p-name">Lọc ngoài Eheim Classic 250 — còn BH 6 tháng</div><div class="ln-desc">Dùng 6 tháng, vệ sinh sạch, kèm bộ vật liệu lọc.</div><div class="ln-prices"><span class="ln-price">750.000₫</span><span class="ln-old">1.450.000₫</span></div><button class="btn-ln">💬 Hỏi Zalo</button></div></div>
+      <div class="p-card" data-likenew="loc"><div class="p-img">🔄<div class="ln-condition">Mới 85%</div></div><div class="p-body"><div class="p-name">Lọc treo Aquael Slim 100 — còn chạy tốt</div><div class="ln-desc">Dùng 8 tháng. Có vài vết ố xi phông nhẹ.</div><div class="ln-prices"><span class="ln-price">160.000₫</span><span class="ln-old">320.000₫</span></div><button class="btn-ln">💬 Hỏi Zalo</button></div></div>
+      <div class="p-card" data-likenew="phu"><div class="p-img">🌬️<div class="ln-condition">Mới 95%</div></div><div class="p-body"><div class="p-name">Bộ CO₂ 1.5L + van Fzone — dùng 4 tháng</div><div class="ln-desc">Bình còn 80% khí. Kèm khuếch tán thủy tinh.</div><div class="ln-prices"><span class="ln-price">380.000₫</span><span class="ln-old">700.000₫</span></div><button class="btn-ln">💬 Hỏi Zalo</button></div></div>
+      <div class="p-card" data-likenew="phu"><div class="p-img">🌡️<div class="ln-condition">Mới 90%</div></div><div class="p-body"><div class="p-name">Nhiệt kế + máy sục khí — đồng bộ cũ</div><div class="ln-desc">Dọn hồ cũ, bán thanh lý. Còn dùng tốt.</div><div class="ln-prices"><span class="ln-price">90.000₫</span><span class="ln-old">180.000₫</span></div><button class="btn-ln">💬 Hỏi Zalo</button></div></div>
+    </div>
+  </div>
+</div>
+<div class="cta-strip"><div class="cta-i"><div><h3>🏷️ Muốn ký gửi đồ thanh lý?</h3><p>Bạn có đồ thủy sinh không dùng đến? Gửi bán tại cửa hàng — chúng tôi hỗ trợ miễn phí</p></div><div class="cta-btns"><a href="https://zalo.me/0902804547" class="b-cta b-zalo">💬 Liên hệ Zalo</a><a href="tel:0902804547" class="b-cta b-green">📞 Gọi ngay</a></div></div></div>
+</div><!-- end likenew -->
+
+
+<!-- ═══════════════ PAGE: TIN TỨC ═══════════════ -->
+<div id="page-news" class="page">
+<div class="page-hero-wrap">
+  <div class="bread"><span onclick="goPage('home')">Trang chủ</span><span class="sep">›</span><span class="cur">Tin tức & Kiến thức</span></div>
+  <div class="page-hero">
+    <div class="page-hero-pill">📝 Kiến thức thủy sinh</div>
+    <h1>Tin tức & Bài viết</h1>
+    <p>Kiến thức chăm sóc cá, cây thủy sinh, hướng dẫn setup hồ và những mẫu hồ đẹp nhất.</p>
+  </div>
+</div>
+<div style="background:var(--bg)">
+  <div class="sec" style="padding-top:28px">
+    <div id="news-cat-filter" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px"></div>
+    <div id="news-page-grid" class="news-grid"></div>
+    <div id="news-empty" style="display:none;text-align:center;padding:60px 0;color:var(--t3)">
+      <div style="font-size:48px;margin-bottom:12px">📭</div>
+      <div style="font-size:16px;font-weight:700;color:var(--t2)">Chưa có bài viết nào</div>
+    </div>
+  </div>
+</div>
+</div><!-- end news -->
+
+<!-- FOOTER (shared) -->
+<footer>
+  <div class="f-i">
+    <div class="f-grid">
+      <div>
+        <div class="f-logo"><div class="f-logo-box">🌿</div><span class="f-logo-txt" id="f-brandname">Thủy Sinh Xanh</span></div>
+        <p class="f-about" id="f-about">Chuyên mua bán sỉ lẻ phụ kiện hồ thủy sinh chính hãng, cá cảnh, cây thủy sinh và hồ kính. Giao hàng toàn quốc, giá tốt nhất thị trường.</p>
+        <div class="f-ci">📍 <span id="f-address">433/13 Lê Đức Thọ, P.17, Gò Vấp, TP.HCM</span></div>
+        <div class="f-ci">🕗 <span id="f-hours">Mở cửa 8:00 – 20:00 hàng ngày</span></div>
+        <div class="f-ci">📞 <strong id="f-phone">0902.804.547 (Zalo)</strong></div>
+        <div class="f-ci">✉️ <span id="f-email">thuysinhxanh.vn@gmail.com</span></div>
+        <div class="f-socials">
+          <a href="https://www.facebook.com/becathuysinhmini" class="f-soc">📘</a>
+          <a href="https://www.youtube.com/channel/UCh0ozZvtm6XKTctR5PCSkYw" class="f-soc">▶️</a>
+          <a href="https://zalo.me/0902804547" class="f-soc">💬</a>
+          <a href="mailto:thuysinhxanh.vn@gmail.com" class="f-soc">✉️</a>
+        </div>
+      </div>
+      <div class="f-col">
+        <h4>Danh mục</h4>
+        <a onclick="goPage('fish')">Cá &amp; Tép cảnh</a>
+        <a onclick="goPage('plant')">Cây thủy sinh</a>
+        <a onclick="goPage('tank')">Hồ kính</a>
+        <a onclick="goPage('accessory')">Phụ kiện</a>
+        <a onclick="goPage('deco')">Đá &amp; Lũa</a>
+        <a onclick="goPage('combo')">Combo tiết kiệm</a>
+        <a onclick="goPage('likenew')">Thanh lý Like New</a>
+      </div>
+      <div class="f-col">
+        <h4>Chính sách</h4>
+        <a href="#">Chính sách bảo hành</a>
+        <a href="#">Phương thức vận chuyển</a>
+        <a href="#">Đổi trả &amp; hoàn tiền</a>
+        <a href="#">Ưu đãi khách hàng cũ</a>
+      </div>
+      <div class="f-col">
+        <h4>Hỗ trợ</h4>
+        <a href="#">Kiến thức thủy sinh</a>
+        <a href="#">Hướng dẫn setup hồ</a>
+        <a href="#">Cách chăm sóc cá</a>
+        <a href="#">Giới thiệu cửa hàng</a>
+        <a href="#">Liên hệ</a>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <span id="f-copyright">© 2015 – 2025 ThuySinhXanh.Vn · Hotline: 0902.804.547 (Zalo)</span>
+      <span id="f-bottom-address">433/13 Lê Đức Thọ, P.17, Gò Vấp, TP.HCM</span>
+    </div>
+  </div>
+</footer>
+
+<div class="floats">
+  <a href="https://zalo.me/0902804547" class="fab fab-z">💬</a>
+  <a href="https://www.messenger.com/t/105364874581811" class="fab fab-f">📘</a>
+  <a href="tel:0902804547" class="fab fab-c">📞</a>
+</div>
+
+<script>
+// ─── SPA ROUTING ───────────────────────────────────────────────────────────────
+function goPage(id) {
+  // hide all pages
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  // show target
+  const el = document.getElementById('page-' + id);
+  if (el) el.classList.add('active');
+  // update cat bar
+  document.querySelectorAll('.cat-link').forEach(l => {
+    l.classList.toggle('on', l.dataset.page === id);
+  });
+  // scroll to top
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+// ─── FILTER CARDS ──────────────────────────────────────────────────────────────
+function filterCards(btn, page, cat) {
+  // update buttons
+  const bar = btn.closest('.filter-bar');
+  bar.querySelectorAll('.flt').forEach(f => f.classList.remove('on'));
+  btn.classList.add('on');
+  // filter cards
+  const grid = document.getElementById('grid-' + page);
+  if (!grid) return;
+  grid.querySelectorAll('.p-card, .combo-card, .ln-card').forEach(card => {
+    const val = card.dataset[page] || '';
+    if (cat === 'all') {
+      card.style.display = 'flex';
+    } else if (cat === 'sale') {
+      // special: show cards with bdg-sale badge
+      const hasSale = card.querySelector('.bdg-sale');
+      card.style.display = hasSale ? 'flex' : 'none';
+    } else {
+      card.style.display = (val === cat) ? 'flex' : 'none';
+    }
+  });
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// GIỎ HÀNG — CART SYSTEM
+// ══════════════════════════════════════════════════════════════════════════════
+
+const cart = { items: [] };
+
+// ─── Lấy thông tin sản phẩm từ card ──────────────────────────────────────────
+function getProductFromCard(card) {
+  const nameEl = card.querySelector('.p-name, .combo-name, .ln-name');
+  const priceEl = card.querySelector('.p-price, .combo-price, .ln-price');
+  const imgEl   = card.querySelector('.p-img, .combo-img, .ln-img');
+  const name  = nameEl  ? nameEl.textContent.trim() : 'Sản phẩm';
+  const priceRaw = priceEl ? priceEl.textContent.replace(/[₫.,\s]/g,'') : '0';
+  const price = parseInt(priceRaw) || 0;
+  // emoji từ ô ảnh (lấy ký tự đầu tiên không phải badge)
+  let emoji = '📦';
+  if (imgEl) {
+    const clone = imgEl.cloneNode(true);
+    clone.querySelectorAll('.bdg, .bdg-out, .bdg-sale, .bdg-hot, .bdg-new, .bdg-like, .bdg-out, .ln-condition, .combo-save').forEach(b => b.remove());
+    const txt = clone.textContent.trim();
+    emoji = txt ? txt : '📦';
+  }
+  return { name, price, emoji };
+}
+
+// ─── Thêm vào giỏ ─────────────────────────────────────────────────────────────
+function addToCart(product) {
+  const existing = cart.items.find(i => i.name === product.name);
+  if (existing) {
+    existing.qty++;
+  } else {
+    cart.items.push({ ...product, qty: 1, id: Date.now() + Math.random() });
+  }
+  renderCart();
+  updateBadge();
+  showToast(product.name);
+}
+
+// ─── Cập nhật số lượng ────────────────────────────────────────────────────────
+function changeQty(id, delta) {
+  const item = cart.items.find(i => i.id === id);
+  if (!item) return;
+  item.qty += delta;
+  if (item.qty <= 0) {
+    cart.items = cart.items.filter(i => i.id !== id);
+  }
+  renderCart();
+  updateBadge();
+}
+
+// ─── Xoá sản phẩm ─────────────────────────────────────────────────────────────
+function removeItem(id) {
+  const el = document.querySelector(`[data-cart-id="${id}"]`);
+  if (el) {
+    el.style.opacity = '0';
+    el.style.transform = 'translateX(60px)';
+    el.style.transition = 'all .28s ease';
+    setTimeout(() => {
+      cart.items = cart.items.filter(i => i.id !== id);
+      renderCart();
+      updateBadge();
+    }, 260);
+    return;
+  }
+  cart.items = cart.items.filter(i => i.id !== id);
+  renderCart();
+  updateBadge();
+}
+
+// ─── Tổng tiền ────────────────────────────────────────────────────────────────
+function getTotal() {
+  return cart.items.reduce((s, i) => s + i.price * i.qty, 0);
+}
+function getTotalQty() {
+  return cart.items.reduce((s, i) => s + i.qty, 0);
+}
+function fmt(n) {
+  return n.toLocaleString('vi-VN') + '₫';
+}
+
+// ─── Render giỏ hàng ─────────────────────────────────────────────────────────
+function renderCart() {
+  const list   = document.getElementById('cart-list');
+  const footer = document.getElementById('cart-footer');
+  const empty  = document.getElementById('cart-empty');
+  if (!list) return;
+
+  if (cart.items.length === 0) {
+    list.innerHTML = '';
+    empty.style.display  = 'flex';
+    footer.style.display = 'none';
+    return;
+  }
+
+  empty.style.display  = 'none';
+  footer.style.display = 'block';
+
+  list.innerHTML = cart.items.map(item => `
+    <div class="ci" data-cart-id="${item.id}">
+      <div class="ci-img">${item.emoji}</div>
+      <div class="ci-body">
+        <div class="ci-name">${item.name}</div>
+        <div class="ci-price">${fmt(item.price)}</div>
+        <div class="ci-qty-wrap">
+          <button class="ci-q" onclick="changeQty(${item.id},-1)">−</button>
+          <span class="ci-qn">${item.qty}</span>
+          <button class="ci-q" onclick="changeQty(${item.id},+1)">+</button>
+          <span class="ci-sub">${fmt(item.price * item.qty)}</span>
+        </div>
+      </div>
+      <button class="ci-del" onclick="removeItem(${item.id})" title="Xoá">✕</button>
+    </div>
+  `).join('');
+
+  // totals
+  const total = getTotal();
+  const ship  = total >= 800000 ? 0 : 30000;
+  document.getElementById('cart-subtotal').textContent = fmt(total);
+  document.getElementById('cart-ship').textContent     = ship === 0 ? 'Miễn phí 🎉' : fmt(ship);
+  document.getElementById('cart-total').textContent    = fmt(total + ship);
+}
+
+// ─── Badge số lượng ───────────────────────────────────────────────────────────
+function updateBadge() {
+  const q = getTotalQty();
+  const n = document.getElementById('cn');
+  if (n) {
+    n.textContent = q;
+    n.style.display = q > 0 ? 'flex' : 'none';
+  }
+}
+
+// ─── Toast thông báo ─────────────────────────────────────────────────────────
+function showToast(name) {
+  const t = document.getElementById('toast');
+  if (!t) return;
+  t.querySelector('.toast-txt').textContent = `Đã thêm: ${name.substring(0,40)}${name.length>40?'…':''}`;
+  t.classList.add('show');
+  clearTimeout(t._tm);
+  t._tm = setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// ─── Mở / đóng giỏ hàng ─────────────────────────────────────────────────────
+function openCart() {
+  document.getElementById('cart-overlay').classList.add('on');
+  document.getElementById('cart-drawer').classList.add('on');
+  document.body.style.overflow = 'hidden';
+}
+function closeCart() {
+  document.getElementById('cart-overlay').classList.remove('on');
+  document.getElementById('cart-drawer').classList.remove('on');
+  document.body.style.overflow = '';
+}
+
+// ─── Đặt hàng qua Zalo ───────────────────────────────────────────────────────
+function orderViaZalo() {
+  if (cart.items.length === 0) return;
+  const lines = cart.items.map(i => `• ${i.name} x${i.qty} = ${fmt(i.price*i.qty)}`).join('\n');
+  const total = getTotal();
+  const ship  = total >= 800000 ? 0 : 30000;
+  const msg   = encodeURIComponent(
+    `🛒 ĐẶT HÀNG TỪ WEBSITE\n──────────────────\n${lines}\n──────────────────\nTạm tính: ${fmt(total)}\nPhí ship: ${ship===0?'Miễn phí':fmt(ship)}\nTổng cộng: ${fmt(total+ship)}\n\nXin shop xác nhận và tư vấn thêm ạ!`
+  );
+  window.open(`https://zalo.me/0902804547?message=${msg}`, '_blank');
+}
+
+// ─── Bắt sự kiện click Thêm vào giỏ ────────────────────────────────────────
+document.addEventListener('click', function(e) {
+  // Nút giỏ hàng (nav)
+  if (e.target.closest('.cart-btn')) { openCart(); return; }
+
+  // Nút thêm vào giỏ
+  const btn = e.target.closest('.btn-cart:not([disabled])');
+  if (btn) {
+    const card = btn.closest('.p-card, .combo-card');
+    if (!card) return;
+    const product = getProductFromCard(card);
+    if (!product.price) return; // bỏ qua nút "Chọn loại"
+    addToCart(product);
+    // feedback button
+    const orig = btn.textContent;
+    btn.textContent = '✓ Đã thêm!';
+    btn.style.cssText += ';background:var(--g1);color:#fff;border-color:var(--g1)';
+    setTimeout(() => {
+      btn.textContent = orig;
+      btn.style.background = '';
+      btn.style.color = '';
+      btn.style.borderColor = '';
+    }, 1400);
+    return;
+  }
+
+  // Nút hỏi Zalo (Like New)
+  const btnLn = e.target.closest('.btn-ln');
+  if (btnLn) {
+    const card = btnLn.closest('.p-card');
+    if (!card) return;
+    const product = getProductFromCard(card);
+    const msg = encodeURIComponent(`Xin chào, tôi muốn hỏi thêm về sản phẩm thanh lý: ${product.name}`);
+    window.open(`https://zalo.me/0902804547?message=${msg}`, '_blank');
+  }
+});
+
+// init
+updateBadge();
+</script>
+
+<script>
+// ══════════════════════════════════════════════════════════════════════════════
+// DATA SYNC — đọc dữ liệu từ Admin qua localStorage
+// ══════════════════════════════════════════════════════════════════════════════
+const TSX_POSTS = 'tsx_posts';
+const TSX_CATS  = 'tsx_categories';
+const TSX_SETTINGS = 'tsx_settings';
+const TSX_ORDERS   = 'tsx_orders';
+
+function getTSXData() {
+  let posts = [], cats = [], settings = {};
+  try { posts    = JSON.parse(localStorage.getItem(TSX_POSTS)  || '[]'); } catch(e){}
+  try { cats     = JSON.parse(localStorage.getItem(TSX_CATS)   || '[]'); } catch(e){}
+  try { settings = JSON.parse(localStorage.getItem(TSX_SETTINGS) || '{}'); } catch(e){}
+  return { posts, cats, settings };
+}
+
+// ─── Render bài viết trang chủ (4 bài published mới nhất) ─────────────────
+function renderHomeNews() {
+  const { posts, cats } = getTSXData();
+  const grid = document.getElementById('home-news-grid');
+  if (!grid) return;
+  const pub = posts.filter(p => p.status === 'published')
+    .sort((a,b) => new Date(b.date) - new Date(a.date))
+    .slice(0, 4);
+  if (!pub.length) {
+    grid.innerHTML = `<div class="news-empty-home">📰 Chưa có bài viết nào. Hãy thêm bài trong trang Admin!</div>`;
+    return;
+  }
+  grid.innerHTML = pub.map(p => newsCardHTML(p, cats)).join('');
+}
+
+// ─── Render trang Tin tức đầy đủ ──────────────────────────────────────────
+function renderNewsPage(filterCat = '') {
+  const { posts, cats } = getTSXData();
+  // Cat filter buttons
+  const filterEl = document.getElementById('news-cat-filter');
+  if (filterEl) {
+    const usedCatIds = [...new Set(posts.filter(p=>p.status==='published').map(p=>p.cat))];
+    const usedCats = cats.filter(c => usedCatIds.includes(c.id));
+    filterEl.innerHTML =
+      `<button class="news-filter-btn ${filterCat===''?'on':''}" onclick="renderNewsPage('')">Tất cả</button>` +
+      usedCats.map(c =>
+        `<button class="news-filter-btn ${filterCat==c.id?'on':''}" onclick="renderNewsPage(${c.id})">${c.icon} ${c.name}</button>`
+      ).join('');
+  }
+  const grid  = document.getElementById('news-page-grid');
+  const empty = document.getElementById('news-empty');
+  if (!grid) return;
+  let pub = posts.filter(p => p.status === 'published')
+    .sort((a,b) => new Date(b.date) - new Date(a.date));
+  if (filterCat) pub = pub.filter(p => p.cat == filterCat);
+  if (!pub.length) {
+    grid.innerHTML = '';
+    if (empty) empty.style.display = '';
+    return;
+  }
+  if (empty) empty.style.display = 'none';
+  grid.innerHTML = pub.map(p => newsCardHTML(p, cats)).join('');
+}
+
+function newsCardHTML(p, cats) {
+  const cat = cats.find(c => c.id === p.cat) || {};
+  const dateStr = p.date ? new Date(p.date).toLocaleDateString('vi-VN') : '';
+  return `<div class="news-card" onclick="openNewsDetail(${p.id})">
+    <div class="news-thumb">${p.emoji || '📰'}</div>
+    <div class="news-body">
+      ${cat.name ? `<span class="news-cat-tag">${cat.icon||''} ${cat.name}</span>` : ''}
+      <div class="news-title">${p.title}</div>
+      ${p.excerpt ? `<div class="news-excerpt">${p.excerpt}</div>` : ''}
+      <div class="news-meta"><span>📅 ${dateStr}</span><span>👁 ${(p.views||0).toLocaleString('vi-VN')}</span></div>
+    </div>
+  </div>`;
+}
+
+// ─── Chi tiết bài viết ─────────────────────────────────────────────────────
+function openNewsDetail(id) {
+  const { posts, cats } = getTSXData();
+  const p = posts.find(x => x.id === id);
+  if (!p) return;
+  const cat = cats.find(c => c.id === p.cat) || {};
+  const dateStr = p.date ? new Date(p.date).toLocaleDateString('vi-VN') : '';
+  // Increment view count
+  p.views = (p.views || 0) + 1;
+  try {
+    const allPosts = JSON.parse(localStorage.getItem(TSX_POSTS) || '[]');
+    const idx = allPosts.findIndex(x => x.id === id);
+    if (idx >= 0) { allPosts[idx].views = p.views; localStorage.setItem(TSX_POSTS, JSON.stringify(allPosts)); }
+  } catch(e) {}
+  // Show modal
+  let modal = document.getElementById('news-detail-modal');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.id = 'news-detail-modal';
+    modal.style.cssText = 'position:fixed;inset:0;background:rgba(10,30,20,.55);z-index:950;display:flex;align-items:flex-start;justify-content:center;padding:20px;overflow-y:auto;backdrop-filter:blur(4px)';
+    modal.onclick = e => { if (e.target === modal) modal.remove(); };
+    document.body.appendChild(modal);
+  }
+  modal.innerHTML = `
+    <div style="background:#fff;border-radius:20px;width:100%;max-width:720px;overflow:hidden;margin:auto;box-shadow:0 32px 80px rgba(0,0,0,.22)">
+      <div style="background:linear-gradient(135deg,var(--bg3),var(--gl));padding:40px 32px 28px;text-align:center">
+        <div style="font-size:64px;margin-bottom:14px">${p.emoji||'📰'}</div>
+        ${cat.name ? `<span style="display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:700;color:var(--g1);background:var(--gl);border:1px solid var(--bd2);padding:3px 12px;border-radius:20px;margin-bottom:12px">${cat.icon||''} ${cat.name}</span>` : ''}
+        <h1 style="font-size:clamp(18px,3vw,26px);font-weight:800;color:var(--t1);line-height:1.3;letter-spacing:-.02em">${p.title}</h1>
+        <div style="font-size:13px;color:var(--t3);margin-top:10px">📅 ${dateStr} &nbsp;·&nbsp; 👁 ${p.views.toLocaleString('vi-VN')} lượt xem</div>
+      </div>
+      <div style="padding:28px 32px">
+        ${p.excerpt ? `<p style="font-size:15px;color:var(--t2);line-height:1.7;border-left:3px solid var(--g2);padding-left:14px;margin-bottom:22px;font-style:italic">${p.excerpt}</p>` : ''}
+        <div style="font-size:15px;color:var(--t1);line-height:1.8">${p.content || '<p style="color:var(--t3);text-align:center;padding:30px 0">Bài viết chưa có nội dung chi tiết.</p>'}</div>
+      </div>
+      <div style="padding:16px 32px 24px;border-top:1px solid var(--bd);display:flex;justify-content:flex-end">
+        <button onclick="document.getElementById('news-detail-modal').remove()" style="padding:10px 24px;border-radius:10px;background:var(--g1);color:#fff;border:none;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit">✕ Đóng</button>
+      </div>
+    </div>`;
+  document.body.appendChild(modal);
+}
+
+// ─── Áp dụng cài đặt từ Admin ─────────────────────────────────────────────
+function applySettings() {
+  const { settings } = getTSXData();
+  if (!settings || !Object.keys(settings).length) return;
+
+  // Tiêu đề tab trình duyệt
+  if (settings.siteName) document.title = settings.siteName;
+
+  // Ticker text
+  if (settings.ticker) {
+    const tw = document.querySelector('.ticker-wrap');
+    if (tw) tw.textContent = settings.ticker;
+  }
+  // Shop phone — navbar + footer + CTA buttons
+  if (settings.phone) {
+    const ph = document.querySelector('.phone-txt strong');
+    const phoneClean = settings.phone.replace(/\D/g,'');
+    if (ph) ph.textContent = settings.phone;
+    document.querySelectorAll('a[href^="tel:"]').forEach(a => { a.href = 'tel:' + phoneClean; });
+    const ctaPhone = document.getElementById('cta-phone-link');
+    if (ctaPhone) { ctaPhone.href = 'tel:' + phoneClean; ctaPhone.textContent = '📞 ' + settings.phone; }
+    // Footer phone
+    const fp = document.getElementById('f-phone');
+    if (fp) fp.textContent = settings.phone + ' (Zalo)';
+  }
+  // Topbar address & hours
+  if (settings.address) {
+    const tba = document.getElementById('tb-address');
+    if (tba) tba.textContent = '📍 ' + settings.address;
+    const fa = document.getElementById('f-address');
+    if (fa) fa.textContent = settings.address;
+    const fba = document.getElementById('f-bottom-address');
+    if (fba) fba.textContent = settings.address;
+  }
+  if (settings.hours) {
+    const tbh = document.getElementById('tb-hours');
+    if (tbh) tbh.textContent = '🕗 Mở cửa ' + settings.hours;
+    const fh = document.getElementById('f-hours');
+    if (fh) fh.textContent = 'Mở cửa ' + settings.hours;
+  }
+  // Topbar links (label + href)
+  ['1','2','3'].forEach(n => {
+    const el = document.getElementById('tb-link' + n);
+    if (!el) return;
+    const label = settings['tbLink' + n + 'Label'];
+    const url   = settings['tbLink' + n + 'Url'];
+    if (label) el.textContent = label;
+    if (url)   el.href = url;
+  });
+  // Footer email
+  if (settings.email) {
+    const fe = document.getElementById('f-email');
+    if (fe) fe.textContent = settings.email;
+    document.querySelectorAll('a[href^="mailto:"]').forEach(a => { a.href = 'mailto:' + settings.email; });
+  }
+  // Footer about text
+  if (settings.about) {
+    const fab = document.getElementById('f-about');
+    if (fab) fab.textContent = settings.about;
+  }
+  // Footer brand name
+  if (settings.brandName) {
+    const fbn = document.getElementById('f-brandname');
+    if (fbn) fbn.textContent = settings.brandName;
+  }
+  // Footer copyright dòng dưới cùng
+  const fc = document.getElementById('f-copyright');
+  if (fc) {
+    if (settings.footerCopy) {
+      fc.textContent = settings.footerCopy;
+    } else if (settings.brandName || settings.yearFounded || settings.phone) {
+      const brand = settings.brandName || 'ThuySinhXanh.Vn';
+      const year  = settings.yearFounded || '2015';
+      const currentYear = new Date().getFullYear();
+      const phone = settings.phone || '0902.804.547';
+      fc.textContent = `© ${year} – ${currentYear} ${brand} · Hotline: ${phone} (Zalo)`;
+    }
+  }
+  // Hero heading
+  if (settings.heroTitle) {
+    const h1 = document.querySelector('.hero h1');
+    if (h1) h1.innerHTML = settings.heroTitle;
+  }
+  // Hero subtitle
+  if (settings.heroSub) {
+    const hp = document.querySelector('.hero-p');
+    if (hp) hp.textContent = settings.heroSub;
+  }
+  // Ship threshold
+  if (settings.shipThreshold) {
+    const sp = document.querySelector('.cdr-promo strong, #cdr-need');
+    const fmtN = n => n.toLocaleString('vi-VN') + '₫';
+    if (sp) sp.textContent = fmtN(parseInt(settings.shipThreshold));
+  }
+  // Zalo links
+  if (settings.zalo) {
+    document.querySelectorAll('a[href^="https://zalo.me/"]').forEach(a => { a.href = settings.zalo; });
+  }
+}
+
+// ─── Lắng nghe thay đổi từ Admin (cross-tab) ──────────────────────────────
+window.addEventListener('storage', e => {
+  if (e.key === 'tsx_updated') {
+    renderHomeNews();
+    applySettings();
+    // Nếu đang ở trang tin tức, re-render
+    if (document.getElementById('page-news')?.classList.contains('active')) {
+      renderNewsPage();
+    }
+  }
+});
+
+// ─── Khởi tạo khi trang load ───────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  applySettings();
+  renderHomeNews();
+  renderNewsPage();
+});
+
+
+let _pendingOrder = null;
+
+function openCheckout() {
+  if (cart.items.length === 0) return;
+  // reset to step 1
+  document.getElementById('co-step1').style.display = 'flex';
+  document.getElementById('co-step2').style.display = 'none';
+  document.querySelectorAll('.co-dot').forEach((d,i) => d.classList.toggle('on', i===0));
+  // clear old errors
+  document.getElementById('co-phone').classList.remove('err');
+  const oldErr = document.getElementById('co-phone-err');
+  if (oldErr) oldErr.remove();
+  // build summary
+  buildCheckoutSummary();
+  // show
+  document.getElementById('checkout-overlay').classList.add('on');
+  document.getElementById('checkout-modal').classList.add('on');
+  document.body.style.overflow = 'hidden';
+  // Real-time phone validation clear
+  const phoneInput = document.getElementById('co-phone');
+  phoneInput.oninput = function() {
+    this.classList.remove('err');
+    const e = document.getElementById('co-phone-err');
+    if (e) e.remove();
+  };
+}
+
+function closeCheckout() {
+  document.getElementById('checkout-overlay').classList.remove('on');
+  document.getElementById('checkout-modal').classList.remove('on');
+  document.body.style.overflow = '';
+}
+
+function buildCheckoutSummary() {
+  const total = getTotal();
+  const ship  = total >= 800000 ? 0 : 30000;
+  const grand = total + ship;
+  // summary in form
+  const el = document.getElementById('co-summary');
+  if (el) {
+    el.innerHTML = `<div class="co-sum-title">📋 Đơn hàng (${getTotalQty()} sản phẩm)</div>` +
+      cart.items.map(i => `<div class="co-sum-item"><span>${i.emoji} ${i.name} x${i.qty}</span><span>${fmt(i.price*i.qty)}</span></div>`).join('') +
+      `<div class="co-sum-item"><span>Phí vận chuyển</span><span>${ship===0?'Miễn phí 🎉':fmt(ship)}</span></div>` +
+      `<div class="co-sum-item total-line"><span>Tổng cộng</span><span>${fmt(grand)}</span></div>`;
+  }
+  // total bar
+  const gt = document.getElementById('co-grand-total');
+  if (gt) gt.textContent = fmt(grand);
+}
+
+// Payment option toggle
+document.addEventListener('change', function(e) {
+  if (e.target.name === 'payment') {
+    document.querySelectorAll('.co-pay-opt').forEach(o => o.classList.remove('on'));
+    e.target.closest('.co-pay-opt').classList.add('on');
+    const bankInfo = document.getElementById('co-bank-info');
+    if (bankInfo) bankInfo.style.display = (e.target.value === 'bank') ? 'block' : 'none';
+  }
+});
+
+function copyBankNum() {
+  navigator.clipboard.writeText('1234567890123456').then(() => {
+    showToast('Đã sao chép số tài khoản!');
+  });
+}
+
+function getSelectedPayment() {
+  const r = document.querySelector('input[name="payment"]:checked');
+  return r ? r.value : 'cod';
+}
+
+function submitOrder() {
+  // Validate
+  const name  = document.getElementById('co-name').value.trim();
+  const phone = document.getElementById('co-phone').value.trim();
+  const addr  = document.getElementById('co-addr').value.trim();
+  let valid = true;
+  ['co-name','co-phone','co-addr'].forEach(id => {
+    const el = document.getElementById(id);
+    if (!el.value.trim()) { el.classList.add('err'); valid = false; }
+    else el.classList.remove('err');
+  });
+  if (!valid) {
+    showToast('Vui lòng điền đầy đủ thông tin bắt buộc!');
+    return;
+  }
+  // Chuẩn hóa: bỏ khoảng trắng, dấu chấm, gạch ngang; đổi +84 → 0
+  const phoneNorm = phone.replace(/[\s.\-]/g,'').replace(/^\+84/, '0');
+  // Regex đầu số hợp lệ Việt Nam (Viettel / Mobifone / Vinaphone / Gmobile / Reddi / Indochina)
+  const vnPhoneReg = /^(0(3[2-9]|5[25689]|7[06-9]|8[0-9]|9[0-9]))[0-9]{7}$/;
+  if (!vnPhoneReg.test(phoneNorm)) {
+    const phoneEl = document.getElementById('co-phone');
+    phoneEl.classList.add('err');
+    let errEl = document.getElementById('co-phone-err');
+    if (!errEl) {
+      errEl = document.createElement('span');
+      errEl.id = 'co-phone-err';
+      errEl.className = 'co-field-err';
+      phoneEl.parentNode.appendChild(errEl);
+    }
+    errEl.textContent = '⚠️ Số điện thoại không đúng định dạng Việt Nam (VD: 0912 345 678)';
+    phoneEl.focus();
+    return;
+  }
+  // Xoá lỗi nếu hợp lệ
+  document.getElementById('co-phone').classList.remove('err');
+  const oldErr = document.getElementById('co-phone-err');
+  if (oldErr) oldErr.remove();
+
+  const district = document.getElementById('co-district').value.trim();
+  const city     = document.getElementById('co-city').value.trim();
+  const note     = document.getElementById('co-note').value.trim();
+  const payment  = getSelectedPayment();
+  const total    = getTotal();
+  const ship     = total >= 800000 ? 0 : 30000;
+  const grand    = total + ship;
+  const orderId  = 'TSX' + Date.now().toString().slice(-6);
+
+  _pendingOrder = { name, phone: phoneNorm, addr, district, city, note, payment, total, ship, grand, orderId, items: [...cart.items], createdAt: Date.now(), orderStatus: 'new' };
+  // Lưu đơn hàng vào localStorage để Admin nhận
+  try {
+    const existingOrders = JSON.parse(localStorage.getItem('tsx_orders') || '[]');
+    existingOrders.unshift(_pendingOrder);
+    localStorage.setItem('tsx_orders', JSON.stringify(existingOrders));
+    localStorage.setItem('tsx_updated', Date.now().toString());
+  } catch(e) {}
+
+  // Go to step 2
+  document.getElementById('co-step1').style.display = 'none';
+  document.getElementById('co-step2').style.display = 'flex';
+  document.querySelectorAll('.co-dot').forEach((d,i) => d.classList.toggle('on', i<=1));
+
+  // Build success screen
+  const payLabels = { cod:'Tiền mặt khi nhận (COD)', bank:'Chuyển khoản ngân hàng', momo:'Ví MoMo' };
+  document.getElementById('co-success-msg').innerHTML =
+    `Cảm ơn <strong>${name}</strong>! Đơn hàng <strong>#${orderId}</strong> đã được ghi nhận.<br>Shop sẽ liên hệ <strong>${phone}</strong> để xác nhận sớm nhất.`;
+
+  const orderBox = document.getElementById('co-order-box');
+  orderBox.innerHTML =
+    _pendingOrder.items.map(i => `<div class="co-order-row"><span>${i.emoji} ${i.name} x${i.qty}</span><strong>${fmt(i.price*i.qty)}</strong></div>`).join('') +
+    `<div class="co-order-row"><span>Phí ship</span><strong>${ship===0?'Miễn phí 🎉':fmt(ship)}</strong></div>` +
+    `<div class="co-order-row"><span>Thanh toán</span><strong>${payLabels[payment]||payment}</strong></div>` +
+    `<div class="co-order-row total"><span>Tổng cộng</span><strong>${fmt(grand)}</strong></div>`;
+
+  const bankConfirm = document.getElementById('co-bank-confirm');
+  if (payment === 'bank') {
+    bankConfirm.style.display = 'block';
+    document.getElementById('co-confirm-msg2').textContent = `TSX ${orderId} ${phone}`;
+  } else {
+    bankConfirm.style.display = 'none';
+  }
+  if (payment === 'momo') {
+    showToast('Chuyển MoMo: 0902.804.547 — ' + orderId);
+  }
+}
+
+function sendToZalo() {
+  if (!_pendingOrder) return;
+  const o = _pendingOrder;
+  const payLabels = { cod:'Tiền mặt (COD)', bank:'Chuyển khoản', momo:'Ví MoMo' };
+  const lines = o.items.map(i => `• ${i.name} x${i.qty} = ${fmt(i.price*i.qty)}`).join('\n');
+  const fullAddr = [o.addr, o.district, o.city].filter(Boolean).join(', ');
+  const msg = encodeURIComponent(
+    `🛒 ĐẶT HÀNG #${o.orderId}\n──────────────────\n${lines}\n──────────────────\nTạm tính: ${fmt(o.total)}\nPhí ship: ${o.ship===0?'Miễn phí':fmt(o.ship)}\nTổng cộng: ${fmt(o.grand)}\n\n👤 ${o.name} — 📞 ${o.phone}\n📍 ${fullAddr}\n💳 ${payLabels[o.payment]||o.payment}\n${o.note?'📝 '+o.note:''}\n\nVui lòng xác nhận đơn hàng ạ!`
+  );
+  window.open(`https://zalo.me/0902804547?message=${msg}`, '_blank');
+}
+
+function finishOrder() {
+  // Clear cart and close
+  cart.items = [];
+  renderCart();
+  updateBadge();
+  _pendingOrder = null;
+  closeCheckout();
+  closeCart();
+  showToast('Cảm ơn bạn đã đặt hàng! 🎉');
+}
+</script>
+
+<!-- ═══════════════ CART DRAWER ═══════════════ -->
+<div id="cart-overlay" onclick="closeCart()"></div>
+<div id="cart-drawer">
+  <div class="cdr-head">
+    <div>
+      <div style="font-size:13px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px">Giỏ hàng của bạn</div>
+      <div id="cdr-qty-txt" style="font-size:22px;font-weight:800;color:var(--t1)">0 sản phẩm</div>
+    </div>
+    <button class="cdr-close" onclick="closeCart()">✕</button>
+  </div>
+
+  <!-- Promo strip inside cart -->
+  <div class="cdr-promo">
+    <span>🚚</span>
+    <span id="cdr-promo-txt">Mua thêm <strong id="cdr-need">800.000₫</strong> để được miễn phí ship!</span>
+  </div>
+
+  <!-- List -->
+  <div id="cart-empty">
+    <div class="ce-ico">🛒</div>
+    <div class="ce-title">Giỏ hàng trống</div>
+    <div class="ce-sub">Hãy thêm sản phẩm bạn yêu thích vào đây</div>
+    <button class="ce-browse" onclick="closeCart()">Xem sản phẩm →</button>
+  </div>
+  <div id="cart-list"></div>
+
+  <!-- Footer -->
+  <div id="cart-footer">
+    <div class="cf-rows">
+      <div class="cf-row"><span>Tạm tính</span><span id="cart-subtotal">0₫</span></div>
+      <div class="cf-row"><span>Phí vận chuyển</span><span id="cart-ship">30.000₫</span></div>
+      <div class="cf-row cf-total"><span>Tổng cộng</span><strong id="cart-total">0₫</strong></div>
+    </div>
+    <button class="cf-checkout" onclick="openCheckout()">
+      <span>🛍️</span> Thanh toán ngay
+    </button>
+    <button class="cf-zalo" onclick="orderViaZalo()">
+      <span>💬</span> Đặt qua Zalo
+    </button>
+    <button class="cf-phone" onclick="window.location='tel:0902804547'">
+      <span>📞</span> Gọi ngay 0902.804.547
+    </button>
+    <div class="cf-note">Sau khi đặt, shop sẽ xác nhận và báo thời gian giao hàng qua Zalo.</div>
+    <button class="cf-clear" onclick="if(confirm('Xoá toàn bộ giỏ hàng?')){cart.items=[];renderCart();updateBadge();}">🗑 Xoá tất cả</button>
+  </div>
+</div>
+
+<!-- CHECKOUT MODAL -->
+<div id="checkout-overlay" onclick="closeCheckout()"></div>
+<div id="checkout-modal">
+  <!-- Step 1: Form -->
+  <div id="co-step1">
+    <div class="co-head">
+      <button class="co-back" onclick="closeCheckout()">← Quay lại</button>
+      <div class="co-title">Thông tin đặt hàng</div>
+      <div class="co-step-ind"><span class="co-dot on"></span><span class="co-dot"></span></div>
+    </div>
+    <div class="co-body">
+      <!-- Order summary mini -->
+      <div class="co-summary" id="co-summary"></div>
+
+      <!-- Form -->
+      <div class="co-section-title">📦 Thông tin nhận hàng</div>
+      <div class="co-field">
+        <label>Họ và tên <span class="co-req">*</span></label>
+        <input type="text" id="co-name" placeholder="Nguyễn Văn A" autocomplete="name"/>
+      </div>
+      <div class="co-field">
+        <label>Số điện thoại <span class="co-req">*</span></label>
+        <input type="tel" id="co-phone" placeholder="0900 000 000" autocomplete="tel"/>
+      </div>
+      <div class="co-field">
+        <label>Địa chỉ giao hàng <span class="co-req">*</span></label>
+        <input type="text" id="co-addr" placeholder="Số nhà, tên đường, phường/xã" autocomplete="street-address"/>
+      </div>
+      <div class="co-row2">
+        <div class="co-field">
+          <label>Quận/Huyện</label>
+          <input type="text" id="co-district" placeholder="Quận 1" />
+        </div>
+        <div class="co-field">
+          <label>Tỉnh/Thành phố</label>
+          <input type="text" id="co-city" placeholder="TP. HCM" />
+        </div>
+      </div>
+      <div class="co-field">
+        <label>Ghi chú (tuỳ chọn)</label>
+        <textarea id="co-note" rows="2" placeholder="Giao giờ hành chính, gọi trước khi đến..."></textarea>
+      </div>
+
+      <!-- Payment method -->
+      <div class="co-section-title">💳 Phương thức thanh toán</div>
+      <div class="co-payment-opts">
+        <label class="co-pay-opt on" id="pay-cod">
+          <input type="radio" name="payment" value="cod" checked/>
+          <div class="co-pay-ico">💵</div>
+          <div class="co-pay-info">
+            <strong>Thanh toán khi nhận hàng (COD)</strong>
+            <span>Trả tiền mặt khi nhận hàng</span>
+          </div>
+          <div class="co-pay-check">✓</div>
+        </label>
+        <label class="co-pay-opt" id="pay-bank">
+          <input type="radio" name="payment" value="bank"/>
+          <div class="co-pay-ico">🏦</div>
+          <div class="co-pay-info">
+            <strong>Chuyển khoản ngân hàng</strong>
+            <span>Shop xác nhận sau khi nhận tiền</span>
+          </div>
+          <div class="co-pay-check">✓</div>
+        </label>
+        <label class="co-pay-opt" id="pay-momo">
+          <input type="radio" name="payment" value="momo"/>
+          <div class="co-pay-ico">💜</div>
+          <div class="co-pay-info">
+            <strong>Ví MoMo</strong>
+            <span>Chuyển qua số 0902.804.547</span>
+          </div>
+          <div class="co-pay-check">✓</div>
+        </label>
+      </div>
+
+      <!-- Bank info (hidden by default) -->
+      <div id="co-bank-info">
+        <div class="co-bank-box">
+          <div class="co-bank-row"><span>Ngân hàng</span><strong>Vietcombank</strong></div>
+          <div class="co-bank-row"><span>Số tài khoản</span><strong id="co-bank-num">1234 5678 9012 3456</strong></div>
+          <div class="co-bank-row"><span>Chủ tài khoản</span><strong>NGUYEN VAN A</strong></div>
+          <div class="co-bank-row"><span>Nội dung CK</span><strong id="co-bank-msg">TSX + SĐT của bạn</strong></div>
+          <button class="co-bank-copy" onclick="copyBankNum()">📋 Sao chép số TK</button>
+        </div>
+      </div>
+    </div>
+    <div class="co-foot">
+      <div class="co-total-bar">
+        <span>Tổng thanh toán</span>
+        <strong id="co-grand-total">0₫</strong>
+      </div>
+      <button class="co-confirm-btn" onclick="submitOrder()">Xác nhận đặt hàng →</button>
+    </div>
+  </div>
+
+  <!-- Step 2: Success -->
+  <div id="co-step2" style="display:none">
+    <div class="co-success">
+      <div class="co-success-ico">🎉</div>
+      <div class="co-success-title">Đặt hàng thành công!</div>
+      <div class="co-success-sub" id="co-success-msg"></div>
+      <div class="co-order-box" id="co-order-box"></div>
+      <div id="co-bank-confirm" style="display:none">
+        <div class="co-bank-note">Vui lòng chuyển khoản trong vòng <strong>2 giờ</strong> để đơn hàng không bị huỷ.</div>
+        <div class="co-bank-box co-bank-box--sm">
+          <div class="co-bank-row"><span>Ngân hàng</span><strong>Vietcombank</strong></div>
+          <div class="co-bank-row"><span>Số tài khoản</span><strong>1234 5678 9012 3456</strong></div>
+          <div class="co-bank-row"><span>Nội dung CK</span><strong id="co-confirm-msg2"></strong></div>
+        </div>
+      </div>
+      <div class="co-success-btns">
+        <button class="co-zalo-btn" onclick="sendToZalo()">💬 Gửi xác nhận qua Zalo</button>
+        <button class="co-done-btn" onclick="finishOrder()">Tiếp tục mua sắm</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast"><span>✅</span><span class="toast-txt"></span></div>
+
+<style>
+/* ─── NEWS GRID ─── */
+.news-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
+.news-card{background:#fff;border:1.5px solid var(--bd);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:all .25s;cursor:pointer}
+.news-card:hover{border-color:var(--g2);transform:translateY(-3px);box-shadow:0 10px 32px rgba(26,127,90,.13)}
+.news-thumb{aspect-ratio:16/9;background:linear-gradient(135deg,var(--bg3),var(--gl));display:flex;align-items:center;justify-content:center;font-size:52px;flex-shrink:0}
+.news-body{padding:14px;flex:1;display:flex;flex-direction:column;gap:7px}
+.news-cat-tag{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;color:var(--g1);background:var(--gl);padding:2px 9px;border-radius:20px;width:fit-content}
+.news-title{font-size:14px;font-weight:700;color:var(--t1);line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.news-excerpt{font-size:12.5px;color:var(--t3);line-height:1.55;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.news-meta{display:flex;align-items:center;justify-content:space-between;font-size:11.5px;color:var(--t3);margin-top:auto;padding-top:6px;border-top:1px solid var(--bd)}
+.news-empty-home{text-align:center;padding:40px;color:var(--t3);background:#fff;border-radius:14px;border:1.5px dashed var(--bd2)}
+.news-filter-btn{padding:6px 14px;border-radius:20px;font-size:13px;font-weight:600;border:1.5px solid var(--bd2);background:#fff;color:var(--t2);cursor:pointer;transition:all .2s;font-family:inherit}
+.news-filter-btn:hover,.news-filter-btn.on{background:var(--g1);color:#fff;border-color:var(--g1)}
+
+/* ─── CART OVERLAY ─── */
+#cart-overlay{position:fixed;inset:0;background:rgba(10,30,20,.45);z-index:900;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(3px)}
+#cart-overlay.on{opacity:1;pointer-events:auto}
+
+/* ─── CART DRAWER ─── */
+#cart-drawer{position:fixed;top:0;right:0;width:min(420px,100vw);height:100%;background:#fff;z-index:910;display:flex;flex-direction:column;box-shadow:-8px 0 48px rgba(0,0,0,.18);transform:translateX(100%);transition:transform .32s cubic-bezier(.4,0,.2,1)}
+#cart-drawer.on{transform:translateX(0)}
+
+.cdr-head{display:flex;align-items:flex-start;justify-content:space-between;padding:22px 20px 16px;border-bottom:1px solid var(--bd);flex-shrink:0}
+.cdr-close{width:36px;height:36px;border-radius:9px;border:1.5px solid var(--bd);background:var(--bg);color:var(--t2);font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .18s}
+.cdr-close:hover{background:var(--rd);color:#fff;border-color:var(--rd)}
+
+.cdr-promo{background:linear-gradient(90deg,var(--gl),#fff);border-bottom:1px solid var(--bd);padding:10px 20px;font-size:13px;color:var(--t2);display:flex;gap:8px;align-items:center;flex-shrink:0}
+.cdr-promo strong{color:var(--g1)}
+
+/* ─── EMPTY STATE ─── */
+#cart-empty{flex:1;display:none;flex-direction:column;align-items:center;justify-content:center;padding:40px 24px;text-align:center}
+.ce-ico{font-size:56px;margin-bottom:16px;opacity:.6}
+.ce-title{font-size:18px;font-weight:700;color:var(--t1);margin-bottom:6px}
+.ce-sub{font-size:14px;color:var(--t3);margin-bottom:22px}
+.ce-browse{padding:11px 28px;border-radius:10px;background:var(--g1);color:#fff;border:none;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;transition:background .2s}
+.ce-browse:hover{background:var(--g2)}
+
+/* ─── CART LIST ─── */
+#cart-list{flex:1;overflow-y:auto;padding:12px 16px;display:flex;flex-direction:column;gap:10px}
+#cart-list::-webkit-scrollbar{width:5px}
+#cart-list::-webkit-scrollbar-thumb{background:var(--bd2);border-radius:4px}
+
+.ci{display:flex;align-items:flex-start;gap:12px;background:var(--bg);border:1.5px solid var(--bd);border-radius:14px;padding:12px;transition:all .28s}
+.ci:hover{border-color:var(--bd2)}
+.ci-img{width:52px;height:52px;border-radius:10px;background:#fff;border:1px solid var(--bd);display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0}
+.ci-body{flex:1;min-width:0}
+.ci-name{font-size:13px;font-weight:600;color:var(--t1);line-height:1.4;margin-bottom:3px;word-break:break-word}
+.ci-price{font-size:12px;color:var(--t3);margin-bottom:8px}
+.ci-qty-wrap{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.ci-q{width:28px;height:28px;border-radius:7px;border:1.5px solid var(--bd2);background:#fff;font-size:16px;font-weight:700;color:var(--g1);cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;transition:all .15s;font-family:inherit}
+.ci-q:hover{background:var(--g1);color:#fff;border-color:var(--g1)}
+.ci-qn{font-size:14px;font-weight:700;color:var(--t1);min-width:20px;text-align:center}
+.ci-sub{margin-left:auto;font-size:13px;font-weight:800;color:var(--g1)}
+.ci-del{width:28px;height:28px;border-radius:7px;border:1.5px solid var(--bd);background:transparent;color:var(--t3);font-size:12px;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .15s;margin-top:0;font-family:inherit}
+.ci-del:hover{background:#fff0f0;color:var(--rd);border-color:var(--rd)}
+
+/* ─── CART FOOTER ─── */
+#cart-footer{border-top:1px solid var(--bd);padding:16px 20px 20px;flex-shrink:0;background:#fff}
+.cf-rows{margin-bottom:14px;display:flex;flex-direction:column;gap:7px}
+.cf-row{display:flex;justify-content:space-between;font-size:13.5px;color:var(--t2)}
+.cf-row span:last-child{font-weight:600;color:var(--t1)}
+.cf-total{padding-top:9px;border-top:1px dashed var(--bd);margin-top:4px;font-size:15px;font-weight:700}
+.cf-total strong{font-size:18px;font-weight:800;color:var(--g1)}
+.cf-zalo{width:100%;padding:14px;border-radius:12px;background:linear-gradient(135deg,#0068ff,#0088ff);color:#fff;border:none;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:8px;transition:all .2s;box-shadow:0 4px 16px rgba(0,104,255,.3)}
+.cf-zalo:hover{transform:translateY(-1px);box-shadow:0 7px 22px rgba(0,104,255,.38)}
+.cf-phone{width:100%;padding:12px;border-radius:12px;background:var(--gl);color:var(--g1);border:1.5px solid var(--bd2);font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:10px;transition:all .2s}
+.cf-phone:hover{background:var(--g1);color:#fff;border-color:var(--g1)}
+.cf-note{font-size:11.5px;color:var(--t3);text-align:center;line-height:1.55;margin-bottom:10px}
+.cf-clear{background:none;border:none;color:var(--t3);font-size:12px;cursor:pointer;display:block;margin:0 auto;font-family:inherit;transition:color .2s}
+.cf-clear:hover{color:var(--rd)}
+
+.cf-checkout{width:100%;padding:14px;border-radius:12px;background:linear-gradient(135deg,var(--g1),var(--g2));color:#fff;border:none;font-size:15px;font-weight:800;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:8px;transition:all .2s;box-shadow:0 4px 16px rgba(26,127,90,.35)}
+.cf-checkout:hover{transform:translateY(-1px);box-shadow:0 7px 22px rgba(26,127,90,.45)}
+.cf-zalo{width:100%;padding:12px;border-radius:12px;background:var(--gl);color:var(--g1);border:1.5px solid var(--bd2);font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:6px;transition:all .2s}
+.cf-zalo:hover{background:var(--g1);color:#fff;border-color:var(--g1)}
+
+/* CHECKOUT MODAL */
+#checkout-overlay{position:fixed;inset:0;background:rgba(10,30,20,.55);z-index:920;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(4px)}
+#checkout-overlay.on{opacity:1;pointer-events:auto}
+#checkout-modal{position:fixed;top:0;right:0;width:min(500px,100vw);height:100%;background:#fff;z-index:930;display:flex;flex-direction:column;box-shadow:-8px 0 48px rgba(0,0,0,.2);transform:translateX(100%);transition:transform .32s cubic-bezier(.4,0,.2,1)}
+#checkout-modal.on{transform:translateX(0)}
+#co-step1,#co-step2{display:flex;flex-direction:column;height:100%}
+.co-head{display:flex;align-items:center;gap:12px;padding:18px 20px;border-bottom:1px solid var(--bd);flex-shrink:0}
+.co-back{background:none;border:1.5px solid var(--bd);border-radius:9px;padding:7px 12px;font-size:13px;font-weight:600;color:var(--t2);cursor:pointer;font-family:inherit;transition:all .2s}
+.co-back:hover{background:var(--gl);color:var(--g1);border-color:var(--g2)}
+.co-title{font-size:17px;font-weight:800;color:var(--t1);flex:1}
+.co-step-ind{display:flex;gap:6px;align-items:center}
+.co-dot{width:8px;height:8px;border-radius:50%;background:var(--bd2);transition:background .3s}
+.co-dot.on{background:var(--g1);width:20px;border-radius:4px}
+.co-body{flex:1;overflow-y:auto;padding:16px 20px;display:flex;flex-direction:column;gap:14px}
+.co-body::-webkit-scrollbar{width:4px}
+.co-body::-webkit-scrollbar-thumb{background:var(--bd2);border-radius:4px}
+.co-section-title{font-size:12.5px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--g1);padding-bottom:2px;border-bottom:2px solid var(--gl);margin-top:4px}
+.co-field{display:flex;flex-direction:column;gap:5px}
+.co-field label{font-size:13px;font-weight:600;color:var(--t1)}
+.co-req{color:var(--rd)}
+.co-field input,.co-field textarea{padding:10px 13px;border:1.5px solid var(--bd2);border-radius:10px;font-size:14px;font-family:inherit;color:var(--t1);background:var(--bg);outline:none;transition:all .2s;resize:none}
+.co-field input:focus,.co-field textarea:focus{border-color:var(--g2);background:#fff;box-shadow:0 0 0 3px rgba(34,160,115,.1)}
+.co-field input.err{border-color:var(--rd);box-shadow:0 0 0 3px rgba(231,76,60,.1)}
+.co-row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.co-summary{background:var(--bg3);border-radius:12px;padding:12px 14px;border:1px solid var(--bd)}
+.co-sum-title{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--t3);margin-bottom:8px}
+.co-sum-item{display:flex;justify-content:space-between;font-size:13px;color:var(--t1);padding:3px 0;line-height:1.4}
+.co-sum-item span:last-child{font-weight:700;color:var(--g1);flex-shrink:0;margin-left:8px}
+.co-sum-item.total-line{border-top:1px dashed var(--bd);margin-top:6px;padding-top:8px;font-weight:800;font-size:14px}
+.co-payment-opts{display:flex;flex-direction:column;gap:8px}
+.co-pay-opt{display:flex;align-items:center;gap:12px;border:1.5px solid var(--bd2);border-radius:12px;padding:12px 14px;cursor:pointer;transition:all .2s;user-select:none}
+.co-pay-opt input{display:none}
+.co-pay-opt.on{border-color:var(--g2);background:var(--gl)}
+.co-pay-ico{font-size:24px;flex-shrink:0}
+.co-pay-info{flex:1}
+.co-pay-info strong{display:block;font-size:13.5px;font-weight:700;color:var(--t1)}
+.co-pay-info span{font-size:12px;color:var(--t2)}
+.co-pay-check{width:22px;height:22px;border-radius:50%;background:var(--g1);color:#fff;font-size:12px;display:none;align-items:center;justify-content:center;flex-shrink:0;font-weight:800}
+.co-pay-opt.on .co-pay-check{display:flex}
+#co-bank-info{display:none}
+.co-bank-box{background:#fffbf0;border:1.5px solid #f0e0b0;border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:8px}
+.co-bank-box--sm{margin-top:10px}
+.co-bank-row{display:flex;justify-content:space-between;align-items:center;font-size:13.5px}
+.co-bank-row span{color:var(--t2)}
+.co-bank-row strong{font-weight:800;color:var(--t1)}
+.co-bank-copy{background:var(--am);color:#fff;border:none;border-radius:8px;padding:8px 16px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:background .2s;align-self:flex-start;margin-top:4px}
+.co-bank-copy:hover{background:#d35400}
+.co-foot{border-top:1px solid var(--bd);padding:14px 20px;flex-shrink:0;background:#fff}
+.co-total-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.co-total-bar span{font-size:14px;font-weight:600;color:var(--t2)}
+.co-total-bar strong{font-size:20px;font-weight:800;color:var(--g1)}
+.co-confirm-btn{width:100%;padding:14px;border-radius:12px;background:linear-gradient(135deg,var(--g1),var(--g2));color:#fff;border:none;font-size:15px;font-weight:800;cursor:pointer;font-family:inherit;transition:all .2s;box-shadow:0 4px 16px rgba(26,127,90,.3)}
+.co-confirm-btn:hover{transform:translateY(-1px);box-shadow:0 7px 22px rgba(26,127,90,.4)}
+.co-confirm-btn:disabled{background:#ccc;box-shadow:none;transform:none;cursor:not-allowed}
+/* Success */
+.co-success{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:32px 24px;overflow-y:auto;gap:0}
+.co-success::-webkit-scrollbar{width:4px}
+.co-success::-webkit-scrollbar-thumb{background:var(--bd2);border-radius:4px}
+.co-success-ico{font-size:64px;animation:pop .4s cubic-bezier(.175,.885,.32,1.275)}
+@keyframes pop{0%{transform:scale(0)}100%{transform:scale(1)}}
+.co-success-title{font-size:22px;font-weight:800;color:var(--t1);margin-top:12px;margin-bottom:6px}
+.co-success-sub{font-size:14px;color:var(--t2);text-align:center;line-height:1.65;margin-bottom:18px}
+.co-order-box{width:100%;background:var(--bg3);border-radius:14px;padding:16px;margin-bottom:16px}
+.co-order-row{display:flex;justify-content:space-between;font-size:13.5px;color:var(--t1);padding:4px 0}
+.co-order-row strong{font-weight:800}
+.co-order-row.total{border-top:1px dashed var(--bd);margin-top:6px;padding-top:10px;font-weight:800;font-size:15px;color:var(--g1)}
+.co-bank-note{font-size:13px;color:var(--am);font-weight:600;text-align:center;margin-bottom:8px}
+.co-success-btns{display:flex;flex-direction:column;gap:8px;width:100%;margin-top:6px}
+.co-zalo-btn{padding:13px;border-radius:12px;background:linear-gradient(135deg,#0068ff,#0088ff);color:#fff;border:none;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s;box-shadow:0 4px 14px rgba(0,104,255,.3)}
+.co-zalo-btn:hover{transform:translateY(-1px);box-shadow:0 7px 20px rgba(0,104,255,.4)}
+.co-done-btn{padding:11px;border-radius:12px;background:var(--gl);color:var(--g1);border:1.5px solid var(--bd2);font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s}
+.co-done-btn:hover{background:var(--g1);color:#fff;border-color:var(--g1)}
+.co-field-err{font-size:12px;color:var(--rd);font-weight:600;margin-top:3px;display:block;animation:fadeInErr .2s ease}
+@keyframes fadeInErr{from{opacity:0;transform:translateY(-3px)}to{opacity:1;transform:translateY(0)}}
+.co-done-btn:hover{background:var(--g1);color:#fff;border-color:var(--g1)}
+
+#toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(20px);background:#1a2e25;color:#fff;padding:11px 20px;border-radius:100px;font-size:13.5px;font-weight:600;display:flex;align-items:center;gap:8px;z-index:999;opacity:0;pointer-events:none;transition:all .3s;white-space:nowrap;max-width:calc(100vw - 48px);box-shadow:0 8px 28px rgba(0,0,0,.25)}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast-txt{overflow:hidden;text-overflow:ellipsis}
+</style>
+
+<script>
+// Live promo bar update & qty text
+const _origRender = renderCart;
+renderCart = function() {
+  _origRender();
+  const total = getTotal();
+  const q = getTotalQty();
+  // qty text
+  const qt = document.getElementById('cdr-qty-txt');
+  if (qt) qt.textContent = q + ' sản phẩm';
+  // promo bar
+  const need = Math.max(0, 800000 - total);
+  const pTxt = document.getElementById('cdr-promo-txt');
+  const needEl = document.getElementById('cdr-need');
+  if (pTxt && needEl) {
+    if (need === 0) {
+      pTxt.innerHTML = '🎉 Bạn được <strong>miễn phí vận chuyển</strong> rồi!';
+    } else {
+      pTxt.innerHTML = `Mua thêm <strong id="cdr-need">${fmt(need)}</strong> để được miễn phí ship!`;
+    }
+  }
+};
+renderCart(); // initial call
+</script>
+</body>
+</html>
